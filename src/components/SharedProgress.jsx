@@ -1,35 +1,29 @@
-// Component for viewing shared habit progress from users, with chat and upvoting features
+// Shows shared habit progress from other users, with chat and upvoting
 import React, { useState, useEffect } from "react";
 import { useUser } from "@clerk/clerk-react";
 import { useParams } from "react-router-dom";
-import {
-  fetchShares,
-  addUpvote,
-  getUpvotesForShare,
-  deleteShare,
-} from "../api";
-import Chat from "./Chat"; // We'll create this next
+import { fetchShares, addUpvote, updateShare, deleteShare } from "../api";
+import Chat from "./Chat";
 
 const SharedProgress = () => {
-  // Get current user from Clerk
+  // Grab current user
   const { user } = useUser();
-  // Get the habit ID from URL params
+  // Get habit ID from URL
   const { id } = useParams();
-  // State for storing shared progress items
+  // Holds the shared progress items
   const [shares, setShares] = useState([]);
-  // State for storing upvote counts per share
-  const [upvotes, setUpvotes] = useState({});
-  // State for the habit name being displayed
+
+  // Name of the habit being shown
   const [habitName, setHabitName] = useState("");
 
-  // Fetch shares based on the ID (specific habit or all)
+  // Load shares based on the ID - either all or for a specific habit
   useEffect(() => {
     fetchShares().then((response) => {
       if (id === "all") {
         setShares(response.data);
         setHabitName("All Habits");
       } else {
-        // Filter shares for the specific habit
+        // Just grab shares for this habit
         const filteredShares = response.data.filter(
           (share) => share.habitId === id
         );
@@ -41,32 +35,25 @@ const SharedProgress = () => {
     });
   }, [id]);
 
-  // Fetch upvote counts for each share
-  useEffect(() => {
-    shares.forEach((share) => {
-      getUpvotesForShare(share.id).then((response) => {
-        setUpvotes((prev) => ({ ...prev, [share.id]: response.data.length }));
-      });
-    });
-  }, [shares]);
-
-  // Initialize upvotes state to avoid showing 3
-  useEffect(() => {
-    const initialUpvotes = {};
-    shares.forEach((share) => {
-      initialUpvotes[share.id] = 0;
-    });
-    setUpvotes(initialUpvotes);
-  }, []);
+  // Upvotes are now part of the share object, no separate fetching needed
 
   const handleUpvote = (shareId) => {
     if (!user) return;
     const upvoteData = { id: Date.now().toString(), shareId, userId: user.id };
     addUpvote(upvoteData).then(() => {
-      // Refresh upvotes for this share
-      getUpvotesForShare(shareId).then((response) => {
-        setUpvotes((prev) => ({ ...prev, [shareId]: response.data.length }));
-      });
+      // Bump up the upvotes in the database
+      const share = shares.find((s) => s.id === shareId);
+      if (share) {
+        const newUpvotes = (share.upvotes || 0) + 1;
+        updateShare(shareId, { ...share, upvotes: newUpvotes }).then(() => {
+          // Update our local list
+          setShares(
+            shares.map((s) =>
+              s.id === shareId ? { ...s, upvotes: newUpvotes } : s
+            )
+          );
+        });
+      }
     });
   };
 
@@ -89,7 +76,7 @@ const SharedProgress = () => {
           <p>Completion: {share.completion}%</p>
           <p>Comment: {share.comment}</p>
           <p>
-            Upvotes: {upvotes[share.id] || 0}{" "}
+            Upvotes: {share.upvotes || 0}{" "}
             <button
               className="upvoteBtn"
               onClick={() => handleUpvote(share.id)}

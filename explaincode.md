@@ -1,71 +1,32 @@
-# Habit Tracker Project Code Explanation
+# Habit Tracker Project Code
 
-This document provides a detailed explanation of the Habit Tracker project, covering how each part of the code works, what components are linked to what, and the overall flow from start to finish. It's structured to help understand the project for presentations or deep dives, referencing specific code snippets and files.
+This file contains all the code for the Habit Tracker project, organized by file path. Each section includes the file name and its contents.
 
-## Project Overview
-
-The Habit Tracker is a React-based web application that allows users to create, track, and share habits. Users can:
-
-- Authenticate via Clerk (secure login/signup)
-- Add and manage personal habits with weekly tracking
-- Track daily progress over a 7-day week with done/not done status
-- View detailed reports and statistics on habit completion
-- Share progress publicly with comments, upvotes, and real-time chat
-- Interact with a community of users through shared progress
-
-The app uses a modern stack: React for the frontend UI, JSON Server for mock backend API, Firebase for real-time chat database, and Clerk for authentication. The app features a dark theme with Bootstrap styling and Font Awesome icons.
-
-## How the App Works: Complete Flow
-
-1. **Authentication**: User signs in via Clerk, which provides user context throughout the app
-2. **Dashboard**: User sees personalized greeting and navigation to different sections
-3. **Habit Management**: User can view existing habits, add new ones, or delete habits
-4. **Progress Tracking**: For each habit, user can view a week grid and mark days as done/not done
-5. **Reporting**: User can view completion statistics across all habits
-6. **Social Sharing**: User can share habit progress, view others' shares, upvote them, and chat in real-time
-7. **Data Persistence**: All data is stored in a JSON file via JSON Server, with real-time chat using Firebase
-
-The app auto-refreshes habit data every minute and prevents marking future days as done.
-
-## Architecture and Technologies
-
-### Frontend (React + Vite)
-
-- **React**: Handles UI components and state management
-- **Vite**: Build tool and development server
-- **React Router**: Client-side routing
-- **Bootstrap**: CSS framework for responsive design
-- **Axios**: HTTP client for API calls
-
-### Backend
-
-- **JSON Server**: Simulates REST API using `db.json` as data store
-- **Firebase**: Real-time database for chat functionality
-
-### Key Files Structure
+## Project Structure
 
 ```
 habit-tracker/
-├── .env                    # Environment variables (API keys, URLs)
-├── .gitignore             # Git ignore rules
-├── db.json                # Mock database with habits, shares, upvotes data
-├── eslint.config.js       # ESLint configuration for code linting
-├── index.html             # Main HTML template
-├── package.json           # Dependencies and scripts
-├── README.md              # Project documentation
-├── vite.config.js         # Vite build configuration
+├── .gitignore
+├── db.json
+├── eslint.config.js
+├── index.html
+├── package-lock.json
+├── package.json
+├── README.md
+├── vite.config.js
 ├── public/
-│   └── vite.svg           # Vite logo asset
+│   └── vite.svg
 └── src/
-    ├── api.js             # API functions for backend communication
-    ├── App.css            # App-specific styles
-    ├── App.jsx            # Main app component with routing
-    ├── firebase.jsx       # Firebase configuration
-    ├── index.css          # Global CSS styles
-    ├── main.jsx           # React entry point
+    ├── api.js
+    ├── App.css
+    ├── App.jsx
+    ├── firebase.jsx
+    ├── index.css
+    ├── main.jsx
+    ├── custom-styles.css
     ├── assets/
-    │   └── react.svg      # React logo asset
-    └── components/        # All UI components
+    │   └── react.svg
+    └── components/
         ├── AddHabitForm.jsx
         ├── Chat.jsx
         ├── Clock.jsx
@@ -78,91 +39,6942 @@ habit-tracker/
         └── WeekView.jsx
 ```
 
-### Root Files in src/ Folder
-
-- **main.jsx**: The entry point that initializes React, sets up Clerk authentication provider, and renders the App component. It also imports global CSS files (Bootstrap and Font Awesome).
-
-- **App.jsx**: The root component that manages global state (habits array), handles routing with React Router, fetches data from API, and provides context to child components. It includes authentication checks and auto-refresh functionality.
-
-- **api.js**: Contains all API functions using Axios for CRUD operations on habits, shares, and upvotes. It uses environment variables for the API base URL.
-
-- **firebase.jsx**: Firebase configuration file that initializes the Firebase app and exports the database instance for real-time chat functionality.
-
-- **index.css**: Global CSS styles including dark theme colors, font settings, and body layout.
-
-- **App.css**: Additional app-specific styles (currently minimal, mostly unused).
-
-### Components Folder Structure
-
-All UI components are organized in the `src/components/` folder:
-
-- **Navbar.jsx**: Navigation bar with time-based greeting, navigation links, and user account button
-- **HabitList.jsx**: Container component that displays a list of user's habits
-- **HabitItem.jsx**: Individual habit card with actions (week view, share, delete)
-- **AddHabitForm.jsx**: Form component for creating new habits
-- **WeekView.jsx**: Displays a 7-day grid view of a specific habit's progress
-- **DayContainer.jsx**: Individual day component with done/not done buttons
-- **Report.jsx**: Statistics and reporting dashboard
-- **SharedProgress.jsx**: Social feed showing shared habit progress with upvotes
-- **Chat.jsx**: Real-time chat component using Firebase
-- **Clock.jsx**: Simple clock displaying current time and date
-
-### Database: db.json
-
-The `db.json` file serves as the mock database for JSON Server. It contains three main data arrays:
-
+## ./db.json
 ```json
 {
   "habits": [
     {
-      "id": "unique_id",
-      "name": "Habit Name",
-      "userId": "clerk_user_id",
+      "id": "1760993334220",
+      "name": "ben",
+      "userId": "user_123",
       "week": [
         {
           "date": "2025-10-20",
-          "status": "done" | "notDone"
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-21",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-22",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-23",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-24",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-25",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-26",
+          "status": "notDone"
         }
-        // ... 7 days total
       ]
+    },
+    {
+      "id": "1760993433437",
+      "name": "nn",
+      "userId": "user_123",
+      "week": [
+        {
+          "date": "2025-10-20",
+          "status": "done"
+        },
+        {
+          "date": "2025-10-21",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-22",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-23",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-24",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-25",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-26",
+          "status": "notDone"
+        }
+      ]
+    },
+    {
+      "id": "1760993644594",
+      "name": "nn",
+      "userId": "user_456",
+      "week": [
+        {
+          "date": "2025-10-20",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-21",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-22",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-23",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-24",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-25",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-26",
+          "status": "notDone"
+        }
+      ]
+    },
+    {
+      "id": "1760994151271",
+      "name": "jh",
+      "userId": "user_456",
+      "week": [
+        {
+          "date": "2025-10-20",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-21",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-22",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-23",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-24",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-25",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-26",
+          "status": "notDone"
+        }
+      ]
+    },
+    {
+      "id": "1760994773049",
+      "name": "ww",
+      "userId": "user_789",
+      "week": [
+        {
+          "date": "2025-10-20",
+          "status": "done"
+        },
+        {
+          "date": "2025-10-21",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-22",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-23",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-24",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-25",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-26",
+          "status": "notDone"
+        }
+      ]
+    },
+    {
+      "id": "1761000499723",
+      "name": "Dancing",
+      "week": [
+        {
+          "date": "2025-10-20",
+          "status": "done"
+        },
+        {
+          "date": "2025-10-21",
+          "status": "done"
+        },
+        {
+          "date": "2025-10-22",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-23",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-24",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-25",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-26",
+          "status": "notDone"
+        }
+      ],
+      "userId": "user_34LkvJ0wM68lMWLTYqpsfOCL4yn"
+    },
+    {
+      "id": "1761297921164",
+      "name": "reading",
+      "week": [
+        {
+          "date": "2025-10-24",
+          "status": "done"
+        },
+        {
+          "date": "2025-10-25",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-26",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-27",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-28",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-29",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-30",
+          "status": "notDone"
+        }
+      ]
+    },
+    {
+      "id": "1761298322145",
+      "name": "aa",
+      "week": [
+        {
+          "date": "2025-10-24",
+          "status": "done"
+        },
+        {
+          "date": "2025-10-25",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-26",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-27",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-28",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-29",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-30",
+          "status": "notDone"
+        }
+      ]
+    },
+    {
+      "id": "1761298574491",
+      "name": "gg",
+      "week": [
+        {
+          "date": "2025-10-24",
+          "status": "done"
+        },
+        {
+          "date": "2025-10-25",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-26",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-27",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-28",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-29",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-30",
+          "status": "notDone"
+        }
+      ]
+    },
+    {
+      "id": "1761299204701",
+      "name": "bb",
+      "week": [
+        {
+          "date": "2025-10-24",
+          "status": "done"
+        },
+        {
+          "date": "2025-10-25",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-26",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-27",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-28",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-29",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-30",
+          "status": "notDone"
+        }
+      ]
+    },
+    {
+      "id": "1761299233035",
+      "name": "aa",
+      "week": [
+        {
+          "date": "2025-10-24",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-25",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-26",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-27",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-28",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-29",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-30",
+          "status": "notDone"
+        }
+      ]
+    },
+    {
+      "id": "1761299591289",
+      "name": "aa",
+      "week": [
+        {
+          "date": "2025-10-24",
+          "status": "done"
+        },
+        {
+          "date": "2025-10-25",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-26",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-27",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-28",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-29",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-30",
+          "status": "notDone"
+        }
+      ],
+      "userId": "user_34LkCItjljCnHNLDoE4lAdsQTFr"
+    },
+    {
+      "id": "1761301921799",
+      "name": "Singing",
+      "week": [
+        {
+          "date": "2025-10-24",
+          "status": "done"
+        },
+        {
+          "date": "2025-10-25",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-26",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-27",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-28",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-29",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-30",
+          "status": "notDone"
+        }
+      ],
+      "userId": "user_34LkvJ0wM68lMWLTYqpsfOCL4yn"
+    },
+    {
+      "id": "1761378122175",
+      "name": "bb",
+      "week": [
+        {
+          "date": "2025-10-25",
+          "status": "done"
+        },
+        {
+          "date": "2025-10-26",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-27",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-28",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-29",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-30",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-31",
+          "status": "notDone"
+        }
+      ],
+      "userId": "user_34LkCItjljCnHNLDoE4lAdsQTFr"
+    },
+    {
+      "id": "1761380850078",
+      "name": "Jogging",
+      "week": [
+        {
+          "date": "2025-10-25",
+          "status": "done"
+        },
+        {
+          "date": "2025-10-26",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-27",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-28",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-29",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-30",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-31",
+          "status": "notDone"
+        }
+      ],
+      "userId": "user_34LkCItjljCnHNLDoE4lAdsQTFr"
+    },
+    {
+      "id": "1761382623451",
+      "name": "Singing",
+      "week": [
+        {
+          "date": "2025-10-25",
+          "status": "done"
+        },
+        {
+          "date": "2025-10-26",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-27",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-28",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-29",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-30",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-31",
+          "status": "notDone"
+        }
+      ],
+      "userId": "user_34LkCItjljCnHNLDoE4lAdsQTFr"
+    },
+    {
+      "id": "1761384482555",
+      "name": "qqq",
+      "week": [
+        {
+          "date": "2025-10-25",
+          "status": "done"
+        },
+        {
+          "date": "2025-10-26",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-27",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-28",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-29",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-30",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-31",
+          "status": "notDone"
+        }
+      ],
+      "userId": "user_34LkCItjljCnHNLDoE4lAdsQTFr"
     }
   ],
   "shares": [
     {
-      "id": "unique_id",
-      "userId": "clerk_user_id",
-      "userName": "User Name",
-      "habitId": "habit_id",
-      "habitName": "Habit Name",
-      "completion": 50, // percentage
-      "comment": "Progress comment",
-      "createdAt": "ISO_date_string"
+      "id": "1761302177885",
+      "userId": "user_34LkvJ0wM68lMWLTYqpsfOCL4yn",
+      "userName": "VICTOR",
+      "habitId": "1761301921799",
+      "habitName": "Singing",
+      "completion": 14,
+      "comment": "2 day streak",
+      "createdAt": "2025-10-24T10:36:17.885Z",
+      "upvotes": 2
+    },
+    {
+      "id": "1761378193006",
+      "userId": "user_34LkCItjljCnHNLDoE4lAdsQTFr",
+      "userName": "Mark",
+      "habitId": "1761378122175",
+      "habitName": "bb",
+      "completion": 14,
+      "comment": "progress",
+      "createdAt": "2025-10-25T07:43:13.006Z",
+      "upvotes": 1
+    },
+    {
+      "id": "1761380870525",
+      "userId": "user_34LkCItjljCnHNLDoE4lAdsQTFr",
+      "userName": "Mark",
+      "habitId": "1761380850078",
+      "habitName": "Jogging",
+      "completion": 14,
+      "comment": "Yaay",
+      "createdAt": "2025-10-25T08:27:50.525Z",
+      "upvotes": 0
+    },
+    {
+      "id": "1761384464668",
+      "userId": "user_34LkCItjljCnHNLDoE4lAdsQTFr",
+      "userName": "Mark",
+      "habitId": "1761299591289",
+      "habitName": "aa",
+      "completion": 14,
+      "comment": "www",
+      "createdAt": "2025-10-25T09:27:44.668Z",
+      "upvotes": 2
+    },
+    {
+      "id": "1761384501919",
+      "userId": "user_34LkCItjljCnHNLDoE4lAdsQTFr",
+      "userName": "Mark",
+      "habitId": "1761384482555",
+      "habitName": "qqq",
+      "completion": 14,
+      "comment": "qwerrtyyyu",
+      "createdAt": "2025-10-25T09:28:21.919Z",
+      "upvotes": 17
     }
   ],
   "upvotes": [
     {
-      "id": "unique_id",
-      "shareId": "share_id",
-      "userId": "clerk_user_id"
+      "id": "1761302333695",
+      "shareId": null,
+      "userId": "user_34LkvJ0wM68lMWLTYqpsfOCL4yn"
+    },
+    {
+      "id": "1761302335117",
+      "shareId": "1761302177885",
+      "userId": "user_34LkvJ0wM68lMWLTYqpsfOCL4yn"
+    },
+    {
+      "id": "1761302336685",
+      "shareId": null,
+      "userId": "user_34LkvJ0wM68lMWLTYqpsfOCL4yn"
+    },
+    {
+      "id": "1761302364929",
+      "shareId": null,
+      "userId": "user_34LkCItjljCnHNLDoE4lAdsQTFr"
+    },
+    {
+      "id": "1761303990536",
+      "shareId": "1761302177885",
+      "userId": "user_34LkCItjljCnHNLDoE4lAdsQTFr"
+    },
+    {
+      "id": "1761378258682",
+      "shareId": "1761378193006",
+      "userId": "user_34LkCItjljCnHNLDoE4lAdsQTFr"
+    },
+    {
+      "id": "1761383037517",
+      "shareId": null,
+      "userId": "user_34LkCItjljCnHNLDoE4lAdsQTFr"
+    },
+    {
+      "id": "1761383038357",
+      "shareId": null,
+      "userId": "user_34LkCItjljCnHNLDoE4lAdsQTFr"
+    },
+    {
+      "id": "1761383038644",
+      "shareId": null,
+      "userId": "user_34LkCItjljCnHNLDoE4lAdsQTFr"
+    },
+    {
+      "id": "1761383038900",
+      "shareId": null,
+      "userId": "user_34LkCItjljCnHNLDoE4lAdsQTFr"
+    },
+    {
+      "id": "1761383096447",
+      "shareId": null,
+      "userId": "user_34LkCItjljCnHNLDoE4lAdsQTFr"
+    },
+    {
+      "id": "1761384226493",
+      "shareId": null,
+      "userId": "user_34LkCItjljCnHNLDoE4lAdsQTFr"
+    },
+    {
+      "id": "1761384470169",
+      "shareId": "1761384464668",
+      "userId": "user_34LkCItjljCnHNLDoE4lAdsQTFr"
+    },
+    {
+      "id": "1761384472430",
+      "shareId": "1761384464668",
+      "userId": "user_34LkCItjljCnHNLDoE4lAdsQTFr"
+    },
+    {
+      "id": "1761384726834",
+      "shareId": "1761302177885",
+      "userId": "user_34LkCItjljCnHNLDoE4lAdsQTFr"
+    },
+    {
+      "id": "1761384735926",
+      "shareId": "1761302177885",
+      "userId": "user_34LkCItjljCnHNLDoE4lAdsQTFr"
+    },
+    {
+      "id": "1761384740614",
+      "shareId": "1761302177885",
+      "userId": "user_34LkCItjljCnHNLDoE4lAdsQTFr"
+    },
+    {
+      "id": "1761384740876",
+      "shareId": "1761302177885",
+      "userId": "user_34LkCItjljCnHNLDoE4lAdsQTFr"
+    },
+    {
+      "id": "1761384741072",
+      "shareId": "1761302177885",
+      "userId": "user_34LkCItjljCnHNLDoE4lAdsQTFr"
+    },
+    {
+      "id": "1761384741227",
+      "shareId": "1761302177885",
+      "userId": "user_34LkCItjljCnHNLDoE4lAdsQTFr"
+    },
+    {
+      "id": "1761384750396",
+      "shareId": "1761384501919",
+      "userId": "user_34LkCItjljCnHNLDoE4lAdsQTFr"
+    },
+    {
+      "id": "1761384750796",
+      "shareId": "1761384501919",
+      "userId": "user_34LkCItjljCnHNLDoE4lAdsQTFr"
+    },
+    {
+      "id": "1761384751031",
+      "shareId": "1761384501919",
+      "userId": "user_34LkCItjljCnHNLDoE4lAdsQTFr"
+    },
+    {
+      "id": "1761384751211",
+      "shareId": "1761384501919",
+      "userId": "user_34LkCItjljCnHNLDoE4lAdsQTFr"
+    },
+    {
+      "id": "1761384751422",
+      "shareId": "1761384501919",
+      "userId": "user_34LkCItjljCnHNLDoE4lAdsQTFr"
+    },
+    {
+      "id": "1761384751622",
+      "shareId": "1761384501919",
+      "userId": "user_34LkCItjljCnHNLDoE4lAdsQTFr"
+    },
+    {
+      "id": "1761384751777",
+      "shareId": "1761384501919",
+      "userId": "user_34LkCItjljCnHNLDoE4lAdsQTFr"
+    },
+    {
+      "id": "1761384751931",
+      "shareId": "1761384501919",
+      "userId": "user_34LkCItjljCnHNLDoE4lAdsQTFr"
+    },
+    {
+      "id": "1761384752075",
+      "shareId": "1761384501919",
+      "userId": "user_34LkCItjljCnHNLDoE4lAdsQTFr"
+    },
+    {
+      "id": "1761384891480",
+      "shareId": "1761384501919",
+      "userId": "user_34LkCItjljCnHNLDoE4lAdsQTFr"
+    },
+    {
+      "id": "1761384912830",
+      "shareId": "1761384501919",
+      "userId": "user_34LkCItjljCnHNLDoE4lAdsQTFr"
+    },
+    {
+      "id": "1761384913066",
+      "shareId": "1761384501919",
+      "userId": "user_34LkCItjljCnHNLDoE4lAdsQTFr"
+    },
+    {
+      "id": "1761384913261",
+      "shareId": "1761384501919",
+      "userId": "user_34LkCItjljCnHNLDoE4lAdsQTFr"
+    },
+    {
+      "id": "1761384913322",
+      "shareId": "1761384501919",
+      "userId": "user_34LkCItjljCnHNLDoE4lAdsQTFr"
+    },
+    {
+      "id": "1761384913659",
+      "shareId": "1761384501919",
+      "userId": "user_34LkCItjljCnHNLDoE4lAdsQTFr"
+    },
+    {
+      "id": "1761384913881",
+      "shareId": "1761384501919",
+      "userId": "user_34LkCItjljCnHNLDoE4lAdsQTFr"
+    },
+    {
+      "id": "1761384914369",
+      "shareId": "1761384501919",
+      "userId": "user_34LkCItjljCnHNLDoE4lAdsQTFr"
+    },
+    {
+      "id": "1761384914547",
+      "shareId": "1761384501919",
+      "userId": "user_34LkCItjljCnHNLDoE4lAdsQTFr"
+    },
+    {
+      "id": "1761384914821",
+      "shareId": "1761384501919",
+      "userId": "user_34LkCItjljCnHNLDoE4lAdsQTFr"
+    },
+    {
+      "id": "1761384914975",
+      "shareId": "1761384501919",
+      "userId": "user_34LkCItjljCnHNLDoE4lAdsQTFr"
+    },
+    {
+      "id": "1761384915143",
+      "shareId": "1761384501919",
+      "userId": "user_34LkCItjljCnHNLDoE4lAdsQTFr"
+    },
+    {
+      "id": "1761384916584",
+      "shareId": "1761384501919",
+      "userId": "user_34LkCItjljCnHNLDoE4lAdsQTFr"
+    },
+    {
+      "id": "1761384916810",
+      "shareId": "1761384501919",
+      "userId": "user_34LkCItjljCnHNLDoE4lAdsQTFr"
+    },
+    {
+      "id": "1761384917433",
+      "shareId": "1761384501919",
+      "userId": "user_34LkCItjljCnHNLDoE4lAdsQTFr"
+    },
+    {
+      "id": "1761384917563",
+      "shareId": "1761384501919",
+      "userId": "user_34LkCItjljCnHNLDoE4lAdsQTFr"
+    },
+    {
+      "id": "1761384917704",
+      "shareId": "1761384501919",
+      "userId": "user_34LkCItjljCnHNLDoE4lAdsQTFr"
+    },
+    {
+      "id": "1761384917883",
+      "shareId": "1761384501919",
+      "userId": "user_34LkCItjljCnHNLDoE4lAdsQTFr"
     }
   ]
+}```
+
+## ./eslint.config.js
+```javascript
+import js from '@eslint/js'
+import globals from 'globals'
+import reactHooks from 'eslint-plugin-react-hooks'
+import reactRefresh from 'eslint-plugin-react-refresh'
+import { defineConfig, globalIgnores } from 'eslint/config'
+
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{js,jsx}'],
+    extends: [
+      js.configs.recommended,
+      reactHooks.configs['recommended-latest'],
+      reactRefresh.configs.vite,
+    ],
+    languageOptions: {
+      ecmaVersion: 2020,
+      globals: globals.browser,
+      parserOptions: {
+        ecmaVersion: 'latest',
+        ecmaFeatures: { jsx: true },
+        sourceType: 'module',
+      },
+    },
+    rules: {
+      'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
+    },
+  },
+])
+```
+
+## ./index.html
+```html
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>habit-tracker</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
+```
+
+## ./package.json
+```json
+{
+  "name": "habit-tracker",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@clerk/clerk-react": "^5.53.2",
+    "axios": "^1.12.2",
+    "bootstrap": "^5.3.8",
+    "firebase": "^12.4.0",
+    "font-awesome": "^4.7.0",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "react-router-dom": "^7.9.4"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.36.0",
+    "@types/react": "^19.1.16",
+    "@types/react-dom": "^19.1.9",
+    "@vitejs/plugin-react": "^5.0.4",
+    "eslint": "^9.36.0",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.22",
+    "globals": "^16.4.0",
+    "vite": "^7.1.7"
+  }
 }
 ```
 
-**How db.json works:**
+## ./package-lock.json
+```json
+{
+  "name": "habit-tracker",
+  "version": "0.0.0",
+  "lockfileVersion": 3,
+  "requires": true,
+  "packages": {
+    "": {
+      "name": "habit-tracker",
+      "version": "0.0.0",
+      "dependencies": {
+        "@clerk/clerk-react": "^5.53.2",
+        "axios": "^1.12.2",
+        "bootstrap": "^5.3.8",
+        "firebase": "^12.4.0",
+        "font-awesome": "^4.7.0",
+        "react": "^19.1.1",
+        "react-dom": "^19.1.1",
+        "react-router-dom": "^7.9.4"
+      },
+      "devDependencies": {
+        "@eslint/js": "^9.36.0",
+        "@types/react": "^19.1.16",
+        "@types/react-dom": "^19.1.9",
+        "@vitejs/plugin-react": "^5.0.4",
+        "eslint": "^9.36.0",
+        "eslint-plugin-react-hooks": "^5.2.0",
+        "eslint-plugin-react-refresh": "^0.4.22",
+        "globals": "^16.4.0",
+        "vite": "^7.1.7"
+      }
+    },
+    "node_modules/@babel/code-frame": {
+      "version": "7.27.1",
+      "resolved": "https://registry.npmjs.org/@babel/code-frame/-/code-frame-7.27.1.tgz",
+      "integrity": "sha512-cjQ7ZlQ0Mv3b47hABuTevyTuYN4i+loJKGeV9flcCgIK37cCXRh+L1bd3iBHlynerhQ7BhCkn2BPbQUL+rGqFg==",
+      "dev": true,
+      "license": "MIT",
+      "dependencies": {
+        "@babel/helper-validator-identifier": "^7.27.1",
+        "js-tokens": "^4.0.0",
+        "picocolors": "^1.1.1"
+      },
+      "engines": {
+        "node": ">=6.9.0"
+      }
+    },
+    "node_modules/@babel/compat-data": {
+      "version": "7.28.4",
+      "resolved": "https://registry.npmjs.org/@babel/compat-data/-/compat-data-7.28.4.tgz",
+      "integrity": "sha512-YsmSKC29MJwf0gF8Rjjrg5LQCmyh+j/nD8/eP7f+BeoQTKYqs9RoWbjGOdy0+1Ekr68RJZMUOPVQaQisnIo4Rw==",
+      "dev": true,
+      "license": "MIT",
+      "engines": {
+        "node": ">=6.9.0"
+      }
+    },
+    "node_modules/@babel/core": {
+      "version": "7.28.4",
+      "resolved": "https://registry.npmjs.org/@babel/core/-/core-7.28.4.tgz",
+      "integrity": "sha512-2BCOP7TN8M+gVDj7/ht3hsaO/B/n5oDbiAyyvnRlNOs+u1o+JWNYTQrmpuNp1/Wq2gcFrI01JAW+paEKDMx/CA==",
+      "dev": true,
+      "license": "MIT",
+      "dependencies": {
+        "@babel/code-frame": "^7.27.1",
+        "@babel/generator": "^7.28.3",
+        "@babel/helper-compilation-targets": "^7.27.2",
+        "@babel/helper-module-transforms": "^7.28.3",
+        "@babel/helpers": "^7.28.4",
+        "@babel/parser": "^7.28.4",
+        "@babel/template": "^7.27.2",
+        "@babel/traverse": "^7.28.4",
+        "@babel/types": "^7.28.4",
+        "@jridgewell/remapping": "^2.3.5",
+        "convert-source-map": "^2.0.0",
+        "debug": "^4.1.0",
+        "gensync": "^1.0.0-beta.2",
+        "json5": "^2.2.3",
+        "semver": "^6.3.1"
+      },
+      "engines": {
+        "node": ">=6.9.0"
+      },
+      "funding": {
+        "type": "opencollective",
+        "url": "https://opencollective.com/babel"
+      }
+    },
+    "node_modules/@babel/generator": {
+      "version": "7.28.3",
+      "resolved": "https://registry.npmjs.org/@babel/generator/-/generator-7.28.3.tgz",
+      "integrity": "sha512-3lSpxGgvnmZznmBkCRnVREPUFJv2wrv9iAoFDvADJc0ypmdOxdUtcLeBgBJ6zE0PMeTKnxeQzyk0xTBq4Ep7zw==",
+      "dev": true,
+      "license": "MIT",
+      "dependencies": {
+        "@babel/parser": "^7.28.3",
+        "@babel/types": "^7.28.2",
+        "@jridgewell/gen-mapping": "^0.3.12",
+        "@jridgewell/trace-mapping": "^0.3.28",
+        "jsesc": "^3.0.2"
+      },
+      "engines": {
+        "node": ">=6.9.0"
+      }
+    },
+    "node_modules/@babel/helper-compilation-targets": {
+      "version": "7.27.2",
+      "resolved": "https://registry.npmjs.org/@babel/helper-compilation-targets/-/helper-compilation-targets-7.27.2.tgz",
+      "integrity": "sha512-2+1thGUUWWjLTYTHZWK1n8Yga0ijBz1XAhUXcKy81rd5g6yh7hGqMp45v7cadSbEHc9G3OTv45SyneRN3ps4DQ==",
+      "dev": true,
+      "license": "MIT",
+      "dependencies": {
+        "@babel/compat-data": "^7.27.2",
+        "@babel/helper-validator-option": "^7.27.1",
+        "browserslist": "^4.24.0",
+        "lru-cache": "^5.1.1",
+        "semver": "^6.3.1"
+      },
+      "engines": {
+        "node": ">=6.9.0"
+      }
+    },
+    "node_modules/@babel/helper-globals": {
+      "version": "7.28.0",
+      "resolved": "https://registry.npmjs.org/@babel/helper-globals/-/helper-globals-7.28.0.tgz",
+      "integrity": "sha512-+W6cISkXFa1jXsDEdYA8HeevQT/FULhxzR99pxphltZcVaugps53THCeiWA8SguxxpSp3gKPiuYfSWopkLQ4hw==",
+      "dev": true,
+      "license": "MIT",
+      "engines": {
+        "node": ">=6.9.0"
+      }
+    },
+    "node_modules/@babel/helper-module-imports": {
+      "version": "7.27.1",
+      "resolved": "https://registry.npmjs.org/@babel/helper-module-imports/-/helper-module-imports-7.27.1.tgz",
+      "integrity": "sha512-0gSFWUPNXNopqtIPQvlD5WgXYI5GY2kP2cCvoT8kczjbfcfuIljTbcWrulD1CIPIX2gt1wghbDy08yE1p+/r3w==",
+      "dev": true,
+      "license": "MIT",
+      "dependencies": {
+        "@babel/traverse": "^7.27.1",
+        "@babel/types": "^7.27.1"
+      },
+      "engines": {
+        "node": ">=6.9.0"
+      }
+    },
+    "node_modules/@babel/helper-module-transforms": {
+      "version": "7.28.3",
+      "resolved": "https://registry.npmjs.org/@babel/helper-module-transforms/-/helper-module-transforms-7.28.3.tgz",
+      "integrity": "sha512-gytXUbs8k2sXS9PnQptz5o0QnpLL51SwASIORY6XaBKF88nsOT0Zw9szLqlSGQDP/4TljBAD5y98p2U1fqkdsw==",
+      "dev": true,
+      "license": "MIT",
+      "dependencies": {
+        "@babel/helper-module-imports": "^7.27.1",
+        "@babel/helper-validator-identifier": "^7.27.1",
+        "@babel/traverse": "^7.28.3"
+      },
+      "engines": {
+        "node": ">=6.9.0"
+      },
+      "peerDependencies": {
+        "@babel/core": "^7.0.0"
+      }
+    },
+    "node_modules/@babel/helper-plugin-utils": {
+      "version": "7.27.1",
+      "resolved": "https://registry.npmjs.org/@babel/helper-plugin-utils/-/helper-plugin-utils-7.27.1.tgz",
+      "integrity": "sha512-1gn1Up5YXka3YYAHGKpbideQ5Yjf1tDa9qYcgysz+cNCXukyLl6DjPXhD3VRwSb8c0J9tA4b2+rHEZtc6R0tlw==",
+      "dev": true,
+      "license": "MIT",
+      "engines": {
+        "node": ">=6.9.0"
+      }
+    },
+    "node_modules/@babel/helper-string-parser": {
+      "version": "7.27.1",
+      "resolved": "https://registry.npmjs.org/@babel/helper-string-parser/-/helper-string-parser-7.27.1.tgz",
+      "integrity": "sha512-qMlSxKbpRlAridDExk92nSobyDdpPijUq2DW6oDnUqd0iOGxmQjyqhMIihI9+zv4LPyZdRje2cavWPbCbWm3eA==",
+      "dev": true,
+      "license": "MIT",
+      "engines": {
+        "node": ">=6.9.0"
+      }
+    },
+    "node_modules/@babel/helper-validator-identifier": {
+      "version": "7.27.1",
+      "resolved": "https://registry.npmjs.org/@babel/helper-validator-identifier/-/helper-validator-identifier-7.27.1.tgz",
+      "integrity": "sha512-D2hP9eA+Sqx1kBZgzxZh0y1trbuU+JoDkiEwqhQ36nodYqJwyEIhPSdMNd7lOm/4io72luTPWH20Yda0xOuUow==",
+      "dev": true,
+      "license": "MIT",
+      "engines": {
+        "node": ">=6.9.0"
+      }
+    },
+    "node_modules/@babel/helper-validator-option": {
+      "version": "7.27.1",
+      "resolved": "https://registry.npmjs.org/@babel/helper-validator-option/-/helper-validator-option-7.27.1.tgz",
+      "integrity": "sha512-YvjJow9FxbhFFKDSuFnVCe2WxXk1zWc22fFePVNEaWJEu8IrZVlda6N0uHwzZrUM1il7NC9Mlp4MaJYbYd9JSg==",
+      "dev": true,
+      "license": "MIT",
+      "engines": {
+        "node": ">=6.9.0"
+      }
+    },
+    "node_modules/@babel/helpers": {
+      "version": "7.28.4",
+      "resolved": "https://registry.npmjs.org/@babel/helpers/-/helpers-7.28.4.tgz",
+      "integrity": "sha512-HFN59MmQXGHVyYadKLVumYsA9dBFun/ldYxipEjzA4196jpLZd8UjEEBLkbEkvfYreDqJhZxYAWFPtrfhNpj4w==",
+      "dev": true,
+      "license": "MIT",
+      "dependencies": {
+        "@babel/template": "^7.27.2",
+        "@babel/types": "^7.28.4"
+      },
+      "engines": {
+        "node": ">=6.9.0"
+      }
+    },
+    "node_modules/@babel/parser": {
+      "version": "7.28.4",
+      "resolved": "https://registry.npmjs.org/@babel/parser/-/parser-7.28.4.tgz",
+      "integrity": "sha512-yZbBqeM6TkpP9du/I2pUZnJsRMGGvOuIrhjzC1AwHwW+6he4mni6Bp/m8ijn0iOuZuPI2BfkCoSRunpyjnrQKg==",
+      "dev": true,
+      "license": "MIT",
+      "dependencies": {
+        "@babel/types": "^7.28.4"
+      },
+      "bin": {
+        "parser": "bin/babel-parser.js"
+      },
+      "engines": {
+        "node": ">=6.0.0"
+      }
+    },
+    "node_modules/@babel/plugin-transform-react-jsx-self": {
+      "version": "7.27.1",
+      "resolved": "https://registry.npmjs.org/@babel/plugin-transform-react-jsx-self/-/plugin-transform-react-jsx-self-7.27.1.tgz",
+      "integrity": "sha512-6UzkCs+ejGdZ5mFFC/OCUrv028ab2fp1znZmCZjAOBKiBK2jXD1O+BPSfX8X2qjJ75fZBMSnQn3Rq2mrBJK2mw==",
+      "dev": true,
+      "license": "MIT",
+      "dependencies": {
+        "@babel/helper-plugin-utils": "^7.27.1"
+      },
+      "engines": {
+        "node": ">=6.9.0"
+      },
+      "peerDependencies": {
+        "@babel/core": "^7.0.0-0"
+      }
+    },
+    "node_modules/@babel/plugin-transform-react-jsx-source": {
+      "version": "7.27.1",
+      "resolved": "https://registry.npmjs.org/@babel/plugin-transform-react-jsx-source/-/plugin-transform-react-jsx-source-7.27.1.tgz",
+      "integrity": "sha512-zbwoTsBruTeKB9hSq73ha66iFeJHuaFkUbwvqElnygoNbj/jHRsSeokowZFN3CZ64IvEqcmmkVe89OPXc7ldAw==",
+      "dev": true,
+      "license": "MIT",
+      "dependencies": {
+        "@babel/helper-plugin-utils": "^7.27.1"
+      },
+      "engines": {
+        "node": ">=6.9.0"
+      },
+      "peerDependencies": {
+        "@babel/core": "^7.0.0-0"
+      }
+    },
+    "node_modules/@babel/template": {
+      "version": "7.27.2",
+      "resolved": "https://registry.npmjs.org/@babel/template/-/template-7.27.2.tgz",
+      "integrity": "sha512-LPDZ85aEJyYSd18/DkjNh4/y1ntkE5KwUHWTiqgRxruuZL2F1yuHligVHLvcHY2vMHXttKFpJn6LwfI7cw7ODw==",
+      "dev": true,
+      "license": "MIT",
+      "dependencies": {
+        "@babel/code-frame": "^7.27.1",
+        "@babel/parser": "^7.27.2",
+        "@babel/types": "^7.27.1"
+      },
+      "engines": {
+        "node": ">=6.9.0"
+      }
+    },
+    "node_modules/@babel/traverse": {
+      "version": "7.28.4",
+      "resolved": "https://registry.npmjs.org/@babel/traverse/-/traverse-7.28.4.tgz",
+      "integrity": "sha512-YEzuboP2qvQavAcjgQNVgsvHIDv6ZpwXvcvjmyySP2DIMuByS/6ioU5G9pYrWHM6T2YDfc7xga9iNzYOs12CFQ==",
+      "dev": true,
+      "license": "MIT",
+      "dependencies": {
+        "@babel/code-frame": "^7.27.1",
+        "@babel/generator": "^7.28.3",
+        "@babel/helper-globals": "^7.28.0",
+        "@babel/parser": "^7.28.4",
+        "@babel/template": "^7.27.2",
+        "@babel/types": "^7.28.4",
+        "debug": "^4.3.1"
+      },
+      "engines": {
+        "node": ">=6.9.0"
+      }
+    },
+    "node_modules/@babel/types": {
+      "version": "7.28.4",
+      "resolved": "https://registry.npmjs.org/@babel/types/-/types-7.28.4.tgz",
+      "integrity": "sha512-bkFqkLhh3pMBUQQkpVgWDWq/lqzc2678eUyDlTBhRqhCHFguYYGM0Efga7tYk4TogG/3x0EEl66/OQ+WGbWB/Q==",
+      "dev": true,
+      "license": "MIT",
+      "dependencies": {
+        "@babel/helper-string-parser": "^7.27.1",
+        "@babel/helper-validator-identifier": "^7.27.1"
+      },
+      "engines": {
+        "node": ">=6.9.0"
+      }
+    },
+    "node_modules/@clerk/clerk-react": {
+      "version": "5.53.2",
+      "resolved": "https://registry.npmjs.org/@clerk/clerk-react/-/clerk-react-5.53.2.tgz",
+      "integrity": "sha512-/ckRJC1dDS6hUVv+zzNX5VUCC49/UlbhKElN5LQqv172ntrx4Mw1TKBCJ3aO5Rct/RiJxhf1PfTUEohtY4QjUg==",
+      "license": "MIT",
+      "dependencies": {
+        "@clerk/shared": "^3.28.2",
+        "@clerk/types": "^4.95.0",
+        "tslib": "2.8.1"
+      },
+      "engines": {
+        "node": ">=18.17.0"
+      },
+      "peerDependencies": {
+        "react": "^18.0.0 || ^19.0.0 || ^19.0.0-0",
+        "react-dom": "^18.0.0 || ^19.0.0 || ^19.0.0-0"
+      }
+    },
+    "node_modules/@clerk/shared": {
+      "version": "3.28.2",
+      "resolved": "https://registry.npmjs.org/@clerk/shared/-/shared-3.28.2.tgz",
+      "integrity": "sha512-BfBCPaoPoLCiU0b0MhQUfCjs+bWRRLkdHw0vBffSjtsFLxp1b5IL5D8nKgDPIKIIv7DmCCmO15tr+GqG3CGpYQ==",
+      "hasInstallScript": true,
+      "license": "MIT",
+      "dependencies": {
+        "@clerk/types": "^4.95.0",
+        "dequal": "2.0.3",
+        "glob-to-regexp": "0.4.1",
+        "js-cookie": "3.0.5",
+        "std-env": "^3.9.0",
+        "swr": "2.3.4"
+      },
+      "engines": {
+        "node": ">=18.17.0"
+      },
+      "peerDependencies": {
+        "react": "^18.0.0 || ^19.0.0 || ^19.0.0-0",
+        "react-dom": "^18.0.0 || ^19.0.0 || ^19.0.0-0"
+      },
+      "peerDependenciesMeta": {
+        "react": {
+          "optional": true
+        },
+        "react-dom": {
+          "optional": true
+        }
+      }
+    },
+    "node_modules/@clerk/types": {
+      "version": "4.95.0",
+      "resolved": "https://registry.npmjs.org/@clerk/types/-/types-4.95.0.tgz",
+      "integrity": "sha512-K1kI3BjvufG1mZBZJ5Q8Yu9wV6AFpjjITml5vhvP95xibJWOi3eYvlRCTKXDNKBFGvQfrTJbwn67jSG2VdyLKw==",
+      "license": "MIT",
+      "dependencies": {
+        "csstype": "3.1.3"
+      },
+      "engines": {
+        "node": ">=18.17.0"
+      }
+    },
+    "node_modules/@esbuild/aix-ppc64": {
+      "version": "0.25.11",
+      "resolved": "https://registry.npmjs.org/@esbuild/aix-ppc64/-/aix-ppc64-0.25.11.tgz",
+      "integrity": "sha512-Xt1dOL13m8u0WE8iplx9Ibbm+hFAO0GsU2P34UNoDGvZYkY8ifSiy6Zuc1lYxfG7svWE2fzqCUmFp5HCn51gJg==",
+      "cpu": [
+        "ppc64"
+      ],
+      "dev": true,
+      "license": "MIT",
+      "optional": true,
+      "os": [
+        "aix"
+      ],
+      "engines": {
+        "node": ">=18"
+      }
+    },
+    "node_modules/@esbuild/android-arm": {
+      "version": "0.25.11",
+      "resolved": "https://registry.npmjs.org/@esbuild/android-arm/-/android-arm-0.25.11.tgz",
+      "integrity": "sha512-uoa7dU+Dt3HYsethkJ1k6Z9YdcHjTrSb5NUy66ZfZaSV8hEYGD5ZHbEMXnqLFlbBflLsl89Zke7CAdDJ4JI+Gg==",
+      "cpu": [
+        "arm"
+      ],
+      "dev": true,
+      "license": "MIT",
+      "optional": true,
+      "os": [
+        "android"
+      ],
+      "engines": {
+        "node": ">=18"
+      }
+    },
+    "node_modules/@esbuild/android-arm64": {
+      "version": "0.25.11",
+      "resolved": "https://registry.npmjs.org/@esbuild/android-arm64/-/android-arm64-0.25.11.tgz",
+      "integrity": "sha512-9slpyFBc4FPPz48+f6jyiXOx/Y4v34TUeDDXJpZqAWQn/08lKGeD8aDp9TMn9jDz2CiEuHwfhRmGBvpnd/PWIQ==",
+      "cpu": [
+        "arm64"
+      ],
+      "dev": true,
+      "license": "MIT",
+      "optional": true,
+      "os": [
+        "android"
+      ],
+      "engines": {
+        "node": ">=18"
+      }
+    },
+    "node_modules/@esbuild/android-x64": {
+      "version": "0.25.11",
+      "resolved": "https://registry.npmjs.org/@esbuild/android-x64/-/android-x64-0.25.11.tgz",
+      "integrity": "sha512-Sgiab4xBjPU1QoPEIqS3Xx+R2lezu0LKIEcYe6pftr56PqPygbB7+szVnzoShbx64MUupqoE0KyRlN7gezbl8g==",
+      "cpu": [
+        "x64"
+      ],
+      "dev": true,
+      "license": "MIT",
+      "optional": true,
+      "os": [
+        "android"
+      ],
+      "engines": {
+        "node": ">=18"
+      }
+    },
+    "node_modules/@esbuild/darwin-arm64": {
+      "version": "0.25.11",
+      "resolved": "https://registry.npmjs.org/@esbuild/darwin-arm64/-/darwin-arm64-0.25.11.tgz",
+      "integrity": "sha512-VekY0PBCukppoQrycFxUqkCojnTQhdec0vevUL/EDOCnXd9LKWqD/bHwMPzigIJXPhC59Vd1WFIL57SKs2mg4w==",
+      "cpu": [
+        "arm64"
+      ],
+      "dev": true,
+      "license": "MIT",
+      "optional": true,
+      "os": [
+        "darwin"
+      ],
+      "engines": {
+        "node": ">=18"
+      }
+    },
+    "node_modules/@esbuild/darwin-x64": {
+      "version": "0.25.11",
+      "resolved": "https://registry.npmjs.org/@esbuild/darwin-x64/-/darwin-x64-0.25.11.tgz",
+      "integrity": "sha512-+hfp3yfBalNEpTGp9loYgbknjR695HkqtY3d3/JjSRUyPg/xd6q+mQqIb5qdywnDxRZykIHs3axEqU6l1+oWEQ==",
+      "cpu": [
+        "x64"
+      ],
+      "dev": true,
+      "license": "MIT",
+      "optional": true,
+      "os": [
+        "darwin"
+      ],
+      "engines": {
+        "node": ">=18"
+      }
+    },
+    "node_modules/@esbuild/freebsd-arm64": {
+      "version": "0.25.11",
+      "resolved": "https://registry.npmjs.org/@esbuild/freebsd-arm64/-/freebsd-arm64-0.25.11.tgz",
+      "integrity": "sha512-CmKjrnayyTJF2eVuO//uSjl/K3KsMIeYeyN7FyDBjsR3lnSJHaXlVoAK8DZa7lXWChbuOk7NjAc7ygAwrnPBhA==",
+      "cpu": [
+        "arm64"
+      ],
+      "dev": true,
+      "license": "MIT",
+      "optional": true,
+      "os": [
+        "freebsd"
+      ],
+      "engines": {
+        "node": ">=18"
+      }
+    },
+    "node_modules/@esbuild/freebsd-x64": {
+      "version": "0.25.11",
+      "resolved": "https://registry.npmjs.org/@esbuild/freebsd-x64/-/freebsd-x64-0.25.11.tgz",
+      "integrity": "sha512-Dyq+5oscTJvMaYPvW3x3FLpi2+gSZTCE/1ffdwuM6G1ARang/mb3jvjxs0mw6n3Lsw84ocfo9CrNMqc5lTfGOw==",
+      "cpu": [
+        "x64"
+      ],
+      "dev": true,
+      "license": "MIT",
+      "optional": true,
+      "os": [
+        "freebsd"
+      ],
+      "engines": {
+        "node": ">=18"
+      }
+    },
+    "node_modules/@esbuild/linux-arm": {
+      "version": "0.25.11",
+      "resolved": "https://registry.npmjs.org/@esbuild/linux-arm/-/linux-arm-0.25.11.tgz",
+      "integrity": "sha512-TBMv6B4kCfrGJ8cUPo7vd6NECZH/8hPpBHHlYI3qzoYFvWu2AdTvZNuU/7hsbKWqu/COU7NIK12dHAAqBLLXgw==",
+      "cpu": [
+        "arm"
+      ],
+      "dev": true,
+      "license": "MIT",
+      "optional": true,
+      "os": [
+        "linux"
+      ],
+      "engines": {
+        "node": ">=18"
+      }
+    },
+    "node_modules/@esbuild/linux-arm64": {
+      "version": "0.25.11",
+      "resolved": "https://registry.npmjs.org/@esbuild/linux-arm64/-/linux-arm64-0.25.11.tgz",
+      "integrity": "sha512-Qr8AzcplUhGvdyUF08A1kHU3Vr2O88xxP0Tm8GcdVOUm25XYcMPp2YqSVHbLuXzYQMf9Bh/iKx7YPqECs6ffLA==",
+      "cpu": [
+        "arm64"
+      ],
+      "dev": true,
+      "license": "MIT",
+      "optional": true,
+      "os": [
+        "linux"
+      ],
+      "engines": {
+        "node": ">=18"
+      }
+    },
+    "node_modules/@esbuild/linux-ia32": {
+      "version": "0.25.11",
+      "resolved": "https://registry.npmjs.org/@esbuild/linux-ia32/-/linux-ia32-0.25.11.tgz",
+      "integrity": "sha512-TmnJg8BMGPehs5JKrCLqyWTVAvielc615jbkOirATQvWWB1NMXY77oLMzsUjRLa0+ngecEmDGqt5jiDC6bfvOw==",
+      "cpu": [
+        "ia32"
+      ],
+      "dev": true,
+      "license": "MIT",
+      "optional": true,
+      "os": [
+        "linux"
+      ],
+      "engines": {
+        "node": ">=18"
+      }
+    },
+    "node_modules/@esbuild/linux-loong64": {
+      "version": "0.25.11",
+      "resolved": "https://registry.npmjs.org/@esbuild/linux-loong64/-/linux-loong64-0.25.11.tgz",
+      "integrity": "sha512-DIGXL2+gvDaXlaq8xruNXUJdT5tF+SBbJQKbWy/0J7OhU8gOHOzKmGIlfTTl6nHaCOoipxQbuJi7O++ldrxgMw==",
+      "cpu": [
+        "loong64"
+      ],
+      "dev": true,
+      "license": "MIT",
+      "optional": true,
+      "os": [
+        "linux"
+      ],
+      "engines": {
+        "node": ">=18"
+      }
+    },
+    "node_modules/@esbuild/linux-mips64el": {
+      "version": "0.25.11",
+      "resolved": "https://registry.npmjs.org/@esbuild/linux-mips64el/-/linux-mips64el-0.25.11.tgz",
+      "integrity": "sha512-Osx1nALUJu4pU43o9OyjSCXokFkFbyzjXb6VhGIJZQ5JZi8ylCQ9/LFagolPsHtgw6himDSyb5ETSfmp4rpiKQ==",
+      "cpu": [
+        "mips64el"
+      ],
+      "dev": true,
+      "license": "MIT",
+      "optional": true,
+      "os": [
+        "linux"
+      ],
+      "engines": {
+        "node": ">=18"
+      }
+    },
+    "node_modules/@esbuild/linux-ppc64": {
+      "version": "0.25.11",
+      "resolved": "https://registry.npmjs.org/@esbuild/linux-ppc64/-/linux-ppc64-0.25.11.tgz",
+      "integrity": "sha512-nbLFgsQQEsBa8XSgSTSlrnBSrpoWh7ioFDUmwo158gIm5NNP+17IYmNWzaIzWmgCxq56vfr34xGkOcZ7jX6CPw==",
+      "cpu": [
+        "ppc64"
+      ],
+      "dev": true,
+      "license": "MIT",
+      "optional": true,
+      "os": [
+        "linux"
+      ],
+      "engines": {
+        "node": ">=18"
+      }
+    },
+    "node_modules/@esbuild/linux-riscv64": {
+      "version": "0.25.11",
+      "resolved": "https://registry.npmjs.org/@esbuild/linux-riscv64/-/linux-riscv64-0.25.11.tgz",
+      "integrity": "sha512-HfyAmqZi9uBAbgKYP1yGuI7tSREXwIb438q0nqvlpxAOs3XnZ8RsisRfmVsgV486NdjD7Mw2UrFSw51lzUk1ww==",
+      "cpu": [
+        "riscv64"
+      ],
+      "dev": true,
+      "license": "MIT",
+      "optional": true,
+      "os": [
+        "linux"
+      ],
+      "engines": {
+        "node": ">=18"
+      }
+    },
+    "node_modules/@esbuild/linux-s390x": {
+      "version": "0.25.11",
+      "resolved": "https://registry.npmjs.org/@esbuild/linux-s390x/-/linux-s390x-0.25.11.tgz",
+      "integrity": "sha512-HjLqVgSSYnVXRisyfmzsH6mXqyvj0SA7pG5g+9W7ESgwA70AXYNpfKBqh1KbTxmQVaYxpzA/SvlB9oclGPbApw==",
+      "cpu": [
+        "s390x"
+      ],
+      "dev": true,
+      "license": "MIT",
+      "optional": true,
+      "os": [
+        "linux"
+      ],
+      "engines": {
+        "node": ">=18"
+      }
+    },
+    "node_modules/@esbuild/linux-x64": {
+      "version": "0.25.11",
+      "resolved": "https://registry.npmjs.org/@esbuild/linux-x64/-/linux-x64-0.25.11.tgz",
+      "integrity": "sha512-HSFAT4+WYjIhrHxKBwGmOOSpphjYkcswF449j6EjsjbinTZbp8PJtjsVK1XFJStdzXdy/jaddAep2FGY+wyFAQ==",
+      "cpu": [
+        "x64"
+      ],
+      "dev": true,
+      "license": "MIT",
+      "optional": true,
+      "os": [
+        "linux"
+      ],
+      "engines": {
+        "node": ">=18"
+      }
+    },
+    "node_modules/@esbuild/netbsd-arm64": {
+      "version": "0.25.11",
+      "resolved": "https://registry.npmjs.org/@esbuild/netbsd-arm64/-/netbsd-arm64-0.25.11.tgz",
+      "integrity": "sha512-hr9Oxj1Fa4r04dNpWr3P8QKVVsjQhqrMSUzZzf+LZcYjZNqhA3IAfPQdEh1FLVUJSiu6sgAwp3OmwBfbFgG2Xg==",
+      "cpu": [
+        "arm64"
+      ],
+      "dev": true,
+      "license": "MIT",
+      "optional": true,
+      "os": [
+        "netbsd"
+      ],
+      "engines": {
+        "node": ">=18"
+      }
+    },
+    "node_modules/@esbuild/netbsd-x64": {
+      "version": "0.25.11",
+      "resolved": "https://registry.npmjs.org/@esbuild/netbsd-x64/-/netbsd-x64-0.25.11.tgz",
+      "integrity": "sha512-u7tKA+qbzBydyj0vgpu+5h5AeudxOAGncb8N6C9Kh1N4n7wU1Xw1JDApsRjpShRpXRQlJLb9wY28ELpwdPcZ7A==",
+      "cpu": [
+        "x64"
+      ],
+      "dev": true,
+      "license": "MIT",
+      "optional": true,
+      "os": [
+        "netbsd"
+      ],
+      "engines": {
+        "node": ">=18"
+      }
+    },
+    "node_modules/@esbuild/openbsd-arm64": {
+      "version": "0.25.11",
+      "resolved": "https://registry.npmjs.org/@esbuild/openbsd-arm64/-/openbsd-arm64-0.25.11.tgz",
+      "integrity": "sha512-Qq6YHhayieor3DxFOoYM1q0q1uMFYb7cSpLD2qzDSvK1NAvqFi8Xgivv0cFC6J+hWVw2teCYltyy9/m/14ryHg==",
+      "cpu": [
+        "arm64"
+      ],
+      "dev": true,
+      "license": "MIT",
+      "optional": true,
+      "os": [
+        "openbsd"
+      ],
+      "engines": {
+        "node": ">=18"
+      }
+    },
+    "node_modules/@esbuild/openbsd-x64": {
+      "version": "0.25.11",
+      "resolved": "https://registry.npmjs.org/@esbuild/openbsd-x64/-/openbsd-x64-0.25.11.tgz",
+      "integrity": "sha512-CN+7c++kkbrckTOz5hrehxWN7uIhFFlmS/hqziSFVWpAzpWrQoAG4chH+nN3Be+Kzv/uuo7zhX716x3Sn2Jduw==",
+      "cpu": [
+        "x64"
+      ],
+      "dev": true,
+      "license": "MIT",
+      "optional": true,
+      "os": [
+        "openbsd"
+      ],
+      "engines": {
+        "node": ">=18"
+      }
+    },
+    "node_modules/@esbuild/openharmony-arm64": {
+      "version": "0.25.11",
+      "resolved": "https://registry.npmjs.org/@esbuild/openharmony-arm64/-/openharmony-arm64-0.25.11.tgz",
+      "integrity": "sha512-rOREuNIQgaiR+9QuNkbkxubbp8MSO9rONmwP5nKncnWJ9v5jQ4JxFnLu4zDSRPf3x4u+2VN4pM4RdyIzDty/wQ==",
+      "cpu": [
+        "arm64"
+      ],
+      "dev": true,
+      "license": "MIT",
+      "optional": true,
+      "os": [
+        "openharmony"
+      ],
+      "engines": {
+        "node": ">=18"
+      }
+    },
+    "node_modules/@esbuild/sunos-x64": {
+      "version": "0.25.11",
+      "resolved": "https://registry.npmjs.org/@esbuild/sunos-x64/-/sunos-x64-0.25.11.tgz",
+      "integrity": "sha512-nq2xdYaWxyg9DcIyXkZhcYulC6pQ2FuCgem3LI92IwMgIZ69KHeY8T4Y88pcwoLIjbed8n36CyKoYRDygNSGhA==",
+      "cpu": [
+        "x64"
+      ],
+      "dev": true,
+      "license": "MIT",
+      "optional": true,
+      "os": [
+        "sunos"
+      ],
+      "engines": {
+        "node": ">=18"
+      }
+    },
+    "node_modules/@esbuild/win32-arm64": {
+      "version": "0.25.11",
+      "resolved": "https://registry.npmjs.org/@esbuild/win32-arm64/-/win32-arm64-0.25.11.tgz",
+      "integrity": "sha512-3XxECOWJq1qMZ3MN8srCJ/QfoLpL+VaxD/WfNRm1O3B4+AZ/BnLVgFbUV3eiRYDMXetciH16dwPbbHqwe1uU0Q==",
+      "cpu": [
+        "arm64"
+      ],
+      "dev": true,
+      "license": "MIT",
+      "optional": true,
+      "os": [
+        "win32"
+      ],
+      "engines": {
+        "node": ">=18"
+      }
+    },
+    "node_modules/@esbuild/win32-ia32": {
+      "version": "0.25.11",
+      "resolved": "https://registry.npmjs.org/@esbuild/win32-ia32/-/win32-ia32-0.25.11.tgz",
+      "integrity": "sha512-3ukss6gb9XZ8TlRyJlgLn17ecsK4NSQTmdIXRASVsiS2sQ6zPPZklNJT5GR5tE/MUarymmy8kCEf5xPCNCqVOA==",
+      "cpu": [
+        "ia32"
+      ],
+      "dev": true,
+      "license": "MIT",
+      "optional": true,
+      "os": [
+        "win32"
+      ],
+      "engines": {
+        "node": ">=18"
+      }
+    },
+    "node_modules/@esbuild/win32-x64": {
+      "version": "0.25.11",
+      "resolved": "https://registry.npmjs.org/@esbuild/win32-x64/-/win32-x64-0.25.11.tgz",
+      "integrity": "sha512-D7Hpz6A2L4hzsRpPaCYkQnGOotdUpDzSGRIv9I+1ITdHROSFUWW95ZPZWQmGka1Fg7W3zFJowyn9WGwMJ0+KPA==",
+      "cpu": [
+        "x64"
+      ],
+      "dev": true,
+      "license": "MIT",
+      "optional": true,
+      "os": [
+        "win32"
+      ],
+      "engines": {
+        "node": ">=18"
+      }
+    },
+    "node_modules/@eslint-community/eslint-utils": {
+      "version": "4.9.0",
+      "resolved": "https://registry.npmjs.org/@eslint-community/eslint-utils/-/eslint-utils-4.9.0.tgz",
+      "integrity": "sha512-ayVFHdtZ+hsq1t2Dy24wCmGXGe4q9Gu3smhLYALJrr473ZH27MsnSL+LKUlimp4BWJqMDMLmPpx/Q9R3OAlL4g==",
+      "dev": true,
+      "license": "MIT",
+      "dependencies": {
+        "eslint-visitor-keys": "^3.4.3"
+      },
+      "engines": {
+        "node": "^12.22.0 || ^14.17.0 || >=16.0.0"
+      },
+      "funding": {
+        "url": "https://opencollective.com/eslint"
+      },
+      "peerDependencies": {
+        "eslint": "^6.0.0 || ^7.0.0 || >=8.0.0"
+      }
+    },
+    "node_modules/@eslint-community/eslint-utils/node_modules/eslint-visitor-keys": {
+      "version": "3.4.3",
+      "resolved": "https://registry.npmjs.org/eslint-visitor-keys/-/eslint-visitor-keys-3.4.3.tgz",
+      "integrity": "sha512-wpc+LXeiyiisxPlEkUzU6svyS1frIO3Mgxj1fdy7Pm8Ygzguax2N3Fa/D/ag1WqbOprdI+uY6wMUl8/a2G+iag==",
+      "dev": true,
+      "license": "Apache-2.0",
+      "engines": {
+        "node": "^12.22.0 || ^14.17.0 || >=16.0.0"
+      },
+      "funding": {
+        "url": "https://opencollective.com/eslint"
+      }
+    },
+    "node_modules/@eslint-community/regexpp": {
+      "version": "4.12.1",
+      "resolved": "https://registry.npmjs.org/@eslint-community/regexpp/-/regexpp-4.12.1.tgz",
+      "integrity": "sha512-CCZCDJuduB9OUkFkY2IgppNZMi2lBQgD2qzwXkEia16cge2pijY/aXi96CJMquDMn3nJdlPV1A5KrJEXwfLNzQ==",
+      "dev": true,
+      "license": "MIT",
+      "engines": {
+        "node": "^12.0.0 || ^14.0.0 || >=16.0.0"
+      }
+    },
+    "node_modules/@eslint/config-array": {
+      "version": "0.21.1",
+      "resolved": "https://registry.npmjs.org/@eslint/config-array/-/config-array-0.21.1.tgz",
+      "integrity": "sha512-aw1gNayWpdI/jSYVgzN5pL0cfzU02GT3NBpeT/DXbx1/1x7ZKxFPd9bwrzygx/qiwIQiJ1sw/zD8qY/kRvlGHA==",
+      "dev": true,
+      "license": "Apache-2.0",
+      "dependencies": {
+        "@eslint/object-schema": "^2.1.7",
+        "debug": "^4.3.1",
+        "minimatch": "^3.1.2"
+      },
+      "engines": {
+        "node": "^18.18.0 || ^20.9.0 || >=21.1.0"
+      }
+    },
+    "node_modules/@eslint/config-helpers": {
+      "version": "0.4.1",
+      "resolved": "https://registry.npmjs.org/@eslint/config-helpers/-/config-helpers-0.4.1.tgz",
+      "integrity": "sha512-csZAzkNhsgwb0I/UAV6/RGFTbiakPCf0ZrGmrIxQpYvGZ00PhTkSnyKNolphgIvmnJeGw6rcGVEXfTzUnFuEvw==",
+      "dev": true,
+      "license": "Apache-2.0",
+      "dependencies": {
+        "@eslint/core": "^0.16.0"
+      },
+      "engines": {
+        "node": "^18.18.0 || ^20.9.0 || >=21.1.0"
+      }
+    },
+    "node_modules/@eslint/core": {
+      "version": "0.16.0",
+      "resolved": "https://registry.npmjs.org/@eslint/core/-/core-0.16.0.tgz",
+      "integrity": "sha512-nmC8/totwobIiFcGkDza3GIKfAw1+hLiYVrh3I1nIomQ8PEr5cxg34jnkmGawul/ep52wGRAcyeDCNtWKSOj4Q==",
+      "dev": true,
+      "license": "Apache-2.0",
+      "dependencies": {
+        "@types/json-schema": "^7.0.15"
+      },
+      "engines": {
+        "node": "^18.18.0 || ^20.9.0 || >=21.1.0"
+      }
+    },
+    "node_modules/@eslint/eslintrc": {
+      "version": "3.3.1",
+      "resolved": "https://registry.npmjs.org/@eslint/eslintrc/-/eslintrc-3.3.1.tgz",
+      "integrity": "sha512-gtF186CXhIl1p4pJNGZw8Yc6RlshoePRvE0X91oPGb3vZ8pM3qOS9W9NGPat9LziaBV7XrJWGylNQXkGcnM3IQ==",
+      "dev": true,
+      "license": "MIT",
+      "dependencies": {
+        "ajv": "^6.12.4",
+        "debug": "^4.3.2",
+        "espree": "^10.0.1",
+        "globals": "^14.0.0",
+        "ignore": "^5.2.0",
+        "import-fresh": "^3.2.1",
+        "js-yaml": "^4.1.0",
+        "minimatch": "^3.1.2",
+        "strip-json-comments": "^3.1.1"
+      },
+      "engines": {
+        "node": "^18.18.0 || ^20.9.0 || >=21.1.0"
+      },
+      "funding": {
+        "url": "https://opencollective.com/eslint"
+      }
+    },
+    "node_modules/@eslint/eslintrc/node_modules/globals": {
+      "version": "14.0.0",
+      "resolved": "https://registry.npmjs.org/globals/-/globals-14.0.0.tgz",
+      "integrity": "sha512-oahGvuMGQlPw/ivIYBjVSrWAfWLBeku5tpPE2fOPLi+WHffIWbuh2tCjhyQhTBPMf5E9jDEH4FOmTYgYwbKwtQ==",
+      "dev": true,
+      "license": "MIT",
+      "engines": {
+        "node": ">=18"
+      },
+      "funding": {
+        "url": "https://github.com/sponsors/sindresorhus"
+      }
+    },
+    "node_modules/@eslint/js": {
+      "version": "9.38.0",
+      "resolved": "https://registry.npmjs.org/@eslint/js/-/js-9.38.0.tgz",
+      "integrity": "sha512-UZ1VpFvXf9J06YG9xQBdnzU+kthors6KjhMAl6f4gH4usHyh31rUf2DLGInT8RFYIReYXNSydgPY0V2LuWgl7A==",
+      "dev": true,
+      "license": "MIT",
+      "engines": {
+        "node": "^18.18.0 || ^20.9.0 || >=21.1.0"
+      },
+      "funding": {
+        "url": "https://eslint.org/donate"
+      }
+    },
+    "node_modules/@eslint/object-schema": {
+      "version": "2.1.7",
+      "resolved": "https://registry.npmjs.org/@eslint/object-schema/-/object-schema-2.1.7.tgz",
+      "integrity": "sha512-VtAOaymWVfZcmZbp6E2mympDIHvyjXs/12LqWYjVw6qjrfF+VK+fyG33kChz3nnK+SU5/NeHOqrTEHS8sXO3OA==",
+      "dev": true,
+      "license": "Apache-2.0",
+      "engines": {
+        "node": "^18.18.0 || ^20.9.0 || >=21.1.0"
+      }
+    },
+    "node_modules/@eslint/plugin-kit": {
+      "version": "0.4.0",
+      "resolved": "https://registry.npmjs.org/@eslint/plugin-kit/-/plugin-kit-0.4.0.tgz",
+      "integrity": "sha512-sB5uyeq+dwCWyPi31B2gQlVlo+j5brPlWx4yZBrEaRo/nhdDE8Xke1gsGgtiBdaBTxuTkceLVuVt/pclrasb0A==",
+      "dev": true,
+      "license": "Apache-2.0",
+      "dependencies": {
+        "@eslint/core": "^0.16.0",
+        "levn": "^0.4.1"
+      },
+      "engines": {
+        "node": "^18.18.0 || ^20.9.0 || >=21.1.0"
+      }
+    },
+    "node_modules/@firebase/ai": {
+      "version": "2.4.0",
+      "resolved": "https://registry.npmjs.org/@firebase/ai/-/ai-2.4.0.tgz",
+      "integrity": "sha512-YilG6AJ/nYpCKtxZyvEzBRAQv5bU+2tBOKX4Ps0rNNSdxN39aT37kGhjATbk1kq1z5Lq7mkWglw/ajAF3lOWUg==",
+      "license": "Apache-2.0",
+      "dependencies": {
+        "@firebase/app-check-interop-types": "0.3.3",
+        "@firebase/component": "0.7.0",
+        "@firebase/logger": "0.5.0",
+        "@firebase/util": "1.13.0",
+        "tslib": "^2.1.0"
+      },
+      "engines": {
+        "node": ">=20.0.0"
+      },
+      "peerDependencies": {
+        "@firebase/app": "0.x",
+        "@firebase/app-types": "0.x"
+      }
+    },
+    "node_modules/@firebase/analytics": {
+      "version": "0.10.19",
+      "resolved": "https://registry.npmjs.org/@firebase/analytics/-/analytics-0.10.19.tgz",
+      "integrity": "sha512-3wU676fh60gaiVYQEEXsbGS4HbF2XsiBphyvvqDbtC1U4/dO4coshbYktcCHq+HFaGIK07iHOh4pME0hEq1fcg==",
+      "license": "Apache-2.0",
+      "dependencies": {
+        "@firebase/component": "0.7.0",
+        "@firebase/installations": "0.6.19",
+        "@firebase/logger": "0.5.0",
+        "@firebase/util": "1.13.0",
+        "tslib": "^2.1.0"
+      },
+      "peerDependencies": {
+        "@firebase/app": "0.x"
+      }
+    },
+    "node_modules/@firebase/analytics-compat": {
+      "version": "0.2.25",
+      "resolved": "https://registry.npmjs.org/@firebase/analytics-compat/-/analytics-compat-0.2.25.tgz",
+      "integrity": "sha512-fdzoaG0BEKbqksRDhmf4JoyZf16Wosrl0Y7tbZtJyVDOOwziE0vrFjmZuTdviL0yhak+Nco6rMsUUbkbD+qb6Q==",
+      "license": "Apache-2.0",
+      "dependencies": {
+        "@firebase/analytics": "0.10.19",
+        "@firebase/analytics-types": "0.8.3",
+        "@firebase/component": "0.7.0",
+        "@firebase/util": "1.13.0",
+        "tslib": "^2.1.0"
+      },
+      "peerDependencies": {
+        "@firebase/app-compat": "0.x"
+      }
+    },
+    "node_modules/@firebase/analytics-types": {
+      "version": "0.8.3",
+      "resolved": "https://registry.npmjs.org/@firebase/analytics-types/-/analytics-types-0.8.3.tgz",
+      "integrity": "sha512-VrIp/d8iq2g501qO46uGz3hjbDb8xzYMrbu8Tp0ovzIzrvJZ2fvmj649gTjge/b7cCCcjT0H37g1gVtlNhnkbg==",
+      "license": "Apache-2.0"
+    },
+    "node_modules/@firebase/app": {
+      "version": "0.14.4",
+      "resolved": "https://registry.npmjs.org/@firebase/app/-/app-0.14.4.tgz",
+      "integrity": "sha512-pUxEGmR+uu21OG/icAovjlu1fcYJzyVhhT0rsCrn+zi+nHtrS43Bp9KPn9KGa4NMspCUE++nkyiqziuIvJdwzw==",
+      "license": "Apache-2.0",
+      "dependencies": {
+        "@firebase/component": "0.7.0",
+        "@firebase/logger": "0.5.0",
+        "@firebase/util": "1.13.0",
+        "idb": "7.1.1",
+        "tslib": "^2.1.0"
+      },
+      "engines": {
+        "node": ">=20.0.0"
+      }
+    },
+    "node_modules/@firebase/app-check": {
+      "version": "0.11.0",
+      "resolved": "https://registry.npmjs.org/@firebase/app-check/-/app-check-0.11.0.tgz",
+      "integrity": "sha512-XAvALQayUMBJo58U/rxW02IhsesaxxfWVmVkauZvGEz3vOAjMEQnzFlyblqkc2iAaO82uJ2ZVyZv9XzPfxjJ6w==",
+      "license": "Apache-2.0",
+      "dependencies": {
+        "@firebase/component": "0.7.0",
+        "@firebase/logger": "0.5.0",
+        "@firebase/util": "1.13.0",
+        "tslib": "^2.1.0"
+      },
+      "engines": {
+        "node": ">=20.0.0"
+      },
+      "peerDependencies": {
+        "@firebase/app": "0.x"
+      }
+    },
+    "node_modules/@firebase/app-check-compat": {
+      "version": "0.4.0",
+      "resolved": "https://registry.npmjs.org/@firebase/app-check-compat/-/app-check-compat-0.4.0.tgz",
+      "integrity": "sha512-UfK2Q8RJNjYM/8MFORltZRG9lJj11k0nW84rrffiKvcJxLf1jf6IEjCIkCamykHE73C6BwqhVfhIBs69GXQV0g==",
+      "license": "Apache-2.0",
+      "dependencies": {
+        "@firebase/app-check": "0.11.0",
+        "@firebase/app-check-types": "0.5.3",
+        "@firebase/component": "0.7.0",
+        "@firebase/logger": "0.5.0",
+        "@firebase/util": "1.13.0",
+        "tslib": "^2.1.0"
+      },
+      "engines": {
+        "node": ">=20.0.0"
+      },
+      "peerDependencies": {
+        "@firebase/app-compat": "0.x"
+      }
+    },
+    "node_modules/@firebase/app-check-interop-types": {
+      "version": "0.3.3",
+      "resolved": "https://registry.npmjs.org/@firebase/app-check-interop-types/-/app-check-interop-types-0.3.3.tgz",
+      "integrity": "sha512-gAlxfPLT2j8bTI/qfe3ahl2I2YcBQ8cFIBdhAQA4I2f3TndcO+22YizyGYuttLHPQEpWkhmpFW60VCFEPg4g5A==",
+      "license": "Apache-2.0"
+    },
+    "node_modules/@firebase/app-check-types": {
+      "version": "0.5.3",
+      "resolved": "https://registry.npmjs.org/@firebase/app-check-types/-/app-check-types-0.5.3.tgz",
+      "integrity": "sha512-hyl5rKSj0QmwPdsAxrI5x1otDlByQ7bvNvVt8G/XPO2CSwE++rmSVf3VEhaeOR4J8ZFaF0Z0NDSmLejPweZ3ng==",
+      "license": "Apache-2.0"
+    },
+    "node_modules/@firebase/app-compat": {
+      "version": "0.5.4",
+      "resolved": "https://registry.npmjs.org/@firebase/app-compat/-/app-compat-0.5.4.tgz",
+      "integrity": "sha512-T7ifGmb+awJEcp542Ek4HtNfBxcBrnuk1ggUdqyFEdsXHdq7+wVlhvE6YukTL7NS8hIkEfL7TMAPx/uCNqt30g==",
+      "license": "Apache-2.0",
+      "dependencies": {
+        "@firebase/app": "0.14.4",
+        "@firebase/component": "0.7.0",
+        "@firebase/logger": "0.5.0",
+        "@firebase/util": "1.13.0",
+        "tslib": "^2.1.0"
+      },
+      "engines": {
+        "node": ">=20.0.0"
+      }
+    },
+    "node_modules/@firebase/app-types": {
+      "version": "0.9.3",
+      "resolved": "https://registry.npmjs.org/@firebase/app-types/-/app-types-0.9.3.tgz",
+      "integrity": "sha512-kRVpIl4vVGJ4baogMDINbyrIOtOxqhkZQg4jTq3l8Lw6WSk0xfpEYzezFu+Kl4ve4fbPl79dvwRtaFqAC/ucCw==",
+      "license": "Apache-2.0"
+    },
+    "node_modules/@firebase/auth": {
+      "version": "1.11.0",
+      "resolved": "https://registry.npmjs.org/@firebase/auth/-/auth-1.11.0.tgz",
+      "integrity": "sha512-5j7+ua93X+IRcJ1oMDTClTo85l7Xe40WSkoJ+shzPrX7OISlVWLdE1mKC57PSD+/LfAbdhJmvKixINBw2ESK6w==",
+      "license": "Apache-2.0",
+      "dependencies": {
+        "@firebase/component": "0.7.0",
+        "@firebase/logger": "0.5.0",
+        "@firebase/util": "1.13.0",
+        "tslib": "^2.1.0"
+      },
+      "engines": {
+        "node": ">=20.0.0"
+      },
+      "peerDependencies": {
+        "@firebase/app": "0.x",
+        "@react-native-async-storage/async-storage": "^1.18.1"
+      },
+      "peerDependenciesMeta": {
+        "@react-native-async-storage/async-storage": {
+          "optional": true
+        }
+      }
+    },
+    "node_modules/@firebase/auth-compat": {
+      "version": "0.6.0",
+      "resolved": "https://registry.npmjs.org/@firebase/auth-compat/-/auth-compat-0.6.0.tgz",
+      "integrity": "sha512-J0lGSxXlG/lYVi45wbpPhcWiWUMXevY4fvLZsN1GHh+po7TZVng+figdHBVhFheaiipU8HZyc7ljw1jNojM2nw==",
+      "license": "Apache-2.0",
+      "dependencies": {
+        "@firebase/auth": "1.11.0",
+        "@firebase/auth-types": "0.13.0",
+        "@firebase/component": "0.7.0",
+        "@firebase/util": "1.13.0",
+        "tslib": "^2.1.0"
+      },
+      "engines": {
+        "node": ">=20.0.0"
+      },
+      "peerDependencies": {
+        "@firebase/app-compat": "0.x"
+      }
+    },
+    "node_modules/@firebase/auth-interop-types": {
+      "version": "0.2.4",
+      "resolved": "https://registry.npmjs.org/@firebase/auth-interop-types/-/auth-interop-types-0.2.4.tgz",
+      "integrity": "sha512-JPgcXKCuO+CWqGDnigBtvo09HeBs5u/Ktc2GaFj2m01hLarbxthLNm7Fk8iOP1aqAtXV+fnnGj7U28xmk7IwVA==",
+      "license": "Apache-2.0"
+    },
+    "node_modules/@firebase/auth-types": {
+      "version": "0.13.0",
+      "resolved": "https://registry.npmjs.org/@firebase/auth-types/-/auth-types-0.13.0.tgz",
+      "integrity": "sha512-S/PuIjni0AQRLF+l9ck0YpsMOdE8GO2KU6ubmBB7P+7TJUCQDa3R1dlgYm9UzGbbePMZsp0xzB93f2b/CgxMOg==",
+      "license": "Apache-2.0",
+      "peerDependencies": {
+        "@firebase/app-types": "0.x",
+        "@firebase/util": "1.x"
+      }
+    },
+    "node_modules/@firebase/component": {
+      "version": "0.7.0",
+      "resolved": "https://registry.npmjs.org/@firebase/component/-/component-0.7.0.tgz",
+      "integrity": "sha512-wR9En2A+WESUHexjmRHkqtaVH94WLNKt6rmeqZhSLBybg4Wyf0Umk04SZsS6sBq4102ZsDBFwoqMqJYj2IoDSg==",
+      "license": "Apache-2.0",
+      "dependencies": {
+        "@firebase/util": "1.13.0",
+        "tslib": "^2.1.0"
+      },
+      "engines": {
+        "node": ">=20.0.0"
+      }
+    },
+    "node_modules/@firebase/data-connect": {
+      "version": "0.3.11",
+      "resolved": "https://registry.npmjs.org/@firebase/data-connect/-/data-connect-0.3.11.tgz",
+      "integrity": "sha512-G258eLzAD6im9Bsw+Qm1Z+P4x0PGNQ45yeUuuqe5M9B1rn0RJvvsQCRHXgE52Z+n9+WX1OJd/crcuunvOGc7Vw==",
+      "license": "Apache-2.0",
+      "dependencies": {
+        "@firebase/auth-interop-types": "0.2.4",
+        "@firebase/component": "0.7.0",
+        "@firebase/logger": "0.5.0",
+        "@firebase/util": "1.13.0",
+        "tslib": "^2.1.0"
+      },
+      "peerDependencies": {
+        "@firebase/app": "0.x"
+      }
+    },
+    "node_modules/@firebase/database": {
+      "version": "1.1.0",
+      "resolved": "https://registry.npmjs.org/@firebase/database/-/database-1.1.0.tgz",
+      "integrity": "sha512-gM6MJFae3pTyNLoc9VcJNuaUDej0ctdjn3cVtILo3D5lpp0dmUHHLFN/pUKe7ImyeB1KAvRlEYxvIHNF04Filg==",
+      "license": "Apache-2.0",
+      "dependencies": {
+        "@firebase/app-check-interop-types": "0.3.3",
+        "@firebase/auth-interop-types": "0.2.4",
+        "@firebase/component": "0.7.0",
+        "@firebase/logger": "0.5.0",
+        "@firebase/util": "1.13.0",
+        "faye-websocket": "0.11.4",
+        "tslib": "^2.1.0"
+      },
+      "engines": {
+        "node": ">=20.0.0"
+      }
+    },
+    "node_modules/@firebase/database-compat": {
+      "version": "2.1.0",
+      "resolved": "https://registry.npmjs.org/@firebase/database-compat/-/database-compat-2.1.0.tgz",
+      "integrity": "sha512-8nYc43RqxScsePVd1qe1xxvWNf0OBnbwHxmXJ7MHSuuTVYFO3eLyLW3PiCKJ9fHnmIz4p4LbieXwz+qtr9PZDg==",
+      "license": "Apache-2.0",
+      "dependencies": {
+        "@firebase/component": "0.7.0",
+        "@firebase/database": "1.1.0",
+        "@firebase/database-types": "1.0.16",
+        "@firebase/logger": "0.5.0",
+        "@firebase/util": "1.13.0",
+        "tslib": "^2.1.0"
+      },
+      "engines": {
+        "node": ">=20.0.0"
+      }
+    },
+    "node_modules/@firebase/database-types": {
+      "version": "1.0.16",
+      "resolved": "https://registry.npmjs.org/@firebase/database-types/-/database-types-1.0.16.tgz",
+      "integrity": "sha512-xkQLQfU5De7+SPhEGAXFBnDryUWhhlFXelEg2YeZOQMCdoe7dL64DDAd77SQsR+6uoXIZY5MB4y/inCs4GTfcw==",
+      "license": "Apache-2.0",
+      "dependencies": {
+        "@firebase/app-types": "0.9.3",
+        "@firebase/util": "1.13.0"
+      }
+    },
+    "node_modules/@firebase/firestore": {
+      "version": "4.9.2",
+      "resolved": "https://registry.npmjs.org/@firebase/firestore/-/firestore-4.9.2.tgz",
+      "integrity": "sha512-iuA5+nVr/IV/Thm0Luoqf2mERUvK9g791FZpUJV1ZGXO6RL2/i/WFJUj5ZTVXy5pRjpWYO+ZzPcReNrlilmztA==",
+      "license": "Apache-2.0",
+      "dependencies": {
+        "@firebase/component": "0.7.0",
+        "@firebase/logger": "0.5.0",
+        "@firebase/util": "1.13.0",
+        "@firebase/webchannel-wrapper": "1.0.5",
+        "@grpc/grpc-js": "~1.9.0",
+        "@grpc/proto-loader": "^0.7.8",
+        "tslib": "^2.1.0"
+      },
+      "engines": {
+        "node": ">=20.0.0"
+      },
+      "peerDependencies": {
+        "@firebase/app": "0.x"
+      }
+    },
+    "node_modules/@firebase/firestore-compat": {
+      "version": "0.4.2",
+      "resolved": "https://registry.npmjs.org/@firebase/firestore-compat/-/firestore-compat-0.4.2.tgz",
+      "integrity": "sha512-cy7ov6SpFBx+PHwFdOOjbI7kH00uNKmIFurAn560WiPCZXy9EMnil1SOG7VF4hHZKdenC+AHtL4r3fNpirpm0w==",
+      "license": "Apache-2.0",
+      "dependencies": {
+        "@firebase/component": "0.7.0",
+        "@firebase/firestore": "4.9.2",
+        "@firebase/firestore-types": "3.0.3",
+        "@firebase/util": "1.13.0",
+        "tslib": "^2.1.0"
+      },
+      "engines": {
+        "node": ">=20.0.0"
+      },
+      "peerDependencies": {
+        "@firebase/app-compat": "0.x"
+      }
+    },
+    "node_modules/@firebase/firestore-types": {
+      "version": "3.0.3",
+      "resolved": "https://registry.npmjs.org/@firebase/firestore-types/-/firestore-types-3.0.3.tgz",
+      "integrity": "sha512-hD2jGdiWRxB/eZWF89xcK9gF8wvENDJkzpVFb4aGkzfEaKxVRD1kjz1t1Wj8VZEp2LCB53Yx1zD8mrhQu87R6Q==",
+      "license": "Apache-2.0",
+      "peerDependencies": {
+        "@firebase/app-types": "0.x",
+        "@firebase/util": "1.x"
+      }
+    },
+    "node_modules/@firebase/functions": {
+      "version": "0.13.1",
+      "resolved": "https://registry.npmjs.org/@firebase/functions/-/functions-0.13.1.tgz",
+      "integrity": "sha512-sUeWSb0rw5T+6wuV2o9XNmh9yHxjFI9zVGFnjFi+n7drTEWpl7ZTz1nROgGrSu472r+LAaj+2YaSicD4R8wfbw==",
+      "license": "Apache-2.0",
+      "dependencies": {
+        "@firebase/app-check-interop-types": "0.3.3",
+        "@firebase/auth-interop-types": "0.2.4",
+        "@firebase/component": "0.7.0",
+        "@firebase/messaging-interop-types": "0.2.3",
+        "@firebase/util": "1.13.0",
+        "tslib": "^2.1.0"
+      },
+      "engines": {
+        "node": ">=20.0.0"
+      },
+      "peerDependencies": {
+        "@firebase/app": "0.x"
+      }
+    },
+    "node_modules/@firebase/functions-compat": {
+      "version": "0.4.1",
+      "resolved": "https://registry.npmjs.org/@firebase/functions-compat/-/functions-compat-0.4.1.tgz",
+      "integrity": "sha512-AxxUBXKuPrWaVNQ8o1cG1GaCAtXT8a0eaTDfqgS5VsRYLAR0ALcfqDLwo/QyijZj1w8Qf8n3Qrfy/+Im245hOQ==",
+      "license": "Apache-2.0",
+      "dependencies": {
+        "@firebase/component": "0.7.0",
+        "@firebase/functions": "0.13.1",
+        "@firebase/functions-types": "0.6.3",
+        "@firebase/util": "1.13.0",
+        "tslib": "^2.1.0"
+      },
+      "engines": {
+        "node": ">=20.0.0"
+      },
+      "peerDependencies": {
+        "@firebase/app-compat": "0.x"
+      }
+    },
+    "node_modules/@firebase/functions-types": {
+      "version": "0.6.3",
+      "resolved": "https://registry.npmjs.org/@firebase/functions-types/-/functions-types-0.6.3.tgz",
+      "integrity": "sha512-EZoDKQLUHFKNx6VLipQwrSMh01A1SaL3Wg6Hpi//x6/fJ6Ee4hrAeswK99I5Ht8roiniKHw4iO0B1Oxj5I4plg==",
+      "license": "Apache-2.0"
+    },
+    "node_modules/@firebase/installations": {
+      "version": "0.6.19",
+      "resolved": "https://registry.npmjs.org/@firebase/installations/-/installations-0.6.19.tgz",
+      "integrity": "sha512-nGDmiwKLI1lerhwfwSHvMR9RZuIH5/8E3kgUWnVRqqL7kGVSktjLTWEMva7oh5yxQ3zXfIlIwJwMcaM5bK5j8Q==",
+      "license": "Apache-2.0",
+      "dependencies": {
+        "@firebase/component": "0.7.0",
+        "@firebase/util": "1.13.0",
+        "idb": "7.1.1",
+        "tslib": "^2.1.0"
+      },
+      "peerDependencies": {
+        "@firebase/app": "0.x"
+      }
+    },
+    "node_modules/@firebase/installations-compat": {
+      "version": "0.2.19",
+      "resolved": "https://registry.npmjs.org/@firebase/installations-compat/-/installations-compat-0.2.19.tgz",
+      "integrity": "sha512-khfzIY3EI5LePePo7vT19/VEIH1E3iYsHknI/6ek9T8QCozAZshWT9CjlwOzZrKvTHMeNcbpo/VSOSIWDSjWdQ==",
+      "license": "Apache-2.0",
+      "dependencies": {
+        "@firebase/component": "0.7.0",
+        "@firebase/installations": "0.6.19",
+        "@firebase/installations-types": "0.5.3",
+        "@firebase/util": "1.13.0",
+        "tslib": "^2.1.0"
+      },
+      "peerDependencies": {
+        "@firebase/app-compat": "0.x"
+      }
+    },
+    "node_modules/@firebase/installations-types": {
+      "version": "0.5.3",
+      "resolved": "https://registry.npmjs.org/@firebase/installations-types/-/installations-types-0.5.3.tgz",
+      "integrity": "sha512-2FJI7gkLqIE0iYsNQ1P751lO3hER+Umykel+TkLwHj6plzWVxqvfclPUZhcKFVQObqloEBTmpi2Ozn7EkCABAA==",
+      "license": "Apache-2.0",
+      "peerDependencies": {
+        "@firebase/app-types": "0.x"
+      }
+    },
+    "node_modules/@firebase/logger": {
+      "version": "0.5.0",
+      "resolved": "https://registry.npmjs.org/@firebase/logger/-/logger-0.5.0.tgz",
+      "integrity": "sha512-cGskaAvkrnh42b3BA3doDWeBmuHFO/Mx5A83rbRDYakPjO9bJtRL3dX7javzc2Rr/JHZf4HlterTW2lUkfeN4g==",
+      "license": "Apache-2.0",
+      "dependencies": {
+        "tslib": "^2.1.0"
+      },
+      "engines": {
+        "node": ">=20.0.0"
+      }
+    },
+    "node_modules/@firebase/messaging": {
+      "version": "0.12.23",
+      "resolved": "https://registry.npmjs.org/@firebase/messaging/-/messaging-0.12.23.tgz",
+      "integrity": "sha512-cfuzv47XxqW4HH/OcR5rM+AlQd1xL/VhuaeW/wzMW1LFrsFcTn0GND/hak1vkQc2th8UisBcrkVcQAnOnKwYxg==",
+      "license": "Apache-2.0",
+      "dependencies": {
+        "@firebase/component": "0.7.0",
+        "@firebase/installations": "0.6.19",
+        "@firebase/messaging-interop-types": "0.2.3",
+        "@firebase/util": "1.13.0",
+        "idb": "7.1.1",
+        "tslib": "^2.1.0"
+      },
+      "peerDependencies": {
+        "@firebase/app": "0.x"
+      }
+    },
+    "node_modules/@firebase/messaging-compat": {
+      "version": "0.2.23",
+      "resolved": "https://registry.npmjs.org/@firebase/messaging-compat/-/messaging-compat-0.2.23.tgz",
+      "integrity": "sha512-SN857v/kBUvlQ9X/UjAqBoQ2FEaL1ZozpnmL1ByTe57iXkmnVVFm9KqAsTfmf+OEwWI4kJJe9NObtN/w22lUgg==",
+      "license": "Apache-2.0",
+      "dependencies": {
+        "@firebase/component": "0.7.0",
+        "@firebase/messaging": "0.12.23",
+        "@firebase/util": "1.13.0",
+        "tslib": "^2.1.0"
+      },
+      "peerDependencies": {
+        "@firebase/app-compat": "0.x"
+      }
+    },
+    "node_modules/@firebase/messaging-interop-types": {
+      "version": "0.2.3",
+      "resolved": "https://registry.npmjs.org/@firebase/messaging-interop-types/-/messaging-interop-types-0.2.3.tgz",
+      "integrity": "sha512-xfzFaJpzcmtDjycpDeCUj0Ge10ATFi/VHVIvEEjDNc3hodVBQADZ7BWQU7CuFpjSHE+eLuBI13z5F/9xOoGX8Q==",
+      "license": "Apache-2.0"
+    },
+    "node_modules/@firebase/performance": {
+      "version": "0.7.9",
+      "resolved": "https://registry.npmjs.org/@firebase/performance/-/performance-0.7.9.tgz",
+      "integrity": "sha512-UzybENl1EdM2I1sjYm74xGt/0JzRnU/0VmfMAKo2LSpHJzaj77FCLZXmYQ4oOuE+Pxtt8Wy2BVJEENiZkaZAzQ==",
+      "license": "Apache-2.0",
+      "dependencies": {
+        "@firebase/component": "0.7.0",
+        "@firebase/installations": "0.6.19",
+        "@firebase/logger": "0.5.0",
+        "@firebase/util": "1.13.0",
+        "tslib": "^2.1.0",
+        "web-vitals": "^4.2.4"
+      },
+      "peerDependencies": {
+        "@firebase/app": "0.x"
+      }
+    },
+    "node_modules/@firebase/performance-compat": {
+      "version": "0.2.22",
+      "resolved": "https://registry.npmjs.org/@firebase/performance-compat/-/performance-compat-0.2.22.tgz",
+      "integrity": "sha512-xLKxaSAl/FVi10wDX/CHIYEUP13jXUjinL+UaNXT9ByIvxII5Ne5150mx6IgM8G6Q3V+sPiw9C8/kygkyHUVxg==",
+      "license": "Apache-2.0",
+      "dependencies": {
+        "@firebase/component": "0.7.0",
+        "@firebase/logger": "0.5.0",
+        "@firebase/performance": "0.7.9",
+        "@firebase/performance-types": "0.2.3",
+        "@firebase/util": "1.13.0",
+        "tslib": "^2.1.0"
+      },
+      "peerDependencies": {
+        "@firebase/app-compat": "0.x"
+      }
+    },
+    "node_modules/@firebase/performance-types": {
+      "version": "0.2.3",
+      "resolved": "https://registry.npmjs.org/@firebase/performance-types/-/performance-types-0.2.3.tgz",
+      "integrity": "sha512-IgkyTz6QZVPAq8GSkLYJvwSLr3LS9+V6vNPQr0x4YozZJiLF5jYixj0amDtATf1X0EtYHqoPO48a9ija8GocxQ==",
+      "license": "Apache-2.0"
+    },
+    "node_modules/@firebase/remote-config": {
+      "version": "0.7.0",
+      "resolved": "https://registry.npmjs.org/@firebase/remote-config/-/remote-config-0.7.0.tgz",
+      "integrity": "sha512-dX95X6WlW7QlgNd7aaGdjAIZUiQkgWgNS+aKNu4Wv92H1T8Ue/NDUjZHd9xb8fHxLXIHNZeco9/qbZzr500MjQ==",
+      "license": "Apache-2.0",
+      "dependencies": {
+        "@firebase/component": "0.7.0",
+        "@firebase/installations": "0.6.19",
+        "@firebase/logger": "0.5.0",
+        "@firebase/util": "1.13.0",
+        "tslib": "^2.1.0"
+      },
+      "peerDependencies": {
+        "@firebase/app": "0.x"
+      }
+    },
+    "node_modules/@firebase/remote-config-compat": {
+      "version": "0.2.20",
+      "resolved": "https://registry.npmjs.org/@firebase/remote-config-compat/-/remote-config-compat-0.2.20.tgz",
+      "integrity": "sha512-P/ULS9vU35EL9maG7xp66uljkZgcPMQOxLj3Zx2F289baTKSInE6+YIkgHEi1TwHoddC/AFePXPpshPlEFkbgg==",
+      "license": "Apache-2.0",
+      "dependencies": {
+        "@firebase/component": "0.7.0",
+        "@firebase/logger": "0.5.0",
+        "@firebase/remote-config": "0.7.0",
+        "@firebase/remote-config-types": "0.5.0",
+        "@firebase/util": "1.13.0",
+        "tslib": "^2.1.0"
+      },
+      "peerDependencies": {
+        "@firebase/app-compat": "0.x"
+      }
+    },
+    "node_modules/@firebase/remote-config-types": {
+      "version": "0.5.0",
+      "resolved": "https://registry.npmjs.org/@firebase/remote-config-types/-/remote-config-types-0.5.0.tgz",
+      "integrity": "sha512-vI3bqLoF14L/GchtgayMiFpZJF+Ao3uR8WCde0XpYNkSokDpAKca2DxvcfeZv7lZUqkUwQPL2wD83d3vQ4vvrg==",
+      "license": "Apache-2.0"
+    },
+    "node_modules/@firebase/storage": {
+      "version": "0.14.0",
+      "resolved": "https://registry.npmjs.org/@firebase/storage/-/storage-0.14.0.tgz",
+      "integrity": "sha512-xWWbb15o6/pWEw8H01UQ1dC5U3rf8QTAzOChYyCpafV6Xki7KVp3Yaw2nSklUwHEziSWE9KoZJS7iYeyqWnYFA==",
+      "license": "Apache-2.0",
+      "dependencies": {
+        "@firebase/component": "0.7.0",
+        "@firebase/util": "1.13.0",
+        "tslib": "^2.1.0"
+      },
+      "engines": {
+        "node": ">=20.0.0"
+      },
+      "peerDependencies": {
+        "@firebase/app": "0.x"
+      }
+    },
+    "node_modules/@firebase/storage-compat": {
+      "version": "0.4.0",
+      "resolved": "https://registry.npmjs.org/@firebase/storage-compat/-/storage-compat-0.4.0.tgz",
+      "integrity": "sha512-vDzhgGczr1OfcOy285YAPur5pWDEvD67w4thyeCUh6Ys0izN9fNYtA1MJERmNBfqjqu0lg0FM5GLbw0Il21M+g==",
+      "license": "Apache-2.0",
+      "dependencies": {
+        "@firebase/component": "0.7.0",
+        "@firebase/storage": "0.14.0",
+        "@firebase/storage-types": "0.8.3",
+        "@firebase/util": "1.13.0",
+        "tslib": "^2.1.0"
+      },
+      "engines": {
+        "node": ">=20.0.0"
+      },
+      "peerDependencies": {
+        "@firebase/app-compat": "0.x"
+      }
+    },
+    "node_modules/@firebase/storage-types": {
+      "version": "0.8.3",
+      "resolved": "https://registry.npmjs.org/@firebase/storage-types/-/storage-types-0.8.3.tgz",
+      "integrity": "sha512-+Muk7g9uwngTpd8xn9OdF/D48uiQ7I1Fae7ULsWPuKoCH3HU7bfFPhxtJYzyhjdniowhuDpQcfPmuNRAqZEfvg==",
+      "license": "Apache-2.0",
+      "peerDependencies": {
+        "@firebase/app-types": "0.x",
+        "@firebase/util": "1.x"
+      }
+    },
+    "node_modules/@firebase/util": {
+      "version": "1.13.0",
+      "resolved": "https://registry.npmjs.org/@firebase/util/-/util-1.13.0.tgz",
+      "integrity": "sha512-0AZUyYUfpMNcztR5l09izHwXkZpghLgCUaAGjtMwXnCg3bj4ml5VgiwqOMOxJ+Nw4qN/zJAaOQBcJ7KGkWStqQ==",
+      "hasInstallScript": true,
+      "license": "Apache-2.0",
+      "dependencies": {
+        "tslib": "^2.1.0"
+      },
+      "engines": {
+        "node": ">=20.0.0"
+      }
+    },
+    "node_modules/@firebase/webchannel-wrapper": {
+      "version": "1.0.5",
+      "resolved": "https://registry.npmjs.org/@firebase/webchannel-wrapper/-/webchannel-wrapper-1.0.5.tgz",
+      "integrity": "sha512-+uGNN7rkfn41HLO0vekTFhTxk61eKa8mTpRGLO0QSqlQdKvIoGAvLp3ppdVIWbTGYJWM6Kp0iN+PjMIOcnVqTw==",
+      "license": "Apache-2.0"
+    },
+    "node_modules/@grpc/grpc-js": {
+      "version": "1.9.15",
+      "resolved": "https://registry.npmjs.org/@grpc/grpc-js/-/grpc-js-1.9.15.tgz",
+      "integrity": "sha512-nqE7Hc0AzI+euzUwDAy0aY5hCp10r734gMGRdU+qOPX0XSceI2ULrcXB5U2xSc5VkWwalCj4M7GzCAygZl2KoQ==",
+      "license": "Apache-2.0",
+      "dependencies": {
+        "@grpc/proto-loader": "^0.7.8",
+        "@types/node": ">=12.12.47"
+      },
+      "engines": {
+        "node": "^8.13.0 || >=10.10.0"
+      }
+    },
+    "node_modules/@grpc/proto-loader": {
+      "version": "0.7.15",
+      "resolved": "https://registry.npmjs.org/@grpc/proto-loader/-/proto-loader-0.7.15.tgz",
+      "integrity": "sha512-tMXdRCfYVixjuFK+Hk0Q1s38gV9zDiDJfWL3h1rv4Qc39oILCu1TRTDt7+fGUI8K4G1Fj125Hx/ru3azECWTyQ==",
+      "license": "Apache-2.0",
+      "dependencies": {
+        "lodash.camelcase": "^4.3.0",
+        "long": "^5.0.0",
+        "protobufjs": "^7.2.5",
+        "yargs": "^17.7.2"
+      },
+      "bin": {
+        "proto-loader-gen-types": "build/bin/proto-loader-gen-types.js"
+      },
+      "engines": {
+        "node": ">=6"
+      }
+    },
+    "node_modules/@humanfs/core": {
+      "version": "0.19.1",
+      "resolved": "https://registry.npmjs.org/@humanfs/core/-/core-0.19.1.tgz",
+      "integrity": "sha512-5DyQ4+1JEUzejeK1JGICcideyfUbGixgS9jNgex5nqkW+cY7WZhxBigmieN5Qnw9ZosSNVC9KQKyb+GUaGyKUA==",
+      "dev": true,
+      "license": "Apache-2.0",
+      "engines": {
+        "node": ">=18.18.0"
+      }
+    },
+    "node_modules/@humanfs/node": {
+      "version": "0.16.7",
+      "resolved": "https://registry.npmjs.org/@humanfs/node/-/node-0.16.7.tgz",
+      "integrity": "sha512-/zUx+yOsIrG4Y43Eh2peDeKCxlRt/gET6aHfaKpuq267qXdYDFViVHfMaLyygZOnl0kGWxFIgsBy8QFuTLUXEQ==",
+      "dev": true,
+      "license": "Apache-2.0",
+      "dependencies": {
+        "@humanfs/core": "^0.19.1",
+        "@humanwhocodes/retry": "^0.4.0"
+      },
+      "engines": {
+        "node": ">=18.18.0"
+      }
+    },
+    "node_modules/@humanwhocodes/module-importer": {
+      "version": "1.0.1",
+      "resolved": "https://registry.npmjs.org/@humanwhocodes/module-importer/-/module-importer-1.0.1.tgz",
+      "integrity": "sha512-bxveV4V8v5Yb4ncFTT3rPSgZBOpCkjfK0y4oVVVJwIuDVBRMDXrPyXRL988i5ap9m9bnyEEjWfm5WkBmtffLfA==",
+      "dev": true,
+      "license": "Apache-2.0",
+      "engines": {
+        "node": ">=12.22"
+      },
+      "funding": {
+        "type": "github",
+        "url": "https://github.com/sponsors/nzakas"
+      }
+    },
+    "node_modules/@humanwhocodes/retry": {
+      "version": "0.4.3",
+      "resolved": "https://registry.npmjs.org/@humanwhocodes/retry/-/retry-0.4.3.tgz",
+      "integrity": "sha512-bV0Tgo9K4hfPCek+aMAn81RppFKv2ySDQeMoSZuvTASywNTnVJCArCZE2FWqpvIatKu7VMRLWlR1EazvVhDyhQ==",
+      "dev": true,
+      "license": "Apache-2.0",
+      "engines": {
+        "node": ">=18.18"
+      },
+      "funding": {
+        "type": "github",
+        "url": "https://github.com/sponsors/nzakas"
+      }
+    },
+    "node_modules/@jridgewell/gen-mapping": {
+      "version": "0.3.13",
+      "resolved": "https://registry.npmjs.org/@jridgewell/gen-mapping/-/gen-mapping-0.3.13.tgz",
+      "integrity": "sha512-2kkt/7niJ6MgEPxF0bYdQ6etZaA+fQvDcLKckhy1yIQOzaoKjBBjSj63/aLVjYE3qhRt5dvM+uUyfCg6UKCBbA==",
+      "dev": true,
+      "license": "MIT",
+      "dependencies": {
+        "@jridgewell/sourcemap-codec": "^1.5.0",
+        "@jridgewell/trace-mapping": "^0.3.24"
+      }
+    },
+    "node_modules/@jridgewell/remapping": {
+      "version": "2.3.5",
+      "resolved": "https://registry.npmjs.org/@jridgewell/remapping/-/remapping-2.3.5.tgz",
+      "integrity": "sha512-LI9u/+laYG4Ds1TDKSJW2YPrIlcVYOwi2fUC6xB43lueCjgxV4lffOCZCtYFiH6TNOX+tQKXx97T4IKHbhyHEQ==",
+      "dev": true,
+      "license": "MIT",
+      "dependencies": {
+        "@jridgewell/gen-mapping": "^0.3.5",
+        "@jridgewell/trace-mapping": "^0.3.24"
+      }
+    },
+    "node_modules/@jridgewell/resolve-uri": {
+      "version": "3.1.2",
+      "resolved": "https://registry.npmjs.org/@jridgewell/resolve-uri/-/resolve-uri-3.1.2.tgz",
+      "integrity": "sha512-bRISgCIjP20/tbWSPWMEi54QVPRZExkuD9lJL+UIxUKtwVJA8wW1Trb1jMs1RFXo1CBTNZ/5hpC9QvmKWdopKw==",
+      "dev": true,
+      "license": "MIT",
+      "engines": {
+        "node": ">=6.0.0"
+      }
+    },
+    "node_modules/@jridgewell/sourcemap-codec": {
+      "version": "1.5.5",
+      "resolved": "https://registry.npmjs.org/@jridgewell/sourcemap-codec/-/sourcemap-codec-1.5.5.tgz",
+      "integrity": "sha512-cYQ9310grqxueWbl+WuIUIaiUaDcj7WOq5fVhEljNVgRfOUhY9fy2zTvfoqWsnebh8Sl70VScFbICvJnLKB0Og==",
+      "dev": true,
+      "license": "MIT"
+    },
+    "node_modules/@jridgewell/trace-mapping": {
+      "version": "0.3.31",
+      "resolved": "https://registry.npmjs.org/@jridgewell/trace-mapping/-/trace-mapping-0.3.31.tgz",
+      "integrity": "sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw==",
+      "dev": true,
+      "license": "MIT",
+      "dependencies": {
+        "@jridgewell/resolve-uri": "^3.1.0",
+        "@jridgewell/sourcemap-codec": "^1.4.14"
+      }
+    },
+    "node_modules/@popperjs/core": {
+      "version": "2.11.8",
+      "resolved": "https://registry.npmjs.org/@popperjs/core/-/core-2.11.8.tgz",
+      "integrity": "sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A==",
+      "license": "MIT",
+      "peer": true,
+      "funding": {
+        "type": "opencollective",
+        "url": "https://opencollective.com/popperjs"
+      }
+    },
+    "node_modules/@protobufjs/aspromise": {
+      "version": "1.1.2",
+      "resolved": "https://registry.npmjs.org/@protobufjs/aspromise/-/aspromise-1.1.2.tgz",
+      "integrity": "sha512-j+gKExEuLmKwvz3OgROXtrJ2UG2x8Ch2YZUxahh+s1F2HZ+wAceUNLkvy6zKCPVRkU++ZWQrdxsUeQXmcg4uoQ==",
+      "license": "BSD-3-Clause"
+    },
+    "node_modules/@protobufjs/base64": {
+      "version": "1.1.2",
+      "resolved": "https://registry.npmjs.org/@protobufjs/base64/-/base64-1.1.2.tgz",
+      "integrity": "sha512-AZkcAA5vnN/v4PDqKyMR5lx7hZttPDgClv83E//FMNhR2TMcLUhfRUBHCmSl0oi9zMgDDqRUJkSxO3wm85+XLg==",
+      "license": "BSD-3-Clause"
+    },
+    "node_modules/@protobufjs/codegen": {
+      "version": "2.0.4",
+      "resolved": "https://registry.npmjs.org/@protobufjs/codegen/-/codegen-2.0.4.tgz",
+      "integrity": "sha512-YyFaikqM5sH0ziFZCN3xDC7zeGaB/d0IUb9CATugHWbd1FRFwWwt4ld4OYMPWu5a3Xe01mGAULCdqhMlPl29Jg==",
+      "license": "BSD-3-Clause"
+    },
+    "node_modules/@protobufjs/eventemitter": {
+      "version": "1.1.0",
+      "resolved": "https://registry.npmjs.org/@protobufjs/eventemitter/-/eventemitter-1.1.0.tgz",
+      "integrity": "sha512-j9ednRT81vYJ9OfVuXG6ERSTdEL1xVsNgqpkxMsbIabzSo3goCjDIveeGv5d03om39ML71RdmrGNjG5SReBP/Q==",
+      "license": "BSD-3-Clause"
+    },
+    "node_modules/@protobufjs/fetch": {
+      "version": "1.1.0",
+      "resolved": "https://registry.npmjs.org/@protobufjs/fetch/-/fetch-1.1.0.tgz",
+      "integrity": "sha512-lljVXpqXebpsijW71PZaCYeIcE5on1w5DlQy5WH6GLbFryLUrBD4932W/E2BSpfRJWseIL4v/KPgBFxDOIdKpQ==",
+      "license": "BSD-3-Clause",
+      "dependencies": {
+        "@protobufjs/aspromise": "^1.1.1",
+        "@protobufjs/inquire": "^1.1.0"
+      }
+    },
+    "node_modules/@protobufjs/float": {
+      "version": "1.0.2",
+      "resolved": "https://registry.npmjs.org/@protobufjs/float/-/float-1.0.2.tgz",
+      "integrity": "sha512-Ddb+kVXlXst9d+R9PfTIxh1EdNkgoRe5tOX6t01f1lYWOvJnSPDBlG241QLzcyPdoNTsblLUdujGSE4RzrTZGQ==",
+      "license": "BSD-3-Clause"
+    },
+    "node_modules/@protobufjs/inquire": {
+      "version": "1.1.0",
+      "resolved": "https://registry.npmjs.org/@protobufjs/inquire/-/inquire-1.1.0.tgz",
+      "integrity": "sha512-kdSefcPdruJiFMVSbn801t4vFK7KB/5gd2fYvrxhuJYg8ILrmn9SKSX2tZdV6V+ksulWqS7aXjBcRXl3wHoD9Q==",
+      "license": "BSD-3-Clause"
+    },
+    "node_modules/@protobufjs/path": {
+      "version": "1.1.2",
+      "resolved": "https://registry.npmjs.org/@protobufjs/path/-/path-1.1.2.tgz",
+      "integrity": "sha512-6JOcJ5Tm08dOHAbdR3GrvP+yUUfkjG5ePsHYczMFLq3ZmMkAD98cDgcT2iA1lJ9NVwFd4tH/iSSoe44YWkltEA==",
+      "license": "BSD-3-Clause"
+    },
+    "node_modules/@protobufjs/pool": {
+      "version": "1.1.0",
+      "resolved": "https://registry.npmjs.org/@protobufjs/pool/-/pool-1.1.0.tgz",
+      "integrity": "sha512-0kELaGSIDBKvcgS4zkjz1PeddatrjYcmMWOlAuAPwAeccUrPHdUqo/J6LiymHHEiJT5NrF1UVwxY14f+fy4WQw==",
+      "license": "BSD-3-Clause"
+    },
+    "node_modules/@protobufjs/utf8": {
+      "version": "1.1.0",
+      "resolved": "https://registry.npmjs.org/@protobufjs/utf8/-/utf8-1.1.0.tgz",
+      "integrity": "sha512-Vvn3zZrhQZkkBE8LSuW3em98c0FwgO4nxzv6OdSxPKJIEKY2bGbHn+mhGIPerzI4twdxaP8/0+06HBpwf345Lw==",
+      "license": "BSD-3-Clause"
+    },
+    "node_modules/@rolldown/pluginutils": {
+      "version": "1.0.0-beta.38",
+      "resolved": "https://registry.npmjs.org/@rolldown/pluginutils/-/pluginutils-1.0.0-beta.38.tgz",
+      "integrity": "sha512-N/ICGKleNhA5nc9XXQG/kkKHJ7S55u0x0XUJbbkmdCnFuoRkM1Il12q9q0eX19+M7KKUEPw/daUPIRnxhcxAIw==",
+      "dev": true,
+      "license": "MIT"
+    },
+    "node_modules/@rollup/rollup-android-arm-eabi": {
+      "version": "4.52.5",
+      "resolved": "https://registry.npmjs.org/@rollup/rollup-android-arm-eabi/-/rollup-android-arm-eabi-4.52.5.tgz",
+      "integrity": "sha512-8c1vW4ocv3UOMp9K+gToY5zL2XiiVw3k7f1ksf4yO1FlDFQ1C2u72iACFnSOceJFsWskc2WZNqeRhFRPzv+wtQ==",
+      "cpu": [
+        "arm"
+      ],
+      "dev": true,
+      "license": "MIT",
+      "optional": true,
+      "os": [
+        "android"
+      ]
+    },
+    "node_modules/@rollup/rollup-android-arm64": {
+      "version": "4.52.5",
+      "resolved": "https://registry.npmjs.org/@rollup/rollup-android-arm64/-/rollup-android-arm64-4.52.5.tgz",
+      "integrity": "sha512-mQGfsIEFcu21mvqkEKKu2dYmtuSZOBMmAl5CFlPGLY94Vlcm+zWApK7F/eocsNzp8tKmbeBP8yXyAbx0XHsFNA==",
+      "cpu": [
+        "arm64"
+      ],
+      "dev": true,
+      "license": "MIT",
+      "optional": true,
+      "os": [
+        "android"
+      ]
+    },
+    "node_modules/@rollup/rollup-darwin-arm64": {
+      "version": "4.52.5",
+      "resolved": "https://registry.npmjs.org/@rollup/rollup-darwin-arm64/-/rollup-darwin-arm64-4.52.5.tgz",
+      "integrity": "sha512-takF3CR71mCAGA+v794QUZ0b6ZSrgJkArC+gUiG6LB6TQty9T0Mqh3m2ImRBOxS2IeYBo4lKWIieSvnEk2OQWA==",
+      "cpu": [
+        "arm64"
+      ],
+      "dev": true,
+      "license": "MIT",
+      "optional": true,
+      "os": [
+        "darwin"
+      ]
+    },
+    "node_modules/@rollup/rollup-darwin-x64": {
+      "version": "4.52.5",
+      "resolved": "https://registry.npmjs.org/@rollup/rollup-darwin-x64/-/rollup-darwin-x64-4.52.5.tgz",
+      "integrity": "sha512-W901Pla8Ya95WpxDn//VF9K9u2JbocwV/v75TE0YIHNTbhqUTv9w4VuQ9MaWlNOkkEfFwkdNhXgcLqPSmHy0fA==",
+      "cpu": [
+        "x64"
+      ],
+      "dev": true,
+      "license": "MIT",
+      "optional": true,
+      "os": [
+        "darwin"
+      ]
+    },
+    "node_modules/@rollup/rollup-freebsd-arm64": {
+      "version": "4.52.5",
+      "resolved": "https://registry.npmjs.org/@rollup/rollup-freebsd-arm64/-/rollup-freebsd-arm64-4.52.5.tgz",
+      "integrity": "sha512-QofO7i7JycsYOWxe0GFqhLmF6l1TqBswJMvICnRUjqCx8b47MTo46W8AoeQwiokAx3zVryVnxtBMcGcnX12LvA==",
+      "cpu": [
+        "arm64"
+      ],
+      "dev": true,
+      "license": "MIT",
+      "optional": true,
+      "os": [
+        "freebsd"
+      ]
+    },
+    "node_modules/@rollup/rollup-freebsd-x64": {
+      "version": "4.52.5",
+      "resolved": "https://registry.npmjs.org/@rollup/rollup-freebsd-x64/-/rollup-freebsd-x64-4.52.5.tgz",
+      "integrity": "sha512-jr21b/99ew8ujZubPo9skbrItHEIE50WdV86cdSoRkKtmWa+DDr6fu2c/xyRT0F/WazZpam6kk7IHBerSL7LDQ==",
+      "cpu": [
+        "x64"
+      ],
+      "dev": true,
+      "license": "MIT",
+      "optional": true,
+      "os": [
+        "freebsd"
+      ]
+    },
+    "node_modules/@rollup/rollup-linux-arm-gnueabihf": {
+      "version": "4.52.5",
+      "resolved": "https://registry.npmjs.org/@rollup/rollup-linux-arm-gnueabihf/-/rollup-linux-arm-gnueabihf-4.52.5.tgz",
+      "integrity": "sha512-PsNAbcyv9CcecAUagQefwX8fQn9LQ4nZkpDboBOttmyffnInRy8R8dSg6hxxl2Re5QhHBf6FYIDhIj5v982ATQ==",
+      "cpu": [
+        "arm"
+      ],
+      "dev": true,
+      "license": "MIT",
+      "optional": true,
+      "os": [
+        "linux"
+      ]
+    },
+    "node_modules/@rollup/rollup-linux-arm-musleabihf": {
+      "version": "4.52.5",
+      "resolved": "https://registry.npmjs.org/@rollup/rollup-linux-arm-musleabihf/-/rollup-linux-arm-musleabihf-4.52.5.tgz",
+      "integrity": "sha512-Fw4tysRutyQc/wwkmcyoqFtJhh0u31K+Q6jYjeicsGJJ7bbEq8LwPWV/w0cnzOqR2m694/Af6hpFayLJZkG2VQ==",
+      "cpu": [
+        "arm"
+      ],
+      "dev": true,
+      "license": "MIT",
+      "optional": true,
+      "os": [
+        "linux"
+      ]
+    },
+    "node_modules/@rollup/rollup-linux-arm64-gnu": {
+      "version": "4.52.5",
+      "resolved": "https://registry.npmjs.org/@rollup/rollup-linux-arm64-gnu/-/rollup-linux-arm64-gnu-4.52.5.tgz",
+      "integrity": "sha512-a+3wVnAYdQClOTlyapKmyI6BLPAFYs0JM8HRpgYZQO02rMR09ZcV9LbQB+NL6sljzG38869YqThrRnfPMCDtZg==",
+      "cpu": [
+        "arm64"
+      ],
+      "dev": true,
+      "license": "MIT",
+      "optional": true,
+      "os": [
+        "linux"
+      ]
+    },
+    "node_modules/@rollup/rollup-linux-arm64-musl": {
+      "version": "4.52.5",
+      "resolved": "https://registry.npmjs.org/@rollup/rollup-linux-arm64-musl/-/rollup-linux-arm64-musl-4.52.5.tgz",
+      "integrity": "sha512-AvttBOMwO9Pcuuf7m9PkC1PUIKsfaAJ4AYhy944qeTJgQOqJYJ9oVl2nYgY7Rk0mkbsuOpCAYSs6wLYB2Xiw0Q==",
+      "cpu": [
+        "arm64"
+      ],
+      "dev": true,
+      "license": "MIT",
+      "optional": true,
+      "os": [
+        "linux"
+      ]
+    },
+    "node_modules/@rollup/rollup-linux-loong64-gnu": {
+      "version": "4.52.5",
+      "resolved": "https://registry.npmjs.org/@rollup/rollup-linux-loong64-gnu/-/rollup-linux-loong64-gnu-4.52.5.tgz",
+      "integrity": "sha512-DkDk8pmXQV2wVrF6oq5tONK6UHLz/XcEVow4JTTerdeV1uqPeHxwcg7aFsfnSm9L+OO8WJsWotKM2JJPMWrQtA==",
+      "cpu": [
+        "loong64"
+      ],
+      "dev": true,
+      "license": "MIT",
+      "optional": true,
+      "os": [
+        "linux"
+      ]
+    },
+    "node_modules/@rollup/rollup-linux-ppc64-gnu": {
+      "version": "4.52.5",
+      "resolved": "https://registry.npmjs.org/@rollup/rollup-linux-ppc64-gnu/-/rollup-linux-ppc64-gnu-4.52.5.tgz",
+      "integrity": "sha512-W/b9ZN/U9+hPQVvlGwjzi+Wy4xdoH2I8EjaCkMvzpI7wJUs8sWJ03Rq96jRnHkSrcHTpQe8h5Tg3ZzUPGauvAw==",
+      "cpu": [
+        "ppc64"
+      ],
+      "dev": true,
+      "license": "MIT",
+      "optional": true,
+      "os": [
+        "linux"
+      ]
+    },
+    "node_modules/@rollup/rollup-linux-riscv64-gnu": {
+      "version": "4.52.5",
+      "resolved": "https://registry.npmjs.org/@rollup/rollup-linux-riscv64-gnu/-/rollup-linux-riscv64-gnu-4.52.5.tgz",
+      "integrity": "sha512-sjQLr9BW7R/ZiXnQiWPkErNfLMkkWIoCz7YMn27HldKsADEKa5WYdobaa1hmN6slu9oWQbB6/jFpJ+P2IkVrmw==",
+      "cpu": [
+        "riscv64"
+      ],
+      "dev": true,
+      "license": "MIT",
+      "optional": true,
+      "os": [
+        "linux"
+      ]
+    },
+    "node_modules/@rollup/rollup-linux-riscv64-musl": {
+      "version": "4.52.5",
+      "resolved": "https://registry.npmjs.org/@rollup/rollup-linux-riscv64-musl/-/rollup-linux-riscv64-musl-4.52.5.tgz",
+      "integrity": "sha512-hq3jU/kGyjXWTvAh2awn8oHroCbrPm8JqM7RUpKjalIRWWXE01CQOf/tUNWNHjmbMHg/hmNCwc/Pz3k1T/j/Lg==",
+      "cpu": [
+        "riscv64"
+      ],
+      "dev": true,
+      "license": "MIT",
+      "optional": true,
+      "os": [
+        "linux"
+      ]
+    },
+    "node_modules/@rollup/rollup-linux-s390x-gnu": {
+      "version": "4.52.5",
+      "resolved": "https://registry.npmjs.org/@rollup/rollup-linux-s390x-gnu/-/rollup-linux-s390x-gnu-4.52.5.tgz",
+      "integrity": "sha512-gn8kHOrku8D4NGHMK1Y7NA7INQTRdVOntt1OCYypZPRt6skGbddska44K8iocdpxHTMMNui5oH4elPH4QOLrFQ==",
+      "cpu": [
+        "s390x"
+      ],
+      "dev": true,
+      "license": "MIT",
+      "optional": true,
+      "os": [
+        "linux"
+      ]
+    },
+    "node_modules/@rollup/rollup-linux-x64-gnu": {
+      "version": "4.52.5",
+      "resolved": "https://registry.npmjs.org/@rollup/rollup-linux-x64-gnu/-/rollup-linux-x64-gnu-4.52.5.tgz",
+      "integrity": "sha512-hXGLYpdhiNElzN770+H2nlx+jRog8TyynpTVzdlc6bndktjKWyZyiCsuDAlpd+j+W+WNqfcyAWz9HxxIGfZm1Q==",
+      "cpu": [
+        "x64"
+      ],
+      "dev": true,
+      "license": "MIT",
+      "optional": true,
+      "os": [
+        "linux"
+      ]
+    },
+    "node_modules/@rollup/rollup-linux-x64-musl": {
+      "version": "4.52.5",
+      "resolved": "https://registry.npmjs.org/@rollup/rollup-linux-x64-musl/-/rollup-linux-x64-musl-4.52.5.tgz",
+      "integrity": "sha512-arCGIcuNKjBoKAXD+y7XomR9gY6Mw7HnFBv5Rw7wQRvwYLR7gBAgV7Mb2QTyjXfTveBNFAtPt46/36vV9STLNg==",
+      "cpu": [
+        "x64"
+      ],
+      "dev": true,
+      "license": "MIT",
+      "optional": true,
+      "os": [
+        "linux"
+      ]
+    },
+    "node_modules/@rollup/rollup-openharmony-arm64": {
+      "version": "4.52.5",
+      "resolved": "https://registry.npmjs.org/@rollup/rollup-openharmony-arm64/-/rollup-openharmony-arm64-4.52.5.tgz",
+      "integrity": "sha512-QoFqB6+/9Rly/RiPjaomPLmR/13cgkIGfA40LHly9zcH1S0bN2HVFYk3a1eAyHQyjs3ZJYlXvIGtcCs5tko9Cw==",
+      "cpu": [
+        "arm64"
+      ],
+      "dev": true,
+      "license": "MIT",
+      "optional": true,
+      "os": [
+        "openharmony"
+      ]
+    },
+    "node_modules/@rollup/rollup-win32-arm64-msvc": {
+      "version": "4.52.5",
+      "resolved": "https://registry.npmjs.org/@rollup/rollup-win32-arm64-msvc/-/rollup-win32-arm64-msvc-4.52.5.tgz",
+      "integrity": "sha512-w0cDWVR6MlTstla1cIfOGyl8+qb93FlAVutcor14Gf5Md5ap5ySfQ7R9S/NjNaMLSFdUnKGEasmVnu3lCMqB7w==",
+      "cpu": [
+        "arm64"
+      ],
+      "dev": true,
+      "license": "MIT",
+      "optional": true,
+      "os": [
+        "win32"
+      ]
+    },
+    "node_modules/@rollup/rollup-win32-ia32-msvc": {
+      "version": "4.52.5",
+      "resolved": "https://registry.npmjs.org/@rollup/rollup-win32-ia32-msvc/-/rollup-win32-ia32-msvc-4.52.5.tgz",
+      "integrity": "sha512-Aufdpzp7DpOTULJCuvzqcItSGDH73pF3ko/f+ckJhxQyHtp67rHw3HMNxoIdDMUITJESNE6a8uh4Lo4SLouOUg==",
+      "cpu": [
+        "ia32"
+      ],
+      "dev": true,
+      "license": "MIT",
+      "optional": true,
+      "os": [
+        "win32"
+      ]
+    },
+    "node_modules/@rollup/rollup-win32-x64-gnu": {
+      "version": "4.52.5",
+      "resolved": "https://registry.npmjs.org/@rollup/rollup-win32-x64-gnu/-/rollup-win32-x64-gnu-4.52.5.tgz",
+      "integrity": "sha512-UGBUGPFp1vkj6p8wCRraqNhqwX/4kNQPS57BCFc8wYh0g94iVIW33wJtQAx3G7vrjjNtRaxiMUylM0ktp/TRSQ==",
+      "cpu": [
+        "x64"
+      ],
+      "dev": true,
+      "license": "MIT",
+      "optional": true,
+      "os": [
+        "win32"
+      ]
+    },
+    "node_modules/@rollup/rollup-win32-x64-msvc": {
+      "version": "4.52.5",
+      "resolved": "https://registry.npmjs.org/@rollup/rollup-win32-x64-msvc/-/rollup-win32-x64-msvc-4.52.5.tgz",
+      "integrity": "sha512-TAcgQh2sSkykPRWLrdyy2AiceMckNf5loITqXxFI5VuQjS5tSuw3WlwdN8qv8vzjLAUTvYaH/mVjSFpbkFbpTg==",
+      "cpu": [
+        "x64"
+      ],
+      "dev": true,
+      "license": "MIT",
+      "optional": true,
+      "os": [
+        "win32"
+      ]
+    },
+    "node_modules/@types/babel__core": {
+      "version": "7.20.5",
+      "resolved": "https://registry.npmjs.org/@types/babel__core/-/babel__core-7.20.5.tgz",
+      "integrity": "sha512-qoQprZvz5wQFJwMDqeseRXWv3rqMvhgpbXFfVyWhbx9X47POIA6i/+dXefEmZKoAgOaTdaIgNSMqMIU61yRyzA==",
+      "dev": true,
+      "license": "MIT",
+      "dependencies": {
+        "@babel/parser": "^7.20.7",
+        "@babel/types": "^7.20.7",
+        "@types/babel__generator": "*",
+        "@types/babel__template": "*",
+        "@types/babel__traverse": "*"
+      }
+    },
+    "node_modules/@types/babel__generator": {
+      "version": "7.27.0",
+      "resolved": "https://registry.npmjs.org/@types/babel__generator/-/babel__generator-7.27.0.tgz",
+      "integrity": "sha512-ufFd2Xi92OAVPYsy+P4n7/U7e68fex0+Ee8gSG9KX7eo084CWiQ4sdxktvdl0bOPupXtVJPY19zk6EwWqUQ8lg==",
+      "dev": true,
+      "license": "MIT",
+      "dependencies": {
+        "@babel/types": "^7.0.0"
+      }
+    },
+    "node_modules/@types/babel__template": {
+      "version": "7.4.4",
+      "resolved": "https://registry.npmjs.org/@types/babel__template/-/babel__template-7.4.4.tgz",
+      "integrity": "sha512-h/NUaSyG5EyxBIp8YRxo4RMe2/qQgvyowRwVMzhYhBCONbW8PUsg4lkFMrhgZhUe5z3L3MiLDuvyJ/CaPa2A8A==",
+      "dev": true,
+      "license": "MIT",
+      "dependencies": {
+        "@babel/parser": "^7.1.0",
+        "@babel/types": "^7.0.0"
+      }
+    },
+    "node_modules/@types/babel__traverse": {
+      "version": "7.28.0",
+      "resolved": "https://registry.npmjs.org/@types/babel__traverse/-/babel__traverse-7.28.0.tgz",
+      "integrity": "sha512-8PvcXf70gTDZBgt9ptxJ8elBeBjcLOAcOtoO/mPJjtji1+CdGbHgm77om1GrsPxsiE+uXIpNSK64UYaIwQXd4Q==",
+      "dev": true,
+      "license": "MIT",
+      "dependencies": {
+        "@babel/types": "^7.28.2"
+      }
+    },
+    "node_modules/@types/estree": {
+      "version": "1.0.8",
+      "resolved": "https://registry.npmjs.org/@types/estree/-/estree-1.0.8.tgz",
+      "integrity": "sha512-dWHzHa2WqEXI/O1E9OjrocMTKJl2mSrEolh1Iomrv6U+JuNwaHXsXx9bLu5gG7BUWFIN0skIQJQ/L1rIex4X6w==",
+      "dev": true,
+      "license": "MIT"
+    },
+    "node_modules/@types/json-schema": {
+      "version": "7.0.15",
+      "resolved": "https://registry.npmjs.org/@types/json-schema/-/json-schema-7.0.15.tgz",
+      "integrity": "sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==",
+      "dev": true,
+      "license": "MIT"
+    },
+    "node_modules/@types/node": {
+      "version": "24.9.1",
+      "resolved": "https://registry.npmjs.org/@types/node/-/node-24.9.1.tgz",
+      "integrity": "sha512-QoiaXANRkSXK6p0Duvt56W208du4P9Uye9hWLWgGMDTEoKPhuenzNcC4vGUmrNkiOKTlIrBoyNQYNpSwfEZXSg==",
+      "license": "MIT",
+      "dependencies": {
+        "undici-types": "~7.16.0"
+      }
+    },
+    "node_modules/@types/react": {
+      "version": "19.2.2",
+      "resolved": "https://registry.npmjs.org/@types/react/-/react-19.2.2.tgz",
+      "integrity": "sha512-6mDvHUFSjyT2B2yeNx2nUgMxh9LtOWvkhIU3uePn2I2oyNymUAX1NIsdgviM4CH+JSrp2D2hsMvJOkxY+0wNRA==",
+      "dev": true,
+      "license": "MIT",
+      "dependencies": {
+        "csstype": "^3.0.2"
+      }
+    },
+    "node_modules/@types/react-dom": {
+      "version": "19.2.2",
+      "resolved": "https://registry.npmjs.org/@types/react-dom/-/react-dom-19.2.2.tgz",
+      "integrity": "sha512-9KQPoO6mZCi7jcIStSnlOWn2nEF3mNmyr3rIAsGnAbQKYbRLyqmeSc39EVgtxXVia+LMT8j3knZLAZAh+xLmrw==",
+      "dev": true,
+      "license": "MIT",
+      "peerDependencies": {
+        "@types/react": "^19.2.0"
+      }
+    },
+    "node_modules/@vitejs/plugin-react": {
+      "version": "5.0.4",
+      "resolved": "https://registry.npmjs.org/@vitejs/plugin-react/-/plugin-react-5.0.4.tgz",
+      "integrity": "sha512-La0KD0vGkVkSk6K+piWDKRUyg8Rl5iAIKRMH0vMJI0Eg47bq1eOxmoObAaQG37WMW9MSyk7Cs8EIWwJC1PtzKA==",
+      "dev": true,
+      "license": "MIT",
+      "dependencies": {
+        "@babel/core": "^7.28.4",
+        "@babel/plugin-transform-react-jsx-self": "^7.27.1",
+        "@babel/plugin-transform-react-jsx-source": "^7.27.1",
+        "@rolldown/pluginutils": "1.0.0-beta.38",
+        "@types/babel__core": "^7.20.5",
+        "react-refresh": "^0.17.0"
+      },
+      "engines": {
+        "node": "^20.19.0 || >=22.12.0"
+      },
+      "peerDependencies": {
+        "vite": "^4.2.0 || ^5.0.0 || ^6.0.0 || ^7.0.0"
+      }
+    },
+    "node_modules/acorn": {
+      "version": "8.15.0",
+      "resolved": "https://registry.npmjs.org/acorn/-/acorn-8.15.0.tgz",
+      "integrity": "sha512-NZyJarBfL7nWwIq+FDL6Zp/yHEhePMNnnJ0y3qfieCrmNvYct8uvtiV41UvlSe6apAfk0fY1FbWx+NwfmpvtTg==",
+      "dev": true,
+      "license": "MIT",
+      "bin": {
+        "acorn": "bin/acorn"
+      },
+      "engines": {
+        "node": ">=0.4.0"
+      }
+    },
+    "node_modules/acorn-jsx": {
+      "version": "5.3.2",
+      "resolved": "https://registry.npmjs.org/acorn-jsx/-/acorn-jsx-5.3.2.tgz",
+      "integrity": "sha512-rq9s+JNhf0IChjtDXxllJ7g41oZk5SlXtp0LHwyA5cejwn7vKmKp4pPri6YEePv2PU65sAsegbXtIinmDFDXgQ==",
+      "dev": true,
+      "license": "MIT",
+      "peerDependencies": {
+        "acorn": "^6.0.0 || ^7.0.0 || ^8.0.0"
+      }
+    },
+    "node_modules/ajv": {
+      "version": "6.12.6",
+      "resolved": "https://registry.npmjs.org/ajv/-/ajv-6.12.6.tgz",
+      "integrity": "sha512-j3fVLgvTo527anyYyJOGTYJbG+vnnQYvE0m5mmkc1TK+nxAppkCLMIL0aZ4dblVCNoGShhm+kzE4ZUykBoMg4g==",
+      "dev": true,
+      "license": "MIT",
+      "dependencies": {
+        "fast-deep-equal": "^3.1.1",
+        "fast-json-stable-stringify": "^2.0.0",
+        "json-schema-traverse": "^0.4.1",
+        "uri-js": "^4.2.2"
+      },
+      "funding": {
+        "type": "github",
+        "url": "https://github.com/sponsors/epoberezkin"
+      }
+    },
+    "node_modules/ansi-regex": {
+      "version": "5.0.1",
+      "resolved": "https://registry.npmjs.org/ansi-regex/-/ansi-regex-5.0.1.tgz",
+      "integrity": "sha512-quJQXlTSUGL2LH9SUXo8VwsY4soanhgo6LNSm84E1LBcE8s3O0wpdiRzyR9z/ZZJMlMWv37qOOb9pdJlMUEKFQ==",
+      "license": "MIT",
+      "engines": {
+        "node": ">=8"
+      }
+    },
+    "node_modules/ansi-styles": {
+      "version": "4.3.0",
+      "resolved": "https://registry.npmjs.org/ansi-styles/-/ansi-styles-4.3.0.tgz",
+      "integrity": "sha512-zbB9rCJAT1rbjiVDb2hqKFHNYLxgtk8NURxZ3IZwD3F6NtxbXZQCnnSi1Lkx+IDohdPlFp222wVALIheZJQSEg==",
+      "license": "MIT",
+      "dependencies": {
+        "color-convert": "^2.0.1"
+      },
+      "engines": {
+        "node": ">=8"
+      },
+      "funding": {
+        "url": "https://github.com/chalk/ansi-styles?sponsor=1"
+      }
+    },
+    "node_modules/argparse": {
+      "version": "2.0.1",
+      "resolved": "https://registry.npmjs.org/argparse/-/argparse-2.0.1.tgz",
+      "integrity": "sha512-8+9WqebbFzpX9OR+Wa6O29asIogeRMzcGtAINdpMHHyAg10f05aSFVBbcEqGf/PXw1EjAZ+q2/bEBg3DvurK3Q==",
+      "dev": true,
+      "license": "Python-2.0"
+    },
+    "node_modules/asynckit": {
+      "version": "0.4.0",
+      "resolved": "https://registry.npmjs.org/asynckit/-/asynckit-0.4.0.tgz",
+      "integrity": "sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==",
+      "license": "MIT"
+    },
+    "node_modules/axios": {
+      "version": "1.12.2",
+      "resolved": "https://registry.npmjs.org/axios/-/axios-1.12.2.tgz",
+      "integrity": "sha512-vMJzPewAlRyOgxV2dU0Cuz2O8zzzx9VYtbJOaBgXFeLc4IV/Eg50n4LowmehOOR61S8ZMpc2K5Sa7g6A4jfkUw==",
+      "license": "MIT",
+      "dependencies": {
+        "follow-redirects": "^1.15.6",
+        "form-data": "^4.0.4",
+        "proxy-from-env": "^1.1.0"
+      }
+    },
+    "node_modules/balanced-match": {
+      "version": "1.0.2",
+      "resolved": "https://registry.npmjs.org/balanced-match/-/balanced-match-1.0.2.tgz",
+      "integrity": "sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==",
+      "dev": true,
+      "license": "MIT"
+    },
+    "node_modules/baseline-browser-mapping": {
+      "version": "2.8.18",
+      "resolved": "https://registry.npmjs.org/baseline-browser-mapping/-/baseline-browser-mapping-2.8.18.tgz",
+      "integrity": "sha512-UYmTpOBwgPScZpS4A+YbapwWuBwasxvO/2IOHArSsAhL/+ZdmATBXTex3t+l2hXwLVYK382ibr/nKoY9GKe86w==",
+      "dev": true,
+      "license": "Apache-2.0",
+      "bin": {
+        "baseline-browser-mapping": "dist/cli.js"
+      }
+    },
+    "node_modules/bootstrap": {
+      "version": "5.3.8",
+      "resolved": "https://registry.npmjs.org/bootstrap/-/bootstrap-5.3.8.tgz",
+      "integrity": "sha512-HP1SZDqaLDPwsNiqRqi5NcP0SSXciX2s9E+RyqJIIqGo+vJeN5AJVM98CXmW/Wux0nQ5L7jeWUdplCEf0Ee+tg==",
+      "funding": [
+        {
+          "type": "github",
+          "url": "https://github.com/sponsors/twbs"
+        },
+        {
+          "type": "opencollective",
+          "url": "https://opencollective.com/bootstrap"
+        }
+      ],
+      "license": "MIT",
+      "peerDependencies": {
+        "@popperjs/core": "^2.11.8"
+      }
+    },
+    "node_modules/brace-expansion": {
+      "version": "1.1.12",
+      "resolved": "https://registry.npmjs.org/brace-expansion/-/brace-expansion-1.1.12.tgz",
+      "integrity": "sha512-9T9UjW3r0UW5c1Q7GTwllptXwhvYmEzFhzMfZ9H7FQWt+uZePjZPjBP/W1ZEyZ1twGWom5/56TF4lPcqjnDHcg==",
+      "dev": true,
+      "license": "MIT",
+      "dependencies": {
+        "balanced-match": "^1.0.0",
+        "concat-map": "0.0.1"
+      }
+    },
+    "node_modules/browserslist": {
+      "version": "4.26.3",
+      "resolved": "https://registry.npmjs.org/browserslist/-/browserslist-4.26.3.tgz",
+      "integrity": "sha512-lAUU+02RFBuCKQPj/P6NgjlbCnLBMp4UtgTx7vNHd3XSIJF87s9a5rA3aH2yw3GS9DqZAUbOtZdCCiZeVRqt0w==",
+      "dev": true,
+      "funding": [
+        {
+          "type": "opencollective",
+          "url": "https://opencollective.com/browserslist"
+        },
+        {
+          "type": "tidelift",
+          "url": "https://tidelift.com/funding/github/npm/browserslist"
+        },
+        {
+          "type": "github",
+          "url": "https://github.com/sponsors/ai"
+        }
+      ],
+      "license": "MIT",
+      "dependencies": {
+        "baseline-browser-mapping": "^2.8.9",
+        "caniuse-lite": "^1.0.30001746",
+        "electron-to-chromium": "^1.5.227",
+        "node-releases": "^2.0.21",
+        "update-browserslist-db": "^1.1.3"
+      },
+      "bin": {
+        "browserslist": "cli.js"
+      },
+      "engines": {
+        "node": "^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7"
+      }
+    },
+    "node_modules/call-bind-apply-helpers": {
+      "version": "1.0.2",
+      "resolved": "https://registry.npmjs.org/call-bind-apply-helpers/-/call-bind-apply-helpers-1.0.2.tgz",
+      "integrity": "sha512-Sp1ablJ0ivDkSzjcaJdxEunN5/XvksFJ2sMBFfq6x0ryhQV/2b/KwFe21cMpmHtPOSij8K99/wSfoEuTObmuMQ==",
+      "license": "MIT",
+      "dependencies": {
+        "es-errors": "^1.3.0",
+        "function-bind": "^1.1.2"
+      },
+      "engines": {
+        "node": ">= 0.4"
+      }
+    },
+    "node_modules/callsites": {
+      "version": "3.1.0",
+      "resolved": "https://registry.npmjs.org/callsites/-/callsites-3.1.0.tgz",
+      "integrity": "sha512-P8BjAsXvZS+VIDUI11hHCQEv74YT67YUi5JJFNWIqL235sBmjX4+qx9Muvls5ivyNENctx46xQLQ3aTuE7ssaQ==",
+      "dev": true,
+      "license": "MIT",
+      "engines": {
+        "node": ">=6"
+      }
+    },
+    "node_modules/caniuse-lite": {
+      "version": "1.0.30001751",
+      "resolved": "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001751.tgz",
+      "integrity": "sha512-A0QJhug0Ly64Ii3eIqHu5X51ebln3k4yTUkY1j8drqpWHVreg/VLijN48cZ1bYPiqOQuqpkIKnzr/Ul8V+p6Cw==",
+      "dev": true,
+      "funding": [
+        {
+          "type": "opencollective",
+          "url": "https://opencollective.com/browserslist"
+        },
+        {
+          "type": "tidelift",
+          "url": "https://tidelift.com/funding/github/npm/caniuse-lite"
+        },
+        {
+          "type": "github",
+          "url": "https://github.com/sponsors/ai"
+        }
+      ],
+      "license": "CC-BY-4.0"
+    },
+    "node_modules/chalk": {
+      "version": "4.1.2",
+      "resolved": "https://registry.npmjs.org/chalk/-/chalk-4.1.2.tgz",
+      "integrity": "sha512-oKnbhFyRIXpUuez8iBMmyEa4nbj4IOQyuhc/wy9kY7/WVPcwIO9VA668Pu8RkO7+0G76SLROeyw9CpQ061i4mA==",
+      "dev": true,
+      "license": "MIT",
+      "dependencies": {
+        "ansi-styles": "^4.1.0",
+        "supports-color": "^7.1.0"
+      },
+      "engines": {
+        "node": ">=10"
+      },
+      "funding": {
+        "url": "https://github.com/chalk/chalk?sponsor=1"
+      }
+    },
+    "node_modules/cliui": {
+      "version": "8.0.1",
+      "resolved": "https://registry.npmjs.org/cliui/-/cliui-8.0.1.tgz",
+      "integrity": "sha512-BSeNnyus75C4//NQ9gQt1/csTXyo/8Sb+afLAkzAptFuMsod9HFokGNudZpi/oQV73hnVK+sR+5PVRMd+Dr7YQ==",
+      "license": "ISC",
+      "dependencies": {
+        "string-width": "^4.2.0",
+        "strip-ansi": "^6.0.1",
+        "wrap-ansi": "^7.0.0"
+      },
+      "engines": {
+        "node": ">=12"
+      }
+    },
+    "node_modules/color-convert": {
+      "version": "2.0.1",
+      "resolved": "https://registry.npmjs.org/color-convert/-/color-convert-2.0.1.tgz",
+      "integrity": "sha512-RRECPsj7iu/xb5oKYcsFHSppFNnsj/52OVTRKb4zP5onXwVF3zVmmToNcOfGC+CRDpfK/U584fMg38ZHCaElKQ==",
+      "license": "MIT",
+      "dependencies": {
+        "color-name": "~1.1.4"
+      },
+      "engines": {
+        "node": ">=7.0.0"
+      }
+    },
+    "node_modules/color-name": {
+      "version": "1.1.4",
+      "resolved": "https://registry.npmjs.org/color-name/-/color-name-1.1.4.tgz",
+      "integrity": "sha512-dOy+3AuW3a2wNbZHIuMZpTcgjGuLU/uBL/ubcZF9OXbDo8ff4O8yVp5Bf0efS8uEoYo5q4Fx7dY9OgQGXgAsQA==",
+      "license": "MIT"
+    },
+    "node_modules/combined-stream": {
+      "version": "1.0.8",
+      "resolved": "https://registry.npmjs.org/combined-stream/-/combined-stream-1.0.8.tgz",
+      "integrity": "sha512-FQN4MRfuJeHf7cBbBMJFXhKSDq+2kAArBlmRBvcvFE5BB1HZKXtSFASDhdlz9zOYwxh8lDdnvmMOe/+5cdoEdg==",
+      "license": "MIT",
+      "dependencies": {
+        "delayed-stream": "~1.0.0"
+      },
+      "engines": {
+        "node": ">= 0.8"
+      }
+    },
+    "node_modules/concat-map": {
+      "version": "0.0.1",
+      "resolved": "https://registry.npmjs.org/concat-map/-/concat-map-0.0.1.tgz",
+      "integrity": "sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==",
+      "dev": true,
+      "license": "MIT"
+    },
+    "node_modules/convert-source-map": {
+      "version": "2.0.0",
+      "resolved": "https://registry.npmjs.org/convert-source-map/-/convert-source-map-2.0.0.tgz",
+      "integrity": "sha512-Kvp459HrV2FEJ1CAsi1Ku+MY3kasH19TFykTz2xWmMeq6bk2NU3XXvfJ+Q61m0xktWwt+1HSYf3JZsTms3aRJg==",
+      "dev": true,
+      "license": "MIT"
+    },
+    "node_modules/cookie": {
+      "version": "1.0.2",
+      "resolved": "https://registry.npmjs.org/cookie/-/cookie-1.0.2.tgz",
+      "integrity": "sha512-9Kr/j4O16ISv8zBBhJoi4bXOYNTkFLOqSL3UDB0njXxCXNezjeyVrJyGOWtgfs/q2km1gwBcfH8q1yEGoMYunA==",
+      "license": "MIT",
+      "engines": {
+        "node": ">=18"
+      }
+    },
+    "node_modules/cross-spawn": {
+      "version": "7.0.6",
+      "resolved": "https://registry.npmjs.org/cross-spawn/-/cross-spawn-7.0.6.tgz",
+      "integrity": "sha512-uV2QOWP2nWzsy2aMp8aRibhi9dlzF5Hgh5SHaB9OiTGEyDTiJJyx0uy51QXdyWbtAHNua4XJzUKca3OzKUd3vA==",
+      "dev": true,
+      "license": "MIT",
+      "dependencies": {
+        "path-key": "^3.1.0",
+        "shebang-command": "^2.0.0",
+        "which": "^2.0.1"
+      },
+      "engines": {
+        "node": ">= 8"
+      }
+    },
+    "node_modules/csstype": {
+      "version": "3.1.3",
+      "resolved": "https://registry.npmjs.org/csstype/-/csstype-3.1.3.tgz",
+      "integrity": "sha512-M1uQkMl8rQK/szD0LNhtqxIPLpimGm8sOBwU7lLnCpSbTyY3yeU1Vc7l4KT5zT4s/yOxHH5O7tIuuLOCnLADRw==",
+      "license": "MIT"
+    },
+    "node_modules/debug": {
+      "version": "4.4.3",
+      "resolved": "https://registry.npmjs.org/debug/-/debug-4.4.3.tgz",
+      "integrity": "sha512-RGwwWnwQvkVfavKVt22FGLw+xYSdzARwm0ru6DhTVA3umU5hZc28V3kO4stgYryrTlLpuvgI9GiijltAjNbcqA==",
+      "dev": true,
+      "license": "MIT",
+      "dependencies": {
+        "ms": "^2.1.3"
+      },
+      "engines": {
+        "node": ">=6.0"
+      },
+      "peerDependenciesMeta": {
+        "supports-color": {
+          "optional": true
+        }
+      }
+    },
+    "node_modules/deep-is": {
+      "version": "0.1.4",
+      "resolved": "https://registry.npmjs.org/deep-is/-/deep-is-0.1.4.tgz",
+      "integrity": "sha512-oIPzksmTg4/MriiaYGO+okXDT7ztn/w3Eptv/+gSIdMdKsJo0u4CfYNFJPy+4SKMuCqGw2wxnA+URMg3t8a/bQ==",
+      "dev": true,
+      "license": "MIT"
+    },
+    "node_modules/delayed-stream": {
+      "version": "1.0.0",
+      "resolved": "https://registry.npmjs.org/delayed-stream/-/delayed-stream-1.0.0.tgz",
+      "integrity": "sha512-ZySD7Nf91aLB0RxL4KGrKHBXl7Eds1DAmEdcoVawXnLD7SDhpNgtuII2aAkg7a7QS41jxPSZ17p4VdGnMHk3MQ==",
+      "license": "MIT",
+      "engines": {
+        "node": ">=0.4.0"
+      }
+    },
+    "node_modules/dequal": {
+      "version": "2.0.3",
+      "resolved": "https://registry.npmjs.org/dequal/-/dequal-2.0.3.tgz",
+      "integrity": "sha512-0je+qPKHEMohvfRTCEo3CrPG6cAzAYgmzKyxRiYSSDkS6eGJdyVJm7WaYA5ECaAD9wLB2T4EEeymA5aFVcYXCA==",
+      "license": "MIT",
+      "engines": {
+        "node": ">=6"
+      }
+    },
+    "node_modules/dunder-proto": {
+      "version": "1.0.1",
+      "resolved": "https://registry.npmjs.org/dunder-proto/-/dunder-proto-1.0.1.tgz",
+      "integrity": "sha512-KIN/nDJBQRcXw0MLVhZE9iQHmG68qAVIBg9CqmUYjmQIhgij9U5MFvrqkUL5FbtyyzZuOeOt0zdeRe4UY7ct+A==",
+      "license": "MIT",
+      "dependencies": {
+        "call-bind-apply-helpers": "^1.0.1",
+        "es-errors": "^1.3.0",
+        "gopd": "^1.2.0"
+      },
+      "engines": {
+        "node": ">= 0.4"
+      }
+    },
+    "node_modules/electron-to-chromium": {
+      "version": "1.5.237",
+      "resolved": "https://registry.npmjs.org/electron-to-chromium/-/electron-to-chromium-1.5.237.tgz",
+      "integrity": "sha512-icUt1NvfhGLar5lSWH3tHNzablaA5js3HVHacQimfP8ViEBOQv+L7DKEuHdbTZ0SKCO1ogTJTIL1Gwk9S6Qvcg==",
+      "dev": true,
+      "license": "ISC"
+    },
+    "node_modules/emoji-regex": {
+      "version": "8.0.0",
+      "resolved": "https://registry.npmjs.org/emoji-regex/-/emoji-regex-8.0.0.tgz",
+      "integrity": "sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A==",
+      "license": "MIT"
+    },
+    "node_modules/es-define-property": {
+      "version": "1.0.1",
+      "resolved": "https://registry.npmjs.org/es-define-property/-/es-define-property-1.0.1.tgz",
+      "integrity": "sha512-e3nRfgfUZ4rNGL232gUgX06QNyyez04KdjFrF+LTRoOXmrOgFKDg4BCdsjW8EnT69eqdYGmRpJwiPVYNrCaW3g==",
+      "license": "MIT",
+      "engines": {
+        "node": ">= 0.4"
+      }
+    },
+    "node_modules/es-errors": {
+      "version": "1.3.0",
+      "resolved": "https://registry.npmjs.org/es-errors/-/es-errors-1.3.0.tgz",
+      "integrity": "sha512-Zf5H2Kxt2xjTvbJvP2ZWLEICxA6j+hAmMzIlypy4xcBg1vKVnx89Wy0GbS+kf5cwCVFFzdCFh2XSCFNULS6csw==",
+      "license": "MIT",
+      "engines": {
+        "node": ">= 0.4"
+      }
+    },
+    "node_modules/es-object-atoms": {
+      "version": "1.1.1",
+      "resolved": "https://registry.npmjs.org/es-object-atoms/-/es-object-atoms-1.1.1.tgz",
+      "integrity": "sha512-FGgH2h8zKNim9ljj7dankFPcICIK9Cp5bm+c2gQSYePhpaG5+esrLODihIorn+Pe6FGJzWhXQotPv73jTaldXA==",
+      "license": "MIT",
+      "dependencies": {
+        "es-errors": "^1.3.0"
+      },
+      "engines": {
+        "node": ">= 0.4"
+      }
+    },
+    "node_modules/es-set-tostringtag": {
+      "version": "2.1.0",
+      "resolved": "https://registry.npmjs.org/es-set-tostringtag/-/es-set-tostringtag-2.1.0.tgz",
+      "integrity": "sha512-j6vWzfrGVfyXxge+O0x5sh6cvxAog0a/4Rdd2K36zCMV5eJ+/+tOAngRO8cODMNWbVRdVlmGZQL2YS3yR8bIUA==",
+      "license": "MIT",
+      "dependencies": {
+        "es-errors": "^1.3.0",
+        "get-intrinsic": "^1.2.6",
+        "has-tostringtag": "^1.0.2",
+        "hasown": "^2.0.2"
+      },
+      "engines": {
+        "node": ">= 0.4"
+      }
+    },
+    "node_modules/esbuild": {
+      "version": "0.25.11",
+      "resolved": "https://registry.npmjs.org/esbuild/-/esbuild-0.25.11.tgz",
+      "integrity": "sha512-KohQwyzrKTQmhXDW1PjCv3Tyspn9n5GcY2RTDqeORIdIJY8yKIF7sTSopFmn/wpMPW4rdPXI0UE5LJLuq3bx0Q==",
+      "dev": true,
+      "hasInstallScript": true,
+      "license": "MIT",
+      "bin": {
+        "esbuild": "bin/esbuild"
+      },
+      "engines": {
+        "node": ">=18"
+      },
+      "optionalDependencies": {
+        "@esbuild/aix-ppc64": "0.25.11",
+        "@esbuild/android-arm": "0.25.11",
+        "@esbuild/android-arm64": "0.25.11",
+        "@esbuild/android-x64": "0.25.11",
+        "@esbuild/darwin-arm64": "0.25.11",
+        "@esbuild/darwin-x64": "0.25.11",
+        "@esbuild/freebsd-arm64": "0.25.11",
+        "@esbuild/freebsd-x64": "0.25.11",
+        "@esbuild/linux-arm": "0.25.11",
+        "@esbuild/linux-arm64": "0.25.11",
+        "@esbuild/linux-ia32": "0.25.11",
+        "@esbuild/linux-loong64": "0.25.11",
+        "@esbuild/linux-mips64el": "0.25.11",
+        "@esbuild/linux-ppc64": "0.25.11",
+        "@esbuild/linux-riscv64": "0.25.11",
+        "@esbuild/linux-s390x": "0.25.11",
+        "@esbuild/linux-x64": "0.25.11",
+        "@esbuild/netbsd-arm64": "0.25.11",
+        "@esbuild/netbsd-x64": "0.25.11",
+        "@esbuild/openbsd-arm64": "0.25.11",
+        "@esbuild/openbsd-x64": "0.25.11",
+        "@esbuild/openharmony-arm64": "0.25.11",
+        "@esbuild/sunos-x64": "0.25.11",
+        "@esbuild/win32-arm64": "0.25.11",
+        "@esbuild/win32-ia32": "0.25.11",
+        "@esbuild/win32-x64": "0.25.11"
+      }
+    },
+    "node_modules/escalade": {
+      "version": "3.2.0",
+      "resolved": "https://registry.npmjs.org/escalade/-/escalade-3.2.0.tgz",
+      "integrity": "sha512-WUj2qlxaQtO4g6Pq5c29GTcWGDyd8itL8zTlipgECz3JesAiiOKotd8JU6otB3PACgG6xkJUyVhboMS+bje/jA==",
+      "license": "MIT",
+      "engines": {
+        "node": ">=6"
+      }
+    },
+    "node_modules/escape-string-regexp": {
+      "version": "4.0.0",
+      "resolved": "https://registry.npmjs.org/escape-string-regexp/-/escape-string-regexp-4.0.0.tgz",
+      "integrity": "sha512-TtpcNJ3XAzx3Gq8sWRzJaVajRs0uVxA2YAkdb1jm2YkPz4G6egUFAyA3n5vtEIZefPk5Wa4UXbKuS5fKkJWdgA==",
+      "dev": true,
+      "license": "MIT",
+      "engines": {
+        "node": ">=10"
+      },
+      "funding": {
+        "url": "https://github.com/sponsors/sindresorhus"
+      }
+    },
+    "node_modules/eslint": {
+      "version": "9.38.0",
+      "resolved": "https://registry.npmjs.org/eslint/-/eslint-9.38.0.tgz",
+      "integrity": "sha512-t5aPOpmtJcZcz5UJyY2GbvpDlsK5E8JqRqoKtfiKE3cNh437KIqfJr3A3AKf5k64NPx6d0G3dno6XDY05PqPtw==",
+      "dev": true,
+      "license": "MIT",
+      "dependencies": {
+        "@eslint-community/eslint-utils": "^4.8.0",
+        "@eslint-community/regexpp": "^4.12.1",
+        "@eslint/config-array": "^0.21.1",
+        "@eslint/config-helpers": "^0.4.1",
+        "@eslint/core": "^0.16.0",
+        "@eslint/eslintrc": "^3.3.1",
+        "@eslint/js": "9.38.0",
+        "@eslint/plugin-kit": "^0.4.0",
+        "@humanfs/node": "^0.16.6",
+        "@humanwhocodes/module-importer": "^1.0.1",
+        "@humanwhocodes/retry": "^0.4.2",
+        "@types/estree": "^1.0.6",
+        "ajv": "^6.12.4",
+        "chalk": "^4.0.0",
+        "cross-spawn": "^7.0.6",
+        "debug": "^4.3.2",
+        "escape-string-regexp": "^4.0.0",
+        "eslint-scope": "^8.4.0",
+        "eslint-visitor-keys": "^4.2.1",
+        "espree": "^10.4.0",
+        "esquery": "^1.5.0",
+        "esutils": "^2.0.2",
+        "fast-deep-equal": "^3.1.3",
+        "file-entry-cache": "^8.0.0",
+        "find-up": "^5.0.0",
+        "glob-parent": "^6.0.2",
+        "ignore": "^5.2.0",
+        "imurmurhash": "^0.1.4",
+        "is-glob": "^4.0.0",
+        "json-stable-stringify-without-jsonify": "^1.0.1",
+        "lodash.merge": "^4.6.2",
+        "minimatch": "^3.1.2",
+        "natural-compare": "^1.4.0",
+        "optionator": "^0.9.3"
+      },
+      "bin": {
+        "eslint": "bin/eslint.js"
+      },
+      "engines": {
+        "node": "^18.18.0 || ^20.9.0 || >=21.1.0"
+      },
+      "funding": {
+        "url": "https://eslint.org/donate"
+      },
+      "peerDependencies": {
+        "jiti": "*"
+      },
+      "peerDependenciesMeta": {
+        "jiti": {
+          "optional": true
+        }
+      }
+    },
+    "node_modules/eslint-plugin-react-hooks": {
+      "version": "5.2.0",
+      "resolved": "https://registry.npmjs.org/eslint-plugin-react-hooks/-/eslint-plugin-react-hooks-5.2.0.tgz",
+      "integrity": "sha512-+f15FfK64YQwZdJNELETdn5ibXEUQmW1DZL6KXhNnc2heoy/sg9VJJeT7n8TlMWouzWqSWavFkIhHyIbIAEapg==",
+      "dev": true,
+      "license": "MIT",
+      "engines": {
+        "node": ">=10"
+      },
+      "peerDependencies": {
+        "eslint": "^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0-0 || ^9.0.0"
+      }
+    },
+    "node_modules/eslint-plugin-react-refresh": {
+      "version": "0.4.24",
+      "resolved": "https://registry.npmjs.org/eslint-plugin-react-refresh/-/eslint-plugin-react-refresh-0.4.24.tgz",
+      "integrity": "sha512-nLHIW7TEq3aLrEYWpVaJ1dRgFR+wLDPN8e8FpYAql/bMV2oBEfC37K0gLEGgv9fy66juNShSMV8OkTqzltcG/w==",
+      "dev": true,
+      "license": "MIT",
+      "peerDependencies": {
+        "eslint": ">=8.40"
+      }
+    },
+    "node_modules/eslint-scope": {
+      "version": "8.4.0",
+      "resolved": "https://registry.npmjs.org/eslint-scope/-/eslint-scope-8.4.0.tgz",
+      "integrity": "sha512-sNXOfKCn74rt8RICKMvJS7XKV/Xk9kA7DyJr8mJik3S7Cwgy3qlkkmyS2uQB3jiJg6VNdZd/pDBJu0nvG2NlTg==",
+      "dev": true,
+      "license": "BSD-2-Clause",
+      "dependencies": {
+        "esrecurse": "^4.3.0",
+        "estraverse": "^5.2.0"
+      },
+      "engines": {
+        "node": "^18.18.0 || ^20.9.0 || >=21.1.0"
+      },
+      "funding": {
+        "url": "https://opencollective.com/eslint"
+      }
+    },
+    "node_modules/eslint-visitor-keys": {
+      "version": "4.2.1",
+      "resolved": "https://registry.npmjs.org/eslint-visitor-keys/-/eslint-visitor-keys-4.2.1.tgz",
+      "integrity": "sha512-Uhdk5sfqcee/9H/rCOJikYz67o0a2Tw2hGRPOG2Y1R2dg7brRe1uG0yaNQDHu+TO/uQPF/5eCapvYSmHUjt7JQ==",
+      "dev": true,
+      "license": "Apache-2.0",
+      "engines": {
+        "node": "^18.18.0 || ^20.9.0 || >=21.1.0"
+      },
+      "funding": {
+        "url": "https://opencollective.com/eslint"
+      }
+    },
+    "node_modules/espree": {
+      "version": "10.4.0",
+      "resolved": "https://registry.npmjs.org/espree/-/espree-10.4.0.tgz",
+      "integrity": "sha512-j6PAQ2uUr79PZhBjP5C5fhl8e39FmRnOjsD5lGnWrFU8i2G776tBK7+nP8KuQUTTyAZUwfQqXAgrVH5MbH9CYQ==",
+      "dev": true,
+      "license": "BSD-2-Clause",
+      "dependencies": {
+        "acorn": "^8.15.0",
+        "acorn-jsx": "^5.3.2",
+        "eslint-visitor-keys": "^4.2.1"
+      },
+      "engines": {
+        "node": "^18.18.0 || ^20.9.0 || >=21.1.0"
+      },
+      "funding": {
+        "url": "https://opencollective.com/eslint"
+      }
+    },
+    "node_modules/esquery": {
+      "version": "1.6.0",
+      "resolved": "https://registry.npmjs.org/esquery/-/esquery-1.6.0.tgz",
+      "integrity": "sha512-ca9pw9fomFcKPvFLXhBKUK90ZvGibiGOvRJNbjljY7s7uq/5YO4BOzcYtJqExdx99rF6aAcnRxHmcUHcz6sQsg==",
+      "dev": true,
+      "license": "BSD-3-Clause",
+      "dependencies": {
+        "estraverse": "^5.1.0"
+      },
+      "engines": {
+        "node": ">=0.10"
+      }
+    },
+    "node_modules/esrecurse": {
+      "version": "4.3.0",
+      "resolved": "https://registry.npmjs.org/esrecurse/-/esrecurse-4.3.0.tgz",
+      "integrity": "sha512-KmfKL3b6G+RXvP8N1vr3Tq1kL/oCFgn2NYXEtqP8/L3pKapUA4G8cFVaoF3SU323CD4XypR/ffioHmkti6/Tag==",
+      "dev": true,
+      "license": "BSD-2-Clause",
+      "dependencies": {
+        "estraverse": "^5.2.0"
+      },
+      "engines": {
+        "node": ">=4.0"
+      }
+    },
+    "node_modules/estraverse": {
+      "version": "5.3.0",
+      "resolved": "https://registry.npmjs.org/estraverse/-/estraverse-5.3.0.tgz",
+      "integrity": "sha512-MMdARuVEQziNTeJD8DgMqmhwR11BRQ/cBP+pLtYdSTnf3MIO8fFeiINEbX36ZdNlfU/7A9f3gUw49B3oQsvwBA==",
+      "dev": true,
+      "license": "BSD-2-Clause",
+      "engines": {
+        "node": ">=4.0"
+      }
+    },
+    "node_modules/esutils": {
+      "version": "2.0.3",
+      "resolved": "https://registry.npmjs.org/esutils/-/esutils-2.0.3.tgz",
+      "integrity": "sha512-kVscqXk4OCp68SZ0dkgEKVi6/8ij300KBWTJq32P/dYeWTSwK41WyTxalN1eRmA5Z9UU/LX9D7FWSmV9SAYx6g==",
+      "dev": true,
+      "license": "BSD-2-Clause",
+      "engines": {
+        "node": ">=0.10.0"
+      }
+    },
+    "node_modules/fast-deep-equal": {
+      "version": "3.1.3",
+      "resolved": "https://registry.npmjs.org/fast-deep-equal/-/fast-deep-equal-3.1.3.tgz",
+      "integrity": "sha512-f3qQ9oQy9j2AhBe/H9VC91wLmKBCCU/gDOnKNAYG5hswO7BLKj09Hc5HYNz9cGI++xlpDCIgDaitVs03ATR84Q==",
+      "dev": true,
+      "license": "MIT"
+    },
+    "node_modules/fast-json-stable-stringify": {
+      "version": "2.1.0",
+      "resolved": "https://registry.npmjs.org/fast-json-stable-stringify/-/fast-json-stable-stringify-2.1.0.tgz",
+      "integrity": "sha512-lhd/wF+Lk98HZoTCtlVraHtfh5XYijIjalXck7saUtuanSDyLMxnHhSXEDJqHxD7msR8D0uCmqlkwjCV8xvwHw==",
+      "dev": true,
+      "license": "MIT"
+    },
+    "node_modules/fast-levenshtein": {
+      "version": "2.0.6",
+      "resolved": "https://registry.npmjs.org/fast-levenshtein/-/fast-levenshtein-2.0.6.tgz",
+      "integrity": "sha512-DCXu6Ifhqcks7TZKY3Hxp3y6qphY5SJZmrWMDrKcERSOXWQdMhU9Ig/PYrzyw/ul9jOIyh0N4M0tbC5hodg8dw==",
+      "dev": true,
+      "license": "MIT"
+    },
+    "node_modules/faye-websocket": {
+      "version": "0.11.4",
+      "resolved": "https://registry.npmjs.org/faye-websocket/-/faye-websocket-0.11.4.tgz",
+      "integrity": "sha512-CzbClwlXAuiRQAlUyfqPgvPoNKTckTPGfwZV4ZdAhVcP2lh9KUxJg2b5GkE7XbjKQ3YJnQ9z6D9ntLAlB+tP8g==",
+      "license": "Apache-2.0",
+      "dependencies": {
+        "websocket-driver": ">=0.5.1"
+      },
+      "engines": {
+        "node": ">=0.8.0"
+      }
+    },
+    "node_modules/fdir": {
+      "version": "6.5.0",
+      "resolved": "https://registry.npmjs.org/fdir/-/fdir-6.5.0.tgz",
+      "integrity": "sha512-tIbYtZbucOs0BRGqPJkshJUYdL+SDH7dVM8gjy+ERp3WAUjLEFJE+02kanyHtwjWOnwrKYBiwAmM0p4kLJAnXg==",
+      "dev": true,
+      "license": "MIT",
+      "engines": {
+        "node": ">=12.0.0"
+      },
+      "peerDependencies": {
+        "picomatch": "^3 || ^4"
+      },
+      "peerDependenciesMeta": {
+        "picomatch": {
+          "optional": true
+        }
+      }
+    },
+    "node_modules/file-entry-cache": {
+      "version": "8.0.0",
+      "resolved": "https://registry.npmjs.org/file-entry-cache/-/file-entry-cache-8.0.0.tgz",
+      "integrity": "sha512-XXTUwCvisa5oacNGRP9SfNtYBNAMi+RPwBFmblZEF7N7swHYQS6/Zfk7SRwx4D5j3CH211YNRco1DEMNVfZCnQ==",
+      "dev": true,
+      "license": "MIT",
+      "dependencies": {
+        "flat-cache": "^4.0.0"
+      },
+      "engines": {
+        "node": ">=16.0.0"
+      }
+    },
+    "node_modules/find-up": {
+      "version": "5.0.0",
+      "resolved": "https://registry.npmjs.org/find-up/-/find-up-5.0.0.tgz",
+      "integrity": "sha512-78/PXT1wlLLDgTzDs7sjq9hzz0vXD+zn+7wypEe4fXQxCmdmqfGsEPQxmiCSQI3ajFV91bVSsvNtrJRiW6nGng==",
+      "dev": true,
+      "license": "MIT",
+      "dependencies": {
+        "locate-path": "^6.0.0",
+        "path-exists": "^4.0.0"
+      },
+      "engines": {
+        "node": ">=10"
+      },
+      "funding": {
+        "url": "https://github.com/sponsors/sindresorhus"
+      }
+    },
+    "node_modules/firebase": {
+      "version": "12.4.0",
+      "resolved": "https://registry.npmjs.org/firebase/-/firebase-12.4.0.tgz",
+      "integrity": "sha512-/chNgDQ6ppPPGOQO4jctxOa/5JeQxuhaxA7Y90K0I+n/wPfoO8mRveedhVUdo7ExLcWUivnnow/ouSLYSI5Icw==",
+      "license": "Apache-2.0",
+      "dependencies": {
+        "@firebase/ai": "2.4.0",
+        "@firebase/analytics": "0.10.19",
+        "@firebase/analytics-compat": "0.2.25",
+        "@firebase/app": "0.14.4",
+        "@firebase/app-check": "0.11.0",
+        "@firebase/app-check-compat": "0.4.0",
+        "@firebase/app-compat": "0.5.4",
+        "@firebase/app-types": "0.9.3",
+        "@firebase/auth": "1.11.0",
+        "@firebase/auth-compat": "0.6.0",
+        "@firebase/data-connect": "0.3.11",
+        "@firebase/database": "1.1.0",
+        "@firebase/database-compat": "2.1.0",
+        "@firebase/firestore": "4.9.2",
+        "@firebase/firestore-compat": "0.4.2",
+        "@firebase/functions": "0.13.1",
+        "@firebase/functions-compat": "0.4.1",
+        "@firebase/installations": "0.6.19",
+        "@firebase/installations-compat": "0.2.19",
+        "@firebase/messaging": "0.12.23",
+        "@firebase/messaging-compat": "0.2.23",
+        "@firebase/performance": "0.7.9",
+        "@firebase/performance-compat": "0.2.22",
+        "@firebase/remote-config": "0.7.0",
+        "@firebase/remote-config-compat": "0.2.20",
+        "@firebase/storage": "0.14.0",
+        "@firebase/storage-compat": "0.4.0",
+        "@firebase/util": "1.13.0"
+      }
+    },
+    "node_modules/flat-cache": {
+      "version": "4.0.1",
+      "resolved": "https://registry.npmjs.org/flat-cache/-/flat-cache-4.0.1.tgz",
+      "integrity": "sha512-f7ccFPK3SXFHpx15UIGyRJ/FJQctuKZ0zVuN3frBo4HnK3cay9VEW0R6yPYFHC0AgqhukPzKjq22t5DmAyqGyw==",
+      "dev": true,
+      "license": "MIT",
+      "dependencies": {
+        "flatted": "^3.2.9",
+        "keyv": "^4.5.4"
+      },
+      "engines": {
+        "node": ">=16"
+      }
+    },
+    "node_modules/flatted": {
+      "version": "3.3.3",
+      "resolved": "https://registry.npmjs.org/flatted/-/flatted-3.3.3.tgz",
+      "integrity": "sha512-GX+ysw4PBCz0PzosHDepZGANEuFCMLrnRTiEy9McGjmkCQYwRq4A/X786G/fjM/+OjsWSU1ZrY5qyARZmO/uwg==",
+      "dev": true,
+      "license": "ISC"
+    },
+    "node_modules/follow-redirects": {
+      "version": "1.15.11",
+      "resolved": "https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.15.11.tgz",
+      "integrity": "sha512-deG2P0JfjrTxl50XGCDyfI97ZGVCxIpfKYmfyrQ54n5FO/0gfIES8C/Psl6kWVDolizcaaxZJnTS0QSMxvnsBQ==",
+      "funding": [
+        {
+          "type": "individual",
+          "url": "https://github.com/sponsors/RubenVerborgh"
+        }
+      ],
+      "license": "MIT",
+      "engines": {
+        "node": ">=4.0"
+      },
+      "peerDependenciesMeta": {
+        "debug": {
+          "optional": true
+        }
+      }
+    },
+    "node_modules/font-awesome": {
+      "version": "4.7.0",
+      "resolved": "https://registry.npmjs.org/font-awesome/-/font-awesome-4.7.0.tgz",
+      "integrity": "sha512-U6kGnykA/6bFmg1M/oT9EkFeIYv7JlX3bozwQJWiiLz6L0w3F5vBVPxHlwyX/vtNq1ckcpRKOB9f2Qal/VtFpg==",
+      "license": "(OFL-1.1 AND MIT)",
+      "engines": {
+        "node": ">=0.10.3"
+      }
+    },
+    "node_modules/form-data": {
+      "version": "4.0.4",
+      "resolved": "https://registry.npmjs.org/form-data/-/form-data-4.0.4.tgz",
+      "integrity": "sha512-KrGhL9Q4zjj0kiUt5OO4Mr/A/jlI2jDYs5eHBpYHPcBEVSiipAvn2Ko2HnPe20rmcuuvMHNdZFp+4IlGTMF0Ow==",
+      "license": "MIT",
+      "dependencies": {
+        "asynckit": "^0.4.0",
+        "combined-stream": "^1.0.8",
+        "es-set-tostringtag": "^2.1.0",
+        "hasown": "^2.0.2",
+        "mime-types": "^2.1.12"
+      },
+      "engines": {
+        "node": ">= 6"
+      }
+    },
+    "node_modules/fsevents": {
+      "version": "2.3.3",
+      "resolved": "https://registry.npmjs.org/fsevents/-/fsevents-2.3.3.tgz",
+      "integrity": "sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==",
+      "dev": true,
+      "hasInstallScript": true,
+      "license": "MIT",
+      "optional": true,
+      "os": [
+        "darwin"
+      ],
+      "engines": {
+        "node": "^8.16.0 || ^10.6.0 || >=11.0.0"
+      }
+    },
+    "node_modules/function-bind": {
+      "version": "1.1.2",
+      "resolved": "https://registry.npmjs.org/function-bind/-/function-bind-1.1.2.tgz",
+      "integrity": "sha512-7XHNxH7qX9xG5mIwxkhumTox/MIRNcOgDrxWsMt2pAr23WHp6MrRlN7FBSFpCpr+oVO0F744iUgR82nJMfG2SA==",
+      "license": "MIT",
+      "funding": {
+        "url": "https://github.com/sponsors/ljharb"
+      }
+    },
+    "node_modules/gensync": {
+      "version": "1.0.0-beta.2",
+      "resolved": "https://registry.npmjs.org/gensync/-/gensync-1.0.0-beta.2.tgz",
+      "integrity": "sha512-3hN7NaskYvMDLQY55gnW3NQ+mesEAepTqlg+VEbj7zzqEMBVNhzcGYYeqFo/TlYz6eQiFcp1HcsCZO+nGgS8zg==",
+      "dev": true,
+      "license": "MIT",
+      "engines": {
+        "node": ">=6.9.0"
+      }
+    },
+    "node_modules/get-caller-file": {
+      "version": "2.0.5",
+      "resolved": "https://registry.npmjs.org/get-caller-file/-/get-caller-file-2.0.5.tgz",
+      "integrity": "sha512-DyFP3BM/3YHTQOCUL/w0OZHR0lpKeGrxotcHWcqNEdnltqFwXVfhEBQ94eIo34AfQpo0rGki4cyIiftY06h2Fg==",
+      "license": "ISC",
+      "engines": {
+        "node": "6.* || 8.* || >= 10.*"
+      }
+    },
+    "node_modules/get-intrinsic": {
+      "version": "1.3.0",
+      "resolved": "https://registry.npmjs.org/get-intrinsic/-/get-intrinsic-1.3.0.tgz",
+      "integrity": "sha512-9fSjSaos/fRIVIp+xSJlE6lfwhES7LNtKaCBIamHsjr2na1BiABJPo0mOjjz8GJDURarmCPGqaiVg5mfjb98CQ==",
+      "license": "MIT",
+      "dependencies": {
+        "call-bind-apply-helpers": "^1.0.2",
+        "es-define-property": "^1.0.1",
+        "es-errors": "^1.3.0",
+        "es-object-atoms": "^1.1.1",
+        "function-bind": "^1.1.2",
+        "get-proto": "^1.0.1",
+        "gopd": "^1.2.0",
+        "has-symbols": "^1.1.0",
+        "hasown": "^2.0.2",
+        "math-intrinsics": "^1.1.0"
+      },
+      "engines": {
+        "node": ">= 0.4"
+      },
+      "funding": {
+        "url": "https://github.com/sponsors/ljharb"
+      }
+    },
+    "node_modules/get-proto": {
+      "version": "1.0.1",
+      "resolved": "https://registry.npmjs.org/get-proto/-/get-proto-1.0.1.tgz",
+      "integrity": "sha512-sTSfBjoXBp89JvIKIefqw7U2CCebsc74kiY6awiGogKtoSGbgjYE/G/+l9sF3MWFPNc9IcoOC4ODfKHfxFmp0g==",
+      "license": "MIT",
+      "dependencies": {
+        "dunder-proto": "^1.0.1",
+        "es-object-atoms": "^1.0.0"
+      },
+      "engines": {
+        "node": ">= 0.4"
+      }
+    },
+    "node_modules/glob-parent": {
+      "version": "6.0.2",
+      "resolved": "https://registry.npmjs.org/glob-parent/-/glob-parent-6.0.2.tgz",
+      "integrity": "sha512-XxwI8EOhVQgWp6iDL+3b0r86f4d6AX6zSU55HfB4ydCEuXLXc5FcYeOu+nnGftS4TEju/11rt4KJPTMgbfmv4A==",
+      "dev": true,
+      "license": "ISC",
+      "dependencies": {
+        "is-glob": "^4.0.3"
+      },
+      "engines": {
+        "node": ">=10.13.0"
+      }
+    },
+    "node_modules/glob-to-regexp": {
+      "version": "0.4.1",
+      "resolved": "https://registry.npmjs.org/glob-to-regexp/-/glob-to-regexp-0.4.1.tgz",
+      "integrity": "sha512-lkX1HJXwyMcprw/5YUZc2s7DrpAiHB21/V+E1rHUrVNokkvB6bqMzT0VfV6/86ZNabt1k14YOIaT7nDvOX3Iiw==",
+      "license": "BSD-2-Clause"
+    },
+    "node_modules/globals": {
+      "version": "16.4.0",
+      "resolved": "https://registry.npmjs.org/globals/-/globals-16.4.0.tgz",
+      "integrity": "sha512-ob/2LcVVaVGCYN+r14cnwnoDPUufjiYgSqRhiFD0Q1iI4Odora5RE8Iv1D24hAz5oMophRGkGz+yuvQmmUMnMw==",
+      "dev": true,
+      "license": "MIT",
+      "engines": {
+        "node": ">=18"
+      },
+      "funding": {
+        "url": "https://github.com/sponsors/sindresorhus"
+      }
+    },
+    "node_modules/gopd": {
+      "version": "1.2.0",
+      "resolved": "https://registry.npmjs.org/gopd/-/gopd-1.2.0.tgz",
+      "integrity": "sha512-ZUKRh6/kUFoAiTAtTYPZJ3hw9wNxx+BIBOijnlG9PnrJsCcSjs1wyyD6vJpaYtgnzDrKYRSqf3OO6Rfa93xsRg==",
+      "license": "MIT",
+      "engines": {
+        "node": ">= 0.4"
+      },
+      "funding": {
+        "url": "https://github.com/sponsors/ljharb"
+      }
+    },
+    "node_modules/has-flag": {
+      "version": "4.0.0",
+      "resolved": "https://registry.npmjs.org/has-flag/-/has-flag-4.0.0.tgz",
+      "integrity": "sha512-EykJT/Q1KjTWctppgIAgfSO0tKVuZUjhgMr17kqTumMl6Afv3EISleU7qZUzoXDFTAHTDC4NOoG/ZxU3EvlMPQ==",
+      "dev": true,
+      "license": "MIT",
+      "engines": {
+        "node": ">=8"
+      }
+    },
+    "node_modules/has-symbols": {
+      "version": "1.1.0",
+      "resolved": "https://registry.npmjs.org/has-symbols/-/has-symbols-1.1.0.tgz",
+      "integrity": "sha512-1cDNdwJ2Jaohmb3sg4OmKaMBwuC48sYni5HUw2DvsC8LjGTLK9h+eb1X6RyuOHe4hT0ULCW68iomhjUoKUqlPQ==",
+      "license": "MIT",
+      "engines": {
+        "node": ">= 0.4"
+      },
+      "funding": {
+        "url": "https://github.com/sponsors/ljharb"
+      }
+    },
+    "node_modules/has-tostringtag": {
+      "version": "1.0.2",
+      "resolved": "https://registry.npmjs.org/has-tostringtag/-/has-tostringtag-1.0.2.tgz",
+      "integrity": "sha512-NqADB8VjPFLM2V0VvHUewwwsw0ZWBaIdgo+ieHtK3hasLz4qeCRjYcqfB6AQrBggRKppKF8L52/VqdVsO47Dlw==",
+      "license": "MIT",
+      "dependencies": {
+        "has-symbols": "^1.0.3"
+      },
+      "engines": {
+        "node": ">= 0.4"
+      },
+      "funding": {
+        "url": "https://github.com/sponsors/ljharb"
+      }
+    },
+    "node_modules/hasown": {
+      "version": "2.0.2",
+      "resolved": "https://registry.npmjs.org/hasown/-/hasown-2.0.2.tgz",
+      "integrity": "sha512-0hJU9SCPvmMzIBdZFqNPXWa6dqh7WdH0cII9y+CyS8rG3nL48Bclra9HmKhVVUHyPWNH5Y7xDwAB7bfgSjkUMQ==",
+      "license": "MIT",
+      "dependencies": {
+        "function-bind": "^1.1.2"
+      },
+      "engines": {
+        "node": ">= 0.4"
+      }
+    },
+    "node_modules/http-parser-js": {
+      "version": "0.5.10",
+      "resolved": "https://registry.npmjs.org/http-parser-js/-/http-parser-js-0.5.10.tgz",
+      "integrity": "sha512-Pysuw9XpUq5dVc/2SMHpuTY01RFl8fttgcyunjL7eEMhGM3cI4eOmiCycJDVCo/7O7ClfQD3SaI6ftDzqOXYMA==",
+      "license": "MIT"
+    },
+    "node_modules/idb": {
+      "version": "7.1.1",
+      "resolved": "https://registry.npmjs.org/idb/-/idb-7.1.1.tgz",
+      "integrity": "sha512-gchesWBzyvGHRO9W8tzUWFDycow5gwjvFKfyV9FF32Y7F50yZMp7mP+T2mJIWFx49zicqyC4uefHM17o6xKIVQ==",
+      "license": "ISC"
+    },
+    "node_modules/ignore": {
+      "version": "5.3.2",
+      "resolved": "https://registry.npmjs.org/ignore/-/ignore-5.3.2.tgz",
+      "integrity": "sha512-hsBTNUqQTDwkWtcdYI2i06Y/nUBEsNEDJKjWdigLvegy8kDuJAS8uRlpkkcQpyEXL0Z/pjDy5HBmMjRCJ2gq+g==",
+      "dev": true,
+      "license": "MIT",
+      "engines": {
+        "node": ">= 4"
+      }
+    },
+    "node_modules/import-fresh": {
+      "version": "3.3.1",
+      "resolved": "https://registry.npmjs.org/import-fresh/-/import-fresh-3.3.1.tgz",
+      "integrity": "sha512-TR3KfrTZTYLPB6jUjfx6MF9WcWrHL9su5TObK4ZkYgBdWKPOFoSoQIdEuTuR82pmtxH2spWG9h6etwfr1pLBqQ==",
+      "dev": true,
+      "license": "MIT",
+      "dependencies": {
+        "parent-module": "^1.0.0",
+        "resolve-from": "^4.0.0"
+      },
+      "engines": {
+        "node": ">=6"
+      },
+      "funding": {
+        "url": "https://github.com/sponsors/sindresorhus"
+      }
+    },
+    "node_modules/imurmurhash": {
+      "version": "0.1.4",
+      "resolved": "https://registry.npmjs.org/imurmurhash/-/imurmurhash-0.1.4.tgz",
+      "integrity": "sha512-JmXMZ6wuvDmLiHEml9ykzqO6lwFbof0GG4IkcGaENdCRDDmMVnny7s5HsIgHCbaq0w2MyPhDqkhTUgS2LU2PHA==",
+      "dev": true,
+      "license": "MIT",
+      "engines": {
+        "node": ">=0.8.19"
+      }
+    },
+    "node_modules/is-extglob": {
+      "version": "2.1.1",
+      "resolved": "https://registry.npmjs.org/is-extglob/-/is-extglob-2.1.1.tgz",
+      "integrity": "sha512-SbKbANkN603Vi4jEZv49LeVJMn4yGwsbzZworEoyEiutsN3nJYdbO36zfhGJ6QEDpOZIFkDtnq5JRxmvl3jsoQ==",
+      "dev": true,
+      "license": "MIT",
+      "engines": {
+        "node": ">=0.10.0"
+      }
+    },
+    "node_modules/is-fullwidth-code-point": {
+      "version": "3.0.0",
+      "resolved": "https://registry.npmjs.org/is-fullwidth-code-point/-/is-fullwidth-code-point-3.0.0.tgz",
+      "integrity": "sha512-zymm5+u+sCsSWyD9qNaejV3DFvhCKclKdizYaJUuHA83RLjb7nSuGnddCHGv0hk+KY7BMAlsWeK4Ueg6EV6XQg==",
+      "license": "MIT",
+      "engines": {
+        "node": ">=8"
+      }
+    },
+    "node_modules/is-glob": {
+      "version": "4.0.3",
+      "resolved": "https://registry.npmjs.org/is-glob/-/is-glob-4.0.3.tgz",
+      "integrity": "sha512-xelSayHH36ZgE7ZWhli7pW34hNbNl8Ojv5KVmkJD4hBdD3th8Tfk9vYasLM+mXWOZhFkgZfxhLSnrwRr4elSSg==",
+      "dev": true,
+      "license": "MIT",
+      "dependencies": {
+        "is-extglob": "^2.1.1"
+      },
+      "engines": {
+        "node": ">=0.10.0"
+      }
+    },
+    "node_modules/isexe": {
+      "version": "2.0.0",
+      "resolved": "https://registry.npmjs.org/isexe/-/isexe-2.0.0.tgz",
+      "integrity": "sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==",
+      "dev": true,
+      "license": "ISC"
+    },
+    "node_modules/js-cookie": {
+      "version": "3.0.5",
+      "resolved": "https://registry.npmjs.org/js-cookie/-/js-cookie-3.0.5.tgz",
+      "integrity": "sha512-cEiJEAEoIbWfCZYKWhVwFuvPX1gETRYPw6LlaTKoxD3s2AkXzkCjnp6h0V77ozyqj0jakteJ4YqDJT830+lVGw==",
+      "license": "MIT",
+      "engines": {
+        "node": ">=14"
+      }
+    },
+    "node_modules/js-tokens": {
+      "version": "4.0.0",
+      "resolved": "https://registry.npmjs.org/js-tokens/-/js-tokens-4.0.0.tgz",
+      "integrity": "sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==",
+      "dev": true,
+      "license": "MIT"
+    },
+    "node_modules/js-yaml": {
+      "version": "4.1.0",
+      "resolved": "https://registry.npmjs.org/js-yaml/-/js-yaml-4.1.0.tgz",
+      "integrity": "sha512-wpxZs9NoxZaJESJGIZTyDEaYpl0FKSA+FB9aJiyemKhMwkxQg63h4T1KJgUGHpTqPDNRcmmYLugrRjJlBtWvRA==",
+      "dev": true,
+      "license": "MIT",
+      "dependencies": {
+        "argparse": "^2.0.1"
+      },
+      "bin": {
+        "js-yaml": "bin/js-yaml.js"
+      }
+    },
+    "node_modules/jsesc": {
+      "version": "3.1.0",
+      "resolved": "https://registry.npmjs.org/jsesc/-/jsesc-3.1.0.tgz",
+      "integrity": "sha512-/sM3dO2FOzXjKQhJuo0Q173wf2KOo8t4I8vHy6lF9poUp7bKT0/NHE8fPX23PwfhnykfqnC2xRxOnVw5XuGIaA==",
+      "dev": true,
+      "license": "MIT",
+      "bin": {
+        "jsesc": "bin/jsesc"
+      },
+      "engines": {
+        "node": ">=6"
+      }
+    },
+    "node_modules/json-buffer": {
+      "version": "3.0.1",
+      "resolved": "https://registry.npmjs.org/json-buffer/-/json-buffer-3.0.1.tgz",
+      "integrity": "sha512-4bV5BfR2mqfQTJm+V5tPPdf+ZpuhiIvTuAB5g8kcrXOZpTT/QwwVRWBywX1ozr6lEuPdbHxwaJlm9G6mI2sfSQ==",
+      "dev": true,
+      "license": "MIT"
+    },
+    "node_modules/json-schema-traverse": {
+      "version": "0.4.1",
+      "resolved": "https://registry.npmjs.org/json-schema-traverse/-/json-schema-traverse-0.4.1.tgz",
+      "integrity": "sha512-xbbCH5dCYU5T8LcEhhuh7HJ88HXuW3qsI3Y0zOZFKfZEHcpWiHU/Jxzk629Brsab/mMiHQti9wMP+845RPe3Vg==",
+      "dev": true,
+      "license": "MIT"
+    },
+    "node_modules/json-stable-stringify-without-jsonify": {
+      "version": "1.0.1",
+      "resolved": "https://registry.npmjs.org/json-stable-stringify-without-jsonify/-/json-stable-stringify-without-jsonify-1.0.1.tgz",
+      "integrity": "sha512-Bdboy+l7tA3OGW6FjyFHWkP5LuByj1Tk33Ljyq0axyzdk9//JSi2u3fP1QSmd1KNwq6VOKYGlAu87CisVir6Pw==",
+      "dev": true,
+      "license": "MIT"
+    },
+    "node_modules/json5": {
+      "version": "2.2.3",
+      "resolved": "https://registry.npmjs.org/json5/-/json5-2.2.3.tgz",
+      "integrity": "sha512-XmOWe7eyHYH14cLdVPoyg+GOH3rYX++KpzrylJwSW98t3Nk+U8XOl8FWKOgwtzdb8lXGf6zYwDUzeHMWfxasyg==",
+      "dev": true,
+      "license": "MIT",
+      "bin": {
+        "json5": "lib/cli.js"
+      },
+      "engines": {
+        "node": ">=6"
+      }
+    },
+    "node_modules/keyv": {
+      "version": "4.5.4",
+      "resolved": "https://registry.npmjs.org/keyv/-/keyv-4.5.4.tgz",
+      "integrity": "sha512-oxVHkHR/EJf2CNXnWxRLW6mg7JyCCUcG0DtEGmL2ctUo1PNTin1PUil+r/+4r5MpVgC/fn1kjsx7mjSujKqIpw==",
+      "dev": true,
+      "license": "MIT",
+      "dependencies": {
+        "json-buffer": "3.0.1"
+      }
+    },
+    "node_modules/levn": {
+      "version": "0.4.1",
+      "resolved": "https://registry.npmjs.org/levn/-/levn-0.4.1.tgz",
+      "integrity": "sha512-+bT2uH4E5LGE7h/n3evcS/sQlJXCpIp6ym8OWJ5eV6+67Dsql/LaaT7qJBAt2rzfoa/5QBGBhxDix1dMt2kQKQ==",
+      "dev": true,
+      "license": "MIT",
+      "dependencies": {
+        "prelude-ls": "^1.2.1",
+        "type-check": "~0.4.0"
+      },
+      "engines": {
+        "node": ">= 0.8.0"
+      }
+    },
+    "node_modules/locate-path": {
+      "version": "6.0.0",
+      "resolved": "https://registry.npmjs.org/locate-path/-/locate-path-6.0.0.tgz",
+      "integrity": "sha512-iPZK6eYjbxRu3uB4/WZ3EsEIMJFMqAoopl3R+zuq0UjcAm/MO6KCweDgPfP3elTztoKP3KtnVHxTn2NHBSDVUw==",
+      "dev": true,
+      "license": "MIT",
+      "dependencies": {
+        "p-locate": "^5.0.0"
+      },
+      "engines": {
+        "node": ">=10"
+      },
+      "funding": {
+        "url": "https://github.com/sponsors/sindresorhus"
+      }
+    },
+    "node_modules/lodash.camelcase": {
+      "version": "4.3.0",
+      "resolved": "https://registry.npmjs.org/lodash.camelcase/-/lodash.camelcase-4.3.0.tgz",
+      "integrity": "sha512-TwuEnCnxbc3rAvhf/LbG7tJUDzhqXyFnv3dtzLOPgCG/hODL7WFnsbwktkD7yUV0RrreP/l1PALq/YSg6VvjlA==",
+      "license": "MIT"
+    },
+    "node_modules/lodash.merge": {
+      "version": "4.6.2",
+      "resolved": "https://registry.npmjs.org/lodash.merge/-/lodash.merge-4.6.2.tgz",
+      "integrity": "sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==",
+      "dev": true,
+      "license": "MIT"
+    },
+    "node_modules/long": {
+      "version": "5.3.2",
+      "resolved": "https://registry.npmjs.org/long/-/long-5.3.2.tgz",
+      "integrity": "sha512-mNAgZ1GmyNhD7AuqnTG3/VQ26o760+ZYBPKjPvugO8+nLbYfX6TVpJPseBvopbdY+qpZ/lKUnmEc1LeZYS3QAA==",
+      "license": "Apache-2.0"
+    },
+    "node_modules/lru-cache": {
+      "version": "5.1.1",
+      "resolved": "https://registry.npmjs.org/lru-cache/-/lru-cache-5.1.1.tgz",
+      "integrity": "sha512-KpNARQA3Iwv+jTA0utUVVbrh+Jlrr1Fv0e56GGzAFOXN7dk/FviaDW8LHmK52DlcH4WP2n6gI8vN1aesBFgo9w==",
+      "dev": true,
+      "license": "ISC",
+      "dependencies": {
+        "yallist": "^3.0.2"
+      }
+    },
+    "node_modules/math-intrinsics": {
+      "version": "1.1.0",
+      "resolved": "https://registry.npmjs.org/math-intrinsics/-/math-intrinsics-1.1.0.tgz",
+      "integrity": "sha512-/IXtbwEk5HTPyEwyKX6hGkYXxM9nbj64B+ilVJnC/R6B0pH5G4V3b0pVbL7DBj4tkhBAppbQUlf6F6Xl9LHu1g==",
+      "license": "MIT",
+      "engines": {
+        "node": ">= 0.4"
+      }
+    },
+    "node_modules/mime-db": {
+      "version": "1.52.0",
+      "resolved": "https://registry.npmjs.org/mime-db/-/mime-db-1.52.0.tgz",
+      "integrity": "sha512-sPU4uV7dYlvtWJxwwxHD0PuihVNiE7TyAbQ5SWxDCB9mUYvOgroQOwYQQOKPJ8CIbE+1ETVlOoK1UC2nU3gYvg==",
+      "license": "MIT",
+      "engines": {
+        "node": ">= 0.6"
+      }
+    },
+    "node_modules/mime-types": {
+      "version": "2.1.35",
+      "resolved": "https://registry.npmjs.org/mime-types/-/mime-types-2.1.35.tgz",
+      "integrity": "sha512-ZDY+bPm5zTTF+YpCrAU9nK0UgICYPT0QtT1NZWFv4s++TNkcgVaT0g6+4R2uI4MjQjzysHB1zxuWL50hzaeXiw==",
+      "license": "MIT",
+      "dependencies": {
+        "mime-db": "1.52.0"
+      },
+      "engines": {
+        "node": ">= 0.6"
+      }
+    },
+    "node_modules/minimatch": {
+      "version": "3.1.2",
+      "resolved": "https://registry.npmjs.org/minimatch/-/minimatch-3.1.2.tgz",
+      "integrity": "sha512-J7p63hRiAjw1NDEww1W7i37+ByIrOWO5XQQAzZ3VOcL0PNybwpfmV/N05zFAzwQ9USyEcX6t3UO+K5aqBQOIHw==",
+      "dev": true,
+      "license": "ISC",
+      "dependencies": {
+        "brace-expansion": "^1.1.7"
+      },
+      "engines": {
+        "node": "*"
+      }
+    },
+    "node_modules/ms": {
+      "version": "2.1.3",
+      "resolved": "https://registry.npmjs.org/ms/-/ms-2.1.3.tgz",
+      "integrity": "sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==",
+      "dev": true,
+      "license": "MIT"
+    },
+    "node_modules/nanoid": {
+      "version": "3.3.11",
+      "resolved": "https://registry.npmjs.org/nanoid/-/nanoid-3.3.11.tgz",
+      "integrity": "sha512-N8SpfPUnUp1bK+PMYW8qSWdl9U+wwNWI4QKxOYDy9JAro3WMX7p2OeVRF9v+347pnakNevPmiHhNmZ2HbFA76w==",
+      "dev": true,
+      "funding": [
+        {
+          "type": "github",
+          "url": "https://github.com/sponsors/ai"
+        }
+      ],
+      "license": "MIT",
+      "bin": {
+        "nanoid": "bin/nanoid.cjs"
+      },
+      "engines": {
+        "node": "^10 || ^12 || ^13.7 || ^14 || >=15.0.1"
+      }
+    },
+    "node_modules/natural-compare": {
+      "version": "1.4.0",
+      "resolved": "https://registry.npmjs.org/natural-compare/-/natural-compare-1.4.0.tgz",
+      "integrity": "sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==",
+      "dev": true,
+      "license": "MIT"
+    },
+    "node_modules/node-releases": {
+      "version": "2.0.25",
+      "resolved": "https://registry.npmjs.org/node-releases/-/node-releases-2.0.25.tgz",
+      "integrity": "sha512-4auku8B/vw5psvTiiN9j1dAOsXvMoGqJuKJcR+dTdqiXEK20mMTk1UEo3HS16LeGQsVG6+qKTPM9u/qQ2LqATA==",
+      "dev": true,
+      "license": "MIT"
+    },
+    "node_modules/optionator": {
+      "version": "0.9.4",
+      "resolved": "https://registry.npmjs.org/optionator/-/optionator-0.9.4.tgz",
+      "integrity": "sha512-6IpQ7mKUxRcZNLIObR0hz7lxsapSSIYNZJwXPGeF0mTVqGKFIXj1DQcMoT22S3ROcLyY/rz0PWaWZ9ayWmad9g==",
+      "dev": true,
+      "license": "MIT",
+      "dependencies": {
+        "deep-is": "^0.1.3",
+        "fast-levenshtein": "^2.0.6",
+        "levn": "^0.4.1",
+        "prelude-ls": "^1.2.1",
+        "type-check": "^0.4.0",
+        "word-wrap": "^1.2.5"
+      },
+      "engines": {
+        "node": ">= 0.8.0"
+      }
+    },
+    "node_modules/p-limit": {
+      "version": "3.1.0",
+      "resolved": "https://registry.npmjs.org/p-limit/-/p-limit-3.1.0.tgz",
+      "integrity": "sha512-TYOanM3wGwNGsZN2cVTYPArw454xnXj5qmWF1bEoAc4+cU/ol7GVh7odevjp1FNHduHc3KZMcFduxU5Xc6uJRQ==",
+      "dev": true,
+      "license": "MIT",
+      "dependencies": {
+        "yocto-queue": "^0.1.0"
+      },
+      "engines": {
+        "node": ">=10"
+      },
+      "funding": {
+        "url": "https://github.com/sponsors/sindresorhus"
+      }
+    },
+    "node_modules/p-locate": {
+      "version": "5.0.0",
+      "resolved": "https://registry.npmjs.org/p-locate/-/p-locate-5.0.0.tgz",
+      "integrity": "sha512-LaNjtRWUBY++zB5nE/NwcaoMylSPk+S+ZHNB1TzdbMJMny6dynpAGt7X/tl/QYq3TIeE6nxHppbo2LGymrG5Pw==",
+      "dev": true,
+      "license": "MIT",
+      "dependencies": {
+        "p-limit": "^3.0.2"
+      },
+      "engines": {
+        "node": ">=10"
+      },
+      "funding": {
+        "url": "https://github.com/sponsors/sindresorhus"
+      }
+    },
+    "node_modules/parent-module": {
+      "version": "1.0.1",
+      "resolved": "https://registry.npmjs.org/parent-module/-/parent-module-1.0.1.tgz",
+      "integrity": "sha512-GQ2EWRpQV8/o+Aw8YqtfZZPfNRWZYkbidE9k5rpl/hC3vtHHBfGm2Ifi6qWV+coDGkrUKZAxE3Lot5kcsRlh+g==",
+      "dev": true,
+      "license": "MIT",
+      "dependencies": {
+        "callsites": "^3.0.0"
+      },
+      "engines": {
+        "node": ">=6"
+      }
+    },
+    "node_modules/path-exists": {
+      "version": "4.0.0",
+      "resolved": "https://registry.npmjs.org/path-exists/-/path-exists-4.0.0.tgz",
+      "integrity": "sha512-ak9Qy5Q7jYb2Wwcey5Fpvg2KoAc/ZIhLSLOSBmRmygPsGwkVVt0fZa0qrtMz+m6tJTAHfZQ8FnmB4MG4LWy7/w==",
+      "dev": true,
+      "license": "MIT",
+      "engines": {
+        "node": ">=8"
+      }
+    },
+    "node_modules/path-key": {
+      "version": "3.1.1",
+      "resolved": "https://registry.npmjs.org/path-key/-/path-key-3.1.1.tgz",
+      "integrity": "sha512-ojmeN0qd+y0jszEtoY48r0Peq5dwMEkIlCOu6Q5f41lfkswXuKtYrhgoTpLnyIcHm24Uhqx+5Tqm2InSwLhE6Q==",
+      "dev": true,
+      "license": "MIT",
+      "engines": {
+        "node": ">=8"
+      }
+    },
+    "node_modules/picocolors": {
+      "version": "1.1.1",
+      "resolved": "https://registry.npmjs.org/picocolors/-/picocolors-1.1.1.tgz",
+      "integrity": "sha512-xceH2snhtb5M9liqDsmEw56le376mTZkEX/jEb/RxNFyegNul7eNslCXP9FDj/Lcu0X8KEyMceP2ntpaHrDEVA==",
+      "dev": true,
+      "license": "ISC"
+    },
+    "node_modules/picomatch": {
+      "version": "4.0.3",
+      "resolved": "https://registry.npmjs.org/picomatch/-/picomatch-4.0.3.tgz",
+      "integrity": "sha512-5gTmgEY/sqK6gFXLIsQNH19lWb4ebPDLA4SdLP7dsWkIXHWlG66oPuVvXSGFPppYZz8ZDZq0dYYrbHfBCVUb1Q==",
+      "dev": true,
+      "license": "MIT",
+      "engines": {
+        "node": ">=12"
+      },
+      "funding": {
+        "url": "https://github.com/sponsors/jonschlinkert"
+      }
+    },
+    "node_modules/postcss": {
+      "version": "8.5.6",
+      "resolved": "https://registry.npmjs.org/postcss/-/postcss-8.5.6.tgz",
+      "integrity": "sha512-3Ybi1tAuwAP9s0r1UQ2J4n5Y0G05bJkpUIO0/bI9MhwmD70S5aTWbXGBwxHrelT+XM1k6dM0pk+SwNkpTRN7Pg==",
+      "dev": true,
+      "funding": [
+        {
+          "type": "opencollective",
+          "url": "https://opencollective.com/postcss/"
+        },
+        {
+          "type": "tidelift",
+          "url": "https://tidelift.com/funding/github/npm/postcss"
+        },
+        {
+          "type": "github",
+          "url": "https://github.com/sponsors/ai"
+        }
+      ],
+      "license": "MIT",
+      "dependencies": {
+        "nanoid": "^3.3.11",
+        "picocolors": "^1.1.1",
+        "source-map-js": "^1.2.1"
+      },
+      "engines": {
+        "node": "^10 || ^12 || >=14"
+      }
+    },
+    "node_modules/prelude-ls": {
+      "version": "1.2.1",
+      "resolved": "https://registry.npmjs.org/prelude-ls/-/prelude-ls-1.2.1.tgz",
+      "integrity": "sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==",
+      "dev": true,
+      "license": "MIT",
+      "engines": {
+        "node": ">= 0.8.0"
+      }
+    },
+    "node_modules/protobufjs": {
+      "version": "7.5.4",
+      "resolved": "https://registry.npmjs.org/protobufjs/-/protobufjs-7.5.4.tgz",
+      "integrity": "sha512-CvexbZtbov6jW2eXAvLukXjXUW1TzFaivC46BpWc/3BpcCysb5Vffu+B3XHMm8lVEuy2Mm4XGex8hBSg1yapPg==",
+      "hasInstallScript": true,
+      "license": "BSD-3-Clause",
+      "dependencies": {
+        "@protobufjs/aspromise": "^1.1.2",
+        "@protobufjs/base64": "^1.1.2",
+        "@protobufjs/codegen": "^2.0.4",
+        "@protobufjs/eventemitter": "^1.1.0",
+        "@protobufjs/fetch": "^1.1.0",
+        "@protobufjs/float": "^1.0.2",
+        "@protobufjs/inquire": "^1.1.0",
+        "@protobufjs/path": "^1.1.2",
+        "@protobufjs/pool": "^1.1.0",
+        "@protobufjs/utf8": "^1.1.0",
+        "@types/node": ">=13.7.0",
+        "long": "^5.0.0"
+      },
+      "engines": {
+        "node": ">=12.0.0"
+      }
+    },
+    "node_modules/proxy-from-env": {
+      "version": "1.1.0",
+      "resolved": "https://registry.npmjs.org/proxy-from-env/-/proxy-from-env-1.1.0.tgz",
+      "integrity": "sha512-D+zkORCbA9f1tdWRK0RaCR3GPv50cMxcrz4X8k5LTSUD1Dkw47mKJEZQNunItRTkWwgtaUSo1RVFRIG9ZXiFYg==",
+      "license": "MIT"
+    },
+    "node_modules/punycode": {
+      "version": "2.3.1",
+      "resolved": "https://registry.npmjs.org/punycode/-/punycode-2.3.1.tgz",
+      "integrity": "sha512-vYt7UD1U9Wg6138shLtLOvdAu+8DsC/ilFtEVHcH+wydcSpNE20AfSOduf6MkRFahL5FY7X1oU7nKVZFtfq8Fg==",
+      "dev": true,
+      "license": "MIT",
+      "engines": {
+        "node": ">=6"
+      }
+    },
+    "node_modules/react": {
+      "version": "19.2.0",
+      "resolved": "https://registry.npmjs.org/react/-/react-19.2.0.tgz",
+      "integrity": "sha512-tmbWg6W31tQLeB5cdIBOicJDJRR2KzXsV7uSK9iNfLWQ5bIZfxuPEHp7M8wiHyHnn0DD1i7w3Zmin0FtkrwoCQ==",
+      "license": "MIT",
+      "engines": {
+        "node": ">=0.10.0"
+      }
+    },
+    "node_modules/react-dom": {
+      "version": "19.2.0",
+      "resolved": "https://registry.npmjs.org/react-dom/-/react-dom-19.2.0.tgz",
+      "integrity": "sha512-UlbRu4cAiGaIewkPyiRGJk0imDN2T3JjieT6spoL2UeSf5od4n5LB/mQ4ejmxhCFT1tYe8IvaFulzynWovsEFQ==",
+      "license": "MIT",
+      "dependencies": {
+        "scheduler": "^0.27.0"
+      },
+      "peerDependencies": {
+        "react": "^19.2.0"
+      }
+    },
+    "node_modules/react-refresh": {
+      "version": "0.17.0",
+      "resolved": "https://registry.npmjs.org/react-refresh/-/react-refresh-0.17.0.tgz",
+      "integrity": "sha512-z6F7K9bV85EfseRCp2bzrpyQ0Gkw1uLoCel9XBVWPg/TjRj94SkJzUTGfOa4bs7iJvBWtQG0Wq7wnI0syw3EBQ==",
+      "dev": true,
+      "license": "MIT",
+      "engines": {
+        "node": ">=0.10.0"
+      }
+    },
+    "node_modules/react-router": {
+      "version": "7.9.4",
+      "resolved": "https://registry.npmjs.org/react-router/-/react-router-7.9.4.tgz",
+      "integrity": "sha512-SD3G8HKviFHg9xj7dNODUKDFgpG4xqD5nhyd0mYoB5iISepuZAvzSr8ywxgxKJ52yRzf/HWtVHc9AWwoTbljvA==",
+      "license": "MIT",
+      "dependencies": {
+        "cookie": "^1.0.1",
+        "set-cookie-parser": "^2.6.0"
+      },
+      "engines": {
+        "node": ">=20.0.0"
+      },
+      "peerDependencies": {
+        "react": ">=18",
+        "react-dom": ">=18"
+      },
+      "peerDependenciesMeta": {
+        "react-dom": {
+          "optional": true
+        }
+      }
+    },
+    "node_modules/react-router-dom": {
+      "version": "7.9.4",
+      "resolved": "https://registry.npmjs.org/react-router-dom/-/react-router-dom-7.9.4.tgz",
+      "integrity": "sha512-f30P6bIkmYvnHHa5Gcu65deIXoA2+r3Eb6PJIAddvsT9aGlchMatJ51GgpU470aSqRRbFX22T70yQNUGuW3DfA==",
+      "license": "MIT",
+      "dependencies": {
+        "react-router": "7.9.4"
+      },
+      "engines": {
+        "node": ">=20.0.0"
+      },
+      "peerDependencies": {
+        "react": ">=18",
+        "react-dom": ">=18"
+      }
+    },
+    "node_modules/require-directory": {
+      "version": "2.1.1",
+      "resolved": "https://registry.npmjs.org/require-directory/-/require-directory-2.1.1.tgz",
+      "integrity": "sha512-fGxEI7+wsG9xrvdjsrlmL22OMTTiHRwAMroiEeMgq8gzoLC/PQr7RsRDSTLUg/bZAZtF+TVIkHc6/4RIKrui+Q==",
+      "license": "MIT",
+      "engines": {
+        "node": ">=0.10.0"
+      }
+    },
+    "node_modules/resolve-from": {
+      "version": "4.0.0",
+      "resolved": "https://registry.npmjs.org/resolve-from/-/resolve-from-4.0.0.tgz",
+      "integrity": "sha512-pb/MYmXstAkysRFx8piNI1tGFNQIFA3vkE3Gq4EuA1dF6gHp/+vgZqsCGJapvy8N3Q+4o7FwvquPJcnZ7RYy4g==",
+      "dev": true,
+      "license": "MIT",
+      "engines": {
+        "node": ">=4"
+      }
+    },
+    "node_modules/rollup": {
+      "version": "4.52.5",
+      "resolved": "https://registry.npmjs.org/rollup/-/rollup-4.52.5.tgz",
+      "integrity": "sha512-3GuObel8h7Kqdjt0gxkEzaifHTqLVW56Y/bjN7PSQtkKr0w3V/QYSdt6QWYtd7A1xUtYQigtdUfgj1RvWVtorw==",
+      "dev": true,
+      "license": "MIT",
+      "dependencies": {
+        "@types/estree": "1.0.8"
+      },
+      "bin": {
+        "rollup": "dist/bin/rollup"
+      },
+      "engines": {
+        "node": ">=18.0.0",
+        "npm": ">=8.0.0"
+      },
+      "optionalDependencies": {
+        "@rollup/rollup-android-arm-eabi": "4.52.5",
+        "@rollup/rollup-android-arm64": "4.52.5",
+        "@rollup/rollup-darwin-arm64": "4.52.5",
+        "@rollup/rollup-darwin-x64": "4.52.5",
+        "@rollup/rollup-freebsd-arm64": "4.52.5",
+        "@rollup/rollup-freebsd-x64": "4.52.5",
+        "@rollup/rollup-linux-arm-gnueabihf": "4.52.5",
+        "@rollup/rollup-linux-arm-musleabihf": "4.52.5",
+        "@rollup/rollup-linux-arm64-gnu": "4.52.5",
+        "@rollup/rollup-linux-arm64-musl": "4.52.5",
+        "@rollup/rollup-linux-loong64-gnu": "4.52.5",
+        "@rollup/rollup-linux-ppc64-gnu": "4.52.5",
+        "@rollup/rollup-linux-riscv64-gnu": "4.52.5",
+        "@rollup/rollup-linux-riscv64-musl": "4.52.5",
+        "@rollup/rollup-linux-s390x-gnu": "4.52.5",
+        "@rollup/rollup-linux-x64-gnu": "4.52.5",
+        "@rollup/rollup-linux-x64-musl": "4.52.5",
+        "@rollup/rollup-openharmony-arm64": "4.52.5",
+        "@rollup/rollup-win32-arm64-msvc": "4.52.5",
+        "@rollup/rollup-win32-ia32-msvc": "4.52.5",
+        "@rollup/rollup-win32-x64-gnu": "4.52.5",
+        "@rollup/rollup-win32-x64-msvc": "4.52.5",
+        "fsevents": "~2.3.2"
+      }
+    },
+    "node_modules/safe-buffer": {
+      "version": "5.2.1",
+      "resolved": "https://registry.npmjs.org/safe-buffer/-/safe-buffer-5.2.1.tgz",
+      "integrity": "sha512-rp3So07KcdmmKbGvgaNxQSJr7bGVSVk5S9Eq1F+ppbRo70+YeaDxkw5Dd8NPN+GD6bjnYm2VuPuCXmpuYvmCXQ==",
+      "funding": [
+        {
+          "type": "github",
+          "url": "https://github.com/sponsors/feross"
+        },
+        {
+          "type": "patreon",
+          "url": "https://www.patreon.com/feross"
+        },
+        {
+          "type": "consulting",
+          "url": "https://feross.org/support"
+        }
+      ],
+      "license": "MIT"
+    },
+    "node_modules/scheduler": {
+      "version": "0.27.0",
+      "resolved": "https://registry.npmjs.org/scheduler/-/scheduler-0.27.0.tgz",
+      "integrity": "sha512-eNv+WrVbKu1f3vbYJT/xtiF5syA5HPIMtf9IgY/nKg0sWqzAUEvqY/xm7OcZc/qafLx/iO9FgOmeSAp4v5ti/Q==",
+      "license": "MIT"
+    },
+    "node_modules/semver": {
+      "version": "6.3.1",
+      "resolved": "https://registry.npmjs.org/semver/-/semver-6.3.1.tgz",
+      "integrity": "sha512-BR7VvDCVHO+q2xBEWskxS6DJE1qRnb7DxzUrogb71CWoSficBxYsiAGd+Kl0mmq/MprG9yArRkyrQxTO6XjMzA==",
+      "dev": true,
+      "license": "ISC",
+      "bin": {
+        "semver": "bin/semver.js"
+      }
+    },
+    "node_modules/set-cookie-parser": {
+      "version": "2.7.1",
+      "resolved": "https://registry.npmjs.org/set-cookie-parser/-/set-cookie-parser-2.7.1.tgz",
+      "integrity": "sha512-IOc8uWeOZgnb3ptbCURJWNjWUPcO3ZnTTdzsurqERrP6nPyv+paC55vJM0LpOlT2ne+Ix+9+CRG1MNLlyZ4GjQ==",
+      "license": "MIT"
+    },
+    "node_modules/shebang-command": {
+      "version": "2.0.0",
+      "resolved": "https://registry.npmjs.org/shebang-command/-/shebang-command-2.0.0.tgz",
+      "integrity": "sha512-kHxr2zZpYtdmrN1qDjrrX/Z1rR1kG8Dx+gkpK1G4eXmvXswmcE1hTWBWYUzlraYw1/yZp6YuDY77YtvbN0dmDA==",
+      "dev": true,
+      "license": "MIT",
+      "dependencies": {
+        "shebang-regex": "^3.0.0"
+      },
+      "engines": {
+        "node": ">=8"
+      }
+    },
+    "node_modules/shebang-regex": {
+      "version": "3.0.0",
+      "resolved": "https://registry.npmjs.org/shebang-regex/-/shebang-regex-3.0.0.tgz",
+      "integrity": "sha512-7++dFhtcx3353uBaq8DDR4NuxBetBzC7ZQOhmTQInHEd6bSrXdiEyzCvG07Z44UYdLShWUyXt5M/yhz8ekcb1A==",
+      "dev": true,
+      "license": "MIT",
+      "engines": {
+        "node": ">=8"
+      }
+    },
+    "node_modules/source-map-js": {
+      "version": "1.2.1",
+      "resolved": "https://registry.npmjs.org/source-map-js/-/source-map-js-1.2.1.tgz",
+      "integrity": "sha512-UXWMKhLOwVKb728IUtQPXxfYU+usdybtUrK/8uGE8CQMvrhOpwvzDBwj0QhSL7MQc7vIsISBG8VQ8+IDQxpfQA==",
+      "dev": true,
+      "license": "BSD-3-Clause",
+      "engines": {
+        "node": ">=0.10.0"
+      }
+    },
+    "node_modules/std-env": {
+      "version": "3.10.0",
+      "resolved": "https://registry.npmjs.org/std-env/-/std-env-3.10.0.tgz",
+      "integrity": "sha512-5GS12FdOZNliM5mAOxFRg7Ir0pWz8MdpYm6AY6VPkGpbA7ZzmbzNcBJQ0GPvvyWgcY7QAhCgf9Uy89I03faLkg==",
+      "license": "MIT"
+    },
+    "node_modules/string-width": {
+      "version": "4.2.3",
+      "resolved": "https://registry.npmjs.org/string-width/-/string-width-4.2.3.tgz",
+      "integrity": "sha512-wKyQRQpjJ0sIp62ErSZdGsjMJWsap5oRNihHhu6G7JVO/9jIB6UyevL+tXuOqrng8j/cxKTWyWUwvSTriiZz/g==",
+      "license": "MIT",
+      "dependencies": {
+        "emoji-regex": "^8.0.0",
+        "is-fullwidth-code-point": "^3.0.0",
+        "strip-ansi": "^6.0.1"
+      },
+      "engines": {
+        "node": ">=8"
+      }
+    },
+    "node_modules/strip-ansi": {
+      "version": "6.0.1",
+      "resolved": "https://registry.npmjs.org/strip-ansi/-/strip-ansi-6.0.1.tgz",
+      "integrity": "sha512-Y38VPSHcqkFrCpFnQ9vuSXmquuv5oXOKpGeT6aGrr3o3Gc9AlVa6JBfUSOCnbxGGZF+/0ooI7KrPuUSztUdU5A==",
+      "license": "MIT",
+      "dependencies": {
+        "ansi-regex": "^5.0.1"
+      },
+      "engines": {
+        "node": ">=8"
+      }
+    },
+    "node_modules/strip-json-comments": {
+      "version": "3.1.1",
+      "resolved": "https://registry.npmjs.org/strip-json-comments/-/strip-json-comments-3.1.1.tgz",
+      "integrity": "sha512-6fPc+R4ihwqP6N/aIv2f1gMH8lOVtWQHoqC4yK6oSDVVocumAsfCqjkXnqiYMhmMwS/mEHLp7Vehlt3ql6lEig==",
+      "dev": true,
+      "license": "MIT",
+      "engines": {
+        "node": ">=8"
+      },
+      "funding": {
+        "url": "https://github.com/sponsors/sindresorhus"
+      }
+    },
+    "node_modules/supports-color": {
+      "version": "7.2.0",
+      "resolved": "https://registry.npmjs.org/supports-color/-/supports-color-7.2.0.tgz",
+      "integrity": "sha512-qpCAvRl9stuOHveKsn7HncJRvv501qIacKzQlO/+Lwxc9+0q2wLyv4Dfvt80/DPn2pqOBsJdDiogXGR9+OvwRw==",
+      "dev": true,
+      "license": "MIT",
+      "dependencies": {
+        "has-flag": "^4.0.0"
+      },
+      "engines": {
+        "node": ">=8"
+      }
+    },
+    "node_modules/swr": {
+      "version": "2.3.4",
+      "resolved": "https://registry.npmjs.org/swr/-/swr-2.3.4.tgz",
+      "integrity": "sha512-bYd2lrhc+VarcpkgWclcUi92wYCpOgMws9Sd1hG1ntAu0NEy+14CbotuFjshBU2kt9rYj9TSmDcybpxpeTU1fg==",
+      "license": "MIT",
+      "dependencies": {
+        "dequal": "^2.0.3",
+        "use-sync-external-store": "^1.4.0"
+      },
+      "peerDependencies": {
+        "react": "^16.11.0 || ^17.0.0 || ^18.0.0 || ^19.0.0"
+      }
+    },
+    "node_modules/tinyglobby": {
+      "version": "0.2.15",
+      "resolved": "https://registry.npmjs.org/tinyglobby/-/tinyglobby-0.2.15.tgz",
+      "integrity": "sha512-j2Zq4NyQYG5XMST4cbs02Ak8iJUdxRM0XI5QyxXuZOzKOINmWurp3smXu3y5wDcJrptwpSjgXHzIQxR0omXljQ==",
+      "dev": true,
+      "license": "MIT",
+      "dependencies": {
+        "fdir": "^6.5.0",
+        "picomatch": "^4.0.3"
+      },
+      "engines": {
+        "node": ">=12.0.0"
+      },
+      "funding": {
+        "url": "https://github.com/sponsors/SuperchupuDev"
+      }
+    },
+    "node_modules/tslib": {
+      "version": "2.8.1",
+      "resolved": "https://registry.npmjs.org/tslib/-/tslib-2.8.1.tgz",
+      "integrity": "sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w==",
+      "license": "0BSD"
+    },
+    "node_modules/type-check": {
+      "version": "0.4.0",
+      "resolved": "https://registry.npmjs.org/type-check/-/type-check-0.4.0.tgz",
+      "integrity": "sha512-XleUoc9uwGXqjWwXaUTZAmzMcFZ5858QA2vvx1Ur5xIcixXIP+8LnFDgRplU30us6teqdlskFfu+ae4K79Ooew==",
+      "dev": true,
+      "license": "MIT",
+      "dependencies": {
+        "prelude-ls": "^1.2.1"
+      },
+      "engines": {
+        "node": ">= 0.8.0"
+      }
+    },
+    "node_modules/undici-types": {
+      "version": "7.16.0",
+      "resolved": "https://registry.npmjs.org/undici-types/-/undici-types-7.16.0.tgz",
+      "integrity": "sha512-Zz+aZWSj8LE6zoxD+xrjh4VfkIG8Ya6LvYkZqtUQGJPZjYl53ypCaUwWqo7eI0x66KBGeRo+mlBEkMSeSZ38Nw==",
+      "license": "MIT"
+    },
+    "node_modules/update-browserslist-db": {
+      "version": "1.1.3",
+      "resolved": "https://registry.npmjs.org/update-browserslist-db/-/update-browserslist-db-1.1.3.tgz",
+      "integrity": "sha512-UxhIZQ+QInVdunkDAaiazvvT/+fXL5Osr0JZlJulepYu6Jd7qJtDZjlur0emRlT71EN3ScPoE7gvsuIKKNavKw==",
+      "dev": true,
+      "funding": [
+        {
+          "type": "opencollective",
+          "url": "https://opencollective.com/browserslist"
+        },
+        {
+          "type": "tidelift",
+          "url": "https://tidelift.com/funding/github/npm/browserslist"
+        },
+        {
+          "type": "github",
+          "url": "https://github.com/sponsors/ai"
+        }
+      ],
+      "license": "MIT",
+      "dependencies": {
+        "escalade": "^3.2.0",
+        "picocolors": "^1.1.1"
+      },
+      "bin": {
+        "update-browserslist-db": "cli.js"
+      },
+      "peerDependencies": {
+        "browserslist": ">= 4.21.0"
+      }
+    },
+    "node_modules/uri-js": {
+      "version": "4.4.1",
+      "resolved": "https://registry.npmjs.org/uri-js/-/uri-js-4.4.1.tgz",
+      "integrity": "sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg==",
+      "dev": true,
+      "license": "BSD-2-Clause",
+      "dependencies": {
+        "punycode": "^2.1.0"
+      }
+    },
+    "node_modules/use-sync-external-store": {
+      "version": "1.6.0",
+      "resolved": "https://registry.npmjs.org/use-sync-external-store/-/use-sync-external-store-1.6.0.tgz",
+      "integrity": "sha512-Pp6GSwGP/NrPIrxVFAIkOQeyw8lFenOHijQWkUTrDvrF4ALqylP2C/KCkeS9dpUM3KvYRQhna5vt7IL95+ZQ9w==",
+      "license": "MIT",
+      "peerDependencies": {
+        "react": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0"
+      }
+    },
+    "node_modules/vite": {
+      "version": "7.1.11",
+      "resolved": "https://registry.npmjs.org/vite/-/vite-7.1.11.tgz",
+      "integrity": "sha512-uzcxnSDVjAopEUjljkWh8EIrg6tlzrjFUfMcR1EVsRDGwf/ccef0qQPRyOrROwhrTDaApueq+ja+KLPlzR/zdg==",
+      "dev": true,
+      "license": "MIT",
+      "dependencies": {
+        "esbuild": "^0.25.0",
+        "fdir": "^6.5.0",
+        "picomatch": "^4.0.3",
+        "postcss": "^8.5.6",
+        "rollup": "^4.43.0",
+        "tinyglobby": "^0.2.15"
+      },
+      "bin": {
+        "vite": "bin/vite.js"
+      },
+      "engines": {
+        "node": "^20.19.0 || >=22.12.0"
+      },
+      "funding": {
+        "url": "https://github.com/vitejs/vite?sponsor=1"
+      },
+      "optionalDependencies": {
+        "fsevents": "~2.3.3"
+      },
+      "peerDependencies": {
+        "@types/node": "^20.19.0 || >=22.12.0",
+        "jiti": ">=1.21.0",
+        "less": "^4.0.0",
+        "lightningcss": "^1.21.0",
+        "sass": "^1.70.0",
+        "sass-embedded": "^1.70.0",
+        "stylus": ">=0.54.8",
+        "sugarss": "^5.0.0",
+        "terser": "^5.16.0",
+        "tsx": "^4.8.1",
+        "yaml": "^2.4.2"
+      },
+      "peerDependenciesMeta": {
+        "@types/node": {
+          "optional": true
+        },
+        "jiti": {
+          "optional": true
+        },
+        "less": {
+          "optional": true
+        },
+        "lightningcss": {
+          "optional": true
+        },
+        "sass": {
+          "optional": true
+        },
+        "sass-embedded": {
+          "optional": true
+        },
+        "stylus": {
+          "optional": true
+        },
+        "sugarss": {
+          "optional": true
+        },
+        "terser": {
+          "optional": true
+        },
+        "tsx": {
+          "optional": true
+        },
+        "yaml": {
+          "optional": true
+        }
+      }
+    },
+    "node_modules/web-vitals": {
+      "version": "4.2.4",
+      "resolved": "https://registry.npmjs.org/web-vitals/-/web-vitals-4.2.4.tgz",
+      "integrity": "sha512-r4DIlprAGwJ7YM11VZp4R884m0Vmgr6EAKe3P+kO0PPj3Unqyvv59rczf6UiGcb9Z8QxZVcqKNwv/g0WNdWwsw==",
+      "license": "Apache-2.0"
+    },
+    "node_modules/websocket-driver": {
+      "version": "0.7.4",
+      "resolved": "https://registry.npmjs.org/websocket-driver/-/websocket-driver-0.7.4.tgz",
+      "integrity": "sha512-b17KeDIQVjvb0ssuSDF2cYXSg2iztliJ4B9WdsuB6J952qCPKmnVq4DyW5motImXHDC1cBT/1UezrJVsKw5zjg==",
+      "license": "Apache-2.0",
+      "dependencies": {
+        "http-parser-js": ">=0.5.1",
+        "safe-buffer": ">=5.1.0",
+        "websocket-extensions": ">=0.1.1"
+      },
+      "engines": {
+        "node": ">=0.8.0"
+      }
+    },
+    "node_modules/websocket-extensions": {
+      "version": "0.1.4",
+      "resolved": "https://registry.npmjs.org/websocket-extensions/-/websocket-extensions-0.1.4.tgz",
+      "integrity": "sha512-OqedPIGOfsDlo31UNwYbCFMSaO9m9G/0faIHj5/dZFDMFqPTcx6UwqyOy3COEaEOg/9VsGIpdqn62W5KhoKSpg==",
+      "license": "Apache-2.0",
+      "engines": {
+        "node": ">=0.8.0"
+      }
+    },
+    "node_modules/which": {
+      "version": "2.0.2",
+      "resolved": "https://registry.npmjs.org/which/-/which-2.0.2.tgz",
+      "integrity": "sha512-BLI3Tl1TW3Pvl70l3yq3Y64i+awpwXqsGBYWkkqMtnbXgrMD+yj7rhW0kuEDxzJaYXGjEW5ogapKNMEKNMjibA==",
+      "dev": true,
+      "license": "ISC",
+      "dependencies": {
+        "isexe": "^2.0.0"
+      },
+      "bin": {
+        "node-which": "bin/node-which"
+      },
+      "engines": {
+        "node": ">= 8"
+      }
+    },
+    "node_modules/word-wrap": {
+      "version": "1.2.5",
+      "resolved": "https://registry.npmjs.org/word-wrap/-/word-wrap-1.2.5.tgz",
+      "integrity": "sha512-BN22B5eaMMI9UMtjrGd5g5eCYPpCPDUy0FJXbYsaT5zYxjFOckS53SQDE3pWkVoWpHXVb3BrYcEN4Twa55B5cA==",
+      "dev": true,
+      "license": "MIT",
+      "engines": {
+        "node": ">=0.10.0"
+      }
+    },
+    "node_modules/wrap-ansi": {
+      "version": "7.0.0",
+      "resolved": "https://registry.npmjs.org/wrap-ansi/-/wrap-ansi-7.0.0.tgz",
+      "integrity": "sha512-YVGIj2kamLSTxw6NsZjoBxfSwsn0ycdesmc4p+Q21c5zPuZ1pl+NfxVdxPtdHvmNVOQ6XSYG4AUtyt/Fi7D16Q==",
+      "license": "MIT",
+      "dependencies": {
+        "ansi-styles": "^4.0.0",
+        "string-width": "^4.1.0",
+        "strip-ansi": "^6.0.0"
+      },
+      "engines": {
+        "node": ">=10"
+      },
+      "funding": {
+        "url": "https://github.com/chalk/wrap-ansi?sponsor=1"
+      }
+    },
+    "node_modules/y18n": {
+      "version": "5.0.8",
+      "resolved": "https://registry.npmjs.org/y18n/-/y18n-5.0.8.tgz",
+      "integrity": "sha512-0pfFzegeDWJHJIAmTLRP2DwHjdF5s7jo9tuztdQxAhINCdvS+3nGINqPd00AphqJR/0LhANUS6/+7SCb98YOfA==",
+      "license": "ISC",
+      "engines": {
+        "node": ">=10"
+      }
+    },
+    "node_modules/yallist": {
+      "version": "3.1.1",
+      "resolved": "https://registry.npmjs.org/yallist/-/yallist-3.1.1.tgz",
+      "integrity": "sha512-a4UGQaWPH59mOXUYnAG2ewncQS4i4F43Tv3JoAM+s2VDAmS9NsK8GpDMLrCHPksFT7h3K6TOoUNn2pb7RoXx4g==",
+      "dev": true,
+      "license": "ISC"
+    },
+    "node_modules/yargs": {
+      "version": "17.7.2",
+      "resolved": "https://registry.npmjs.org/yargs/-/yargs-17.7.2.tgz",
+      "integrity": "sha512-7dSzzRQ++CKnNI/krKnYRV7JKKPUXMEh61soaHKg9mrWEhzFWhFnxPxGl+69cD1Ou63C13NUPCnmIcrvqCuM6w==",
+      "license": "MIT",
+      "dependencies": {
+        "cliui": "^8.0.1",
+        "escalade": "^3.1.1",
+        "get-caller-file": "^2.0.5",
+        "require-directory": "^2.1.1",
+        "string-width": "^4.2.3",
+        "y18n": "^5.0.5",
+        "yargs-parser": "^21.1.1"
+      },
+      "engines": {
+        "node": ">=12"
+      }
+    },
+    "node_modules/yargs-parser": {
+      "version": "21.1.1",
+      "resolved": "https://registry.npmjs.org/yargs-parser/-/yargs-parser-21.1.1.tgz",
+      "integrity": "sha512-tVpsJW7DdjecAiFpbIB1e3qxIQsE6NoPc5/eTdrbbIC4h0LVsWhnoa3g+m2HclBIujHzsxZ4VJVA+GUuc2/LBw==",
+      "license": "ISC",
+      "engines": {
+        "node": ">=12"
+      }
+    },
+    "node_modules/yocto-queue": {
+      "version": "0.1.0",
+      "resolved": "https://registry.npmjs.org/yocto-queue/-/yocto-queue-0.1.0.tgz",
+      "integrity": "sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==",
+      "dev": true,
+      "license": "MIT",
+      "engines": {
+        "node": ">=10"
+      },
+      "funding": {
+        "url": "https://github.com/sponsors/sindresorhus"
+      }
+    }
+  }
+}
+```
 
-- JSON Server automatically creates REST endpoints: GET/POST/PUT/DELETE for each array
-- Data persists between server restarts
-- Used for development and demo purposes (would be replaced with real database in production)
-- Supports filtering (e.g., `/upvotes?shareId=123`)
+## ./public/vite.svg
+```svg
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--logos" width="31.88" height="32" preserveAspectRatio="xMidYMid meet" viewBox="0 0 256 257"><defs><linearGradient id="IconifyId1813088fe1fbc01fb466" x1="-.828%" x2="57.636%" y1="7.652%" y2="78.411%"><stop offset="0%" stop-color="#41D1FF"></stop><stop offset="100%" stop-color="#BD34FE"></stop></linearGradient><linearGradient id="IconifyId1813088fe1fbc01fb467" x1="43.376%" x2="50.316%" y1="2.242%" y2="89.03%"><stop offset="0%" stop-color="#FFEA83"></stop><stop offset="8.333%" stop-color="#FFDD35"></stop><stop offset="100%" stop-color="#FFA800"></stop></linearGradient></defs><path fill="url(#IconifyId1813088fe1fbc01fb466)" d="M255.153 37.938L134.897 252.976c-2.483 4.44-8.862 4.466-11.382.048L.875 37.958c-2.746-4.814 1.371-10.646 6.827-9.67l120.385 21.517a6.537 6.537 0 0 0 2.322-.004l117.867-21.483c5.438-.991 9.574 4.796 6.877 9.62Z"></path><path fill="url(#IconifyId1813088fe1fbc01fb467)" d="M185.432.063L96.44 17.501a3.268 3.268 0 0 0-2.634 3.014l-5.474 92.456a3.268 3.268 0 0 0 3.997 3.378l24.777-5.718c2.318-.535 4.413 1.507 3.936 3.838l-7.361 36.047c-.495 2.426 1.782 4.5 4.151 3.78l15.304-4.649c2.372-.72 4.652 1.36 4.15 3.788l-11.698 56.621c-.732 3.542 3.979 5.473 5.943 2.437l1.313-2.028l72.516-144.72c1.215-2.423-.88-5.186-3.54-4.672l-25.505 4.922c-2.396.462-4.435-1.77-3.759-4.114l16.646-57.705c.677-2.35-1.37-4.583-3.769-4.113Z"></path></svg>```
 
-## Application Flow: Start to Finish
+## ./README.md
+```markdown
+# Habit Tracker
 
-### 1. Entry Point: src/main.jsx
+## Overview
 
-This is where the app begins execution. It sets up the React application with authentication and global styles.
+Habit Tracker is a web application designed to help users build and maintain positive habits. It allows users to create habits, track their daily progress over a week, view detailed reports, and share their progress with others. The app includes features like real-time chat for shared progress and a community aspect where users can upvote each other's achievements.
 
-```jsx
+The application is built with a modern web stack, using React for the frontend and a JSON-based backend for data storage. It incorporates user authentication to ensure personalized experiences and secure data handling.
+
+## Features
+
+- **User Authentication**: Secure login and registration using Clerk authentication service.
+- **Habit Management**: Create, view, update, and delete personal habits.
+- **Weekly Tracking**: Track habit completion for each day of the week with an intuitive interface.
+- **Detailed Views**: See a week-by-week breakdown of habit progress.
+- **Reports**: Generate statistics and reports on habit completion rates.
+- **Shared Progress**: Share your habit progress publicly and view others' achievements.
+- **Community Interaction**: Upvote shared progress and engage in real-time chat discussions.
+- **Real-Time Chat**: Communicate with other users about shared habits using Firebase-powered chat.
+- **Responsive Design**: Works well on desktop and mobile devices with Bootstrap styling.
+
+## Technologies Used
+
+### Frontend
+
+- React: JavaScript library for building user interfaces.
+- Vite: Fast build tool and development server.
+- React Router: For handling navigation between different pages.
+- Clerk: Authentication and user management.
+- Bootstrap: CSS framework for responsive design.
+- Font Awesome: Icon library for visual elements.
+- Axios: HTTP client for API requests.
+
+### Backend
+
+- JSON Server: Simple REST API server for data storage and retrieval.
+- Firebase: Real-time database for chat functionality.
+
+### Development Tools
+
+- ESLint: Code linting for maintaining code quality.
+- Vite: Development server and build tool.
+
+## Installation
+
+To run this project locally, you need to have Node.js and npm installed on your machine.
+
+### Prerequisites
+
+- Node.js (version 16 or higher)
+- npm (comes with Node.js)
+
+### Steps
+
+1. Clone the repository:
+
+   ```
+   git clone [Repository URL]
+   cd habit-tracker
+   ```
+
+2. Install frontend dependencies:
+
+   ```
+   npm install
+   ```
+
+3. Set up environment variables:
+   Create a `.env` file in the root directory and add the following variables:
+
+   ```
+   VITE_CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key
+   VITE_API_URL=http://localhost:4000
+   VITE_FIREBASE_API_KEY=your_firebase_api_key
+   VITE_FIREBASE_AUTH_DOMAIN=your_firebase_auth_domain
+   VITE_FIREBASE_DATABASE_URL=your_firebase_database_url
+   VITE_FIREBASE_PROJECT_ID=your_firebase_project_id
+   ```
+
+4. Start the backend server (JSON Server):
+
+   ```
+   npx json-server --watch db.json --port 4000
+   ```
+
+5. Start the frontend development server:
+
+   ```
+   npm run dev
+   ```
+
+6. Open your browser and navigate to `http://localhost:5173` to view the application.
+
+## Usage
+
+1. **Sign Up/Login**: Create an account or log in using the Clerk authentication.
+2. **Add Habits**: Click on "Add Habit" to create a new habit you want to track.
+3. **Track Progress**: For each habit, mark days as "Done" or "Not Done" in the week view.
+4. **View Reports**: Check your overall progress and statistics in the Report section.
+5. **Share Progress**: Share your habit achievements and view others' progress.
+6. **Interact**: Upvote shared progress and chat with other users in real-time.
+
+## API Endpoints
+
+The backend provides the following REST API endpoints:
+
+- `GET /habits` - Retrieve all habits
+- `POST /habits` - Create a new habit
+- `PUT /habits/:id` - Update a specific habit
+- `DELETE /habits/:id` - Delete a specific habit
+- `GET /shares` - Retrieve all shared progress
+- `POST /shares` - Create a new share
+- `DELETE /shares/:id` - Delete a specific share
+- `GET /upvotes` - Retrieve all upvotes
+- `POST /upvotes` - Create a new upvote
+- `GET /upvotes?shareId=:id` - Get upvotes for a specific share
+
+## Project Structure
+
+```
+habit-tracker/
+├── public/
+│   └── vite.svg
+├── src/
+│   ├── components/
+│   │   ├── AddHabitForm.jsx
+│   │   ├── Chat.jsx
+│   │   ├── Clock.jsx
+│   │   ├── DayContainer.jsx
+│   │   ├── HabitItem.jsx
+│   │   ├── HabitList.jsx
+│   │   ├── Navbar.jsx
+│   │   ├── Report.jsx
+│   │   ├── SharedProgress.jsx
+│   │   └── WeekView.jsx
+│   ├── api.js
+│   ├── App.jsx
+│   ├── firebase.jsx
+│   ├── index.css
+│   ├── main.jsx
+│   └── assets/
+│       └── react.svg
+├── db.json
+├── package.json
+├── vite.config.js
+└── README.md
+```
+
+## Contributing
+
+Contributions are welcome! Please follow these steps:
+
+1. Fork the repository.
+2. Create a new branch for your feature or bug fix.
+3. Make your changes and test thoroughly.
+4. Submit a pull request with a clear description of your changes.
+
+## Links
+
+- Frontend: [Frontend Link]
+- Backend: [Backend Link]
+```
+
+## ./src/api.js
+```javascript
+// API functions for handling habit data, shares, and upvotes with the backend
+import axios from "axios";
+
+// Base URL for the API, defaults to localhost if not set in environment
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:4000";
+
+// Habit-related API functions
+export const fetchHabits = () => axios.get(`${API_URL}/habits`);
+export const addHabit = (habitData) =>
+  axios.post(`${API_URL}/habits`, habitData);
+export const updateHabit = (id, updatedData) =>
+  axios.put(`${API_URL}/habits/${id}`, updatedData);
+export const deleteHabit = (id) => axios.delete(`${API_URL}/habits/${id}`);
+
+// Share-related API functions for public habit sharing
+export const fetchShares = () => axios.get(`${API_URL}/shares`);
+export const addShare = (shareData) =>
+  axios.post(`${API_URL}/shares`, shareData);
+export const updateShare = (id, updatedData) =>
+  axios.put(`${API_URL}/shares/${id}`, updatedData);
+export const deleteShare = (id) => axios.delete(`${API_URL}/shares/${id}`);
+
+// Upvote-related API functions for liking shared habits
+export const fetchUpvotes = () => axios.get(`${API_URL}/upvotes`);
+export const addUpvote = (upvoteData) =>
+  axios.post(`${API_URL}/upvotes`, upvoteData);
+export const getUpvotesForShare = (shareId) =>
+  axios.get(`${API_URL}/upvotes?shareId=${shareId}`);
+```
+
+## ./src/App.css
+```css
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+```
+
+## ./src/App.jsx
+```javascript
+// Main App component handling routing, authentication, and state management for the habit tracker
+import React, { useState, useEffect } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useUser, SignIn } from "@clerk/clerk-react";
+import Navbar from "./components/Navbar";
+import HabitList from "./components/HabitList";
+import WeekView from "./components/WeekView";
+import AddHabitForm from "./components/AddHabitForm";
+import Report from "./components/Report"; // Import Report component
+import Clock from "./components/Clock";
+import { fetchHabits } from "./api";
+import SharedProgress from "./components/SharedProgress";
+
+function App() {
+  // Get user authentication status and user data from Clerk
+  const { isSignedIn, user } = useUser();
+  // State to store the user's habits
+  const [habits, setHabits] = useState([]);
+  // State to force re-fetching habits periodically
+  const [forceUpdate, setForceUpdate] = useState(0);
+
+  // Fetch habits when user signs in or when forceUpdate changes
+  useEffect(() => {
+    if (isSignedIn && user) {
+      fetchHabits()
+        .then((response) => {
+          // Filter habits to only show the current user's habits
+          const userHabits = response.data.filter(
+            (habit) => habit.userId === user.id
+          );
+          setHabits(userHabits);
+        })
+        .catch((error) => console.error("Error fetching habits:", error));
+    } else {
+      // Clear habits if user is not signed in
+      setHabits([]);
+    }
+  }, [isSignedIn, user, forceUpdate]);
+
+  // Set up an interval to auto-refresh habits every minute
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setForceUpdate((prev) => prev + 1);
+    }, 60000); // Auto-update every 60 seconds
+    return () => clearInterval(interval);
+  }, []);
+
+  // Handler to add a new habit to the state
+  const handleAddHabit = (newHabit) => {
+    setHabits([...habits, newHabit]);
+  };
+
+  // Handler to update an existing habit in the state
+  const handleUpdateHabit = (updatedHabit) => {
+    setHabits(habits.map((h) => (h.id === updatedHabit.id ? updatedHabit : h)));
+  };
+
+  // Handler to delete a habit from the state
+  const handleDeleteHabit = (id) => {
+    setHabits(habits.filter((h) => h.id !== id));
+  };
+
+  // If user is not signed in, show the sign-in page
+  if (!isSignedIn) {
+    return (
+      <div className="signinContainer">
+        <h1>Welcome to Habit Tracker</h1>
+        <p>Please sign in to access your dashboard.</p>
+        <SignIn />
+      </div>
+    );
+  }
+
+  // Main app layout with routing
+  return (
+    <BrowserRouter>
+      <Navbar />
+      <Routes>
+        {/* Home page route */}
+        <Route
+          path="/"
+          element={
+            <div className="welcomeContainer">
+              <h2>Welcome, {user.firstName}!</h2>
+            </div>
+          }
+        />
+        {/* Another home route for consistency */}
+        <Route
+          path="/home"
+          element={
+            <div className="welcomeContainer">
+              <h2>Welcome, {user.firstName}!</h2>
+            </div>
+          }
+        />
+        {/* Habits list page */}
+        <Route
+          path="/habits"
+          element={<HabitList habits={habits} onDelete={handleDeleteHabit} />}
+        />
+        {/* Add new habit page */}
+        <Route
+          path="/add-habit"
+          element={
+            <AddHabitForm onAddHabit={handleAddHabit} userId={user.id} />
+          }
+        />
+        {/* Week view for a specific habit */}
+        <Route
+          path="/week-view/:id"
+          element={
+            <WeekView habits={habits} onUpdateHabit={handleUpdateHabit} />
+          }
+        />
+        {/* Report page */}
+        <Route path="/report" element={<Report />} />
+        {/* Shared progress page */}
+        <Route path="/shared-progress/:id" element={<SharedProgress />} />
+      </Routes>
+      <Clock />
+    </BrowserRouter>
+  );
+}
+
+export default App;
+```
+
+## ./src/assets/react.svg
+```svg
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--logos" width="35.93" height="32" preserveAspectRatio="xMidYMid meet" viewBox="0 0 256 228"><path fill="#00D8FF" d="M210.483 73.824a171.49 171.49 0 0 0-8.24-2.597c.465-1.9.893-3.777 1.273-5.621c6.238-30.281 2.16-54.676-11.769-62.708c-13.355-7.7-35.196.329-57.254 19.526a171.23 171.23 0 0 0-6.375 5.848a155.866 155.866 0 0 0-4.241-3.917C100.759 3.829 77.587-4.822 63.673 3.233C50.33 10.957 46.379 33.89 51.995 62.588a170.974 170.974 0 0 0 1.892 8.48c-3.28.932-6.445 1.924-9.474 2.98C17.309 83.498 0 98.307 0 113.668c0 15.865 18.582 31.778 46.812 41.427a145.52 145.52 0 0 0 6.921 2.165a167.467 167.467 0 0 0-2.01 9.138c-5.354 28.2-1.173 50.591 12.134 58.266c13.744 7.926 36.812-.22 59.273-19.855a145.567 145.567 0 0 0 5.342-4.923a168.064 168.064 0 0 0 6.92 6.314c21.758 18.722 43.246 26.282 56.54 18.586c13.731-7.949 18.194-32.003 12.4-61.268a145.016 145.016 0 0 0-1.535-6.842c1.62-.48 3.21-.974 4.76-1.488c29.348-9.723 48.443-25.443 48.443-41.52c0-15.417-17.868-30.326-45.517-39.844Zm-6.365 70.984c-1.4.463-2.836.91-4.3 1.345c-3.24-10.257-7.612-21.163-12.963-32.432c5.106-11 9.31-21.767 12.459-31.957c2.619.758 5.16 1.557 7.61 2.4c23.69 8.156 38.14 20.213 38.14 29.504c0 9.896-15.606 22.743-40.946 31.14Zm-10.514 20.834c2.562 12.94 2.927 24.64 1.23 33.787c-1.524 8.219-4.59 13.698-8.382 15.893c-8.067 4.67-25.32-1.4-43.927-17.412a156.726 156.726 0 0 1-6.437-5.87c7.214-7.889 14.423-17.06 21.459-27.246c12.376-1.098 24.068-2.894 34.671-5.345a134.17 134.17 0 0 1 1.386 6.193ZM87.276 214.515c-7.882 2.783-14.16 2.863-17.955.675c-8.075-4.657-11.432-22.636-6.853-46.752a156.923 156.923 0 0 1 1.869-8.499c10.486 2.32 22.093 3.988 34.498 4.994c7.084 9.967 14.501 19.128 21.976 27.15a134.668 134.668 0 0 1-4.877 4.492c-9.933 8.682-19.886 14.842-28.658 17.94ZM50.35 144.747c-12.483-4.267-22.792-9.812-29.858-15.863c-6.35-5.437-9.555-10.836-9.555-15.216c0-9.322 13.897-21.212 37.076-29.293c2.813-.98 5.757-1.905 8.812-2.773c3.204 10.42 7.406 21.315 12.477 32.332c-5.137 11.18-9.399 22.249-12.634 32.792a134.718 134.718 0 0 1-6.318-1.979Zm12.378-84.26c-4.811-24.587-1.616-43.134 6.425-47.789c8.564-4.958 27.502 2.111 47.463 19.835a144.318 144.318 0 0 1 3.841 3.545c-7.438 7.987-14.787 17.08-21.808 26.988c-12.04 1.116-23.565 2.908-34.161 5.309a160.342 160.342 0 0 1-1.76-7.887Zm110.427 27.268a347.8 347.8 0 0 0-7.785-12.803c8.168 1.033 15.994 2.404 23.343 4.08c-2.206 7.072-4.956 14.465-8.193 22.045a381.151 381.151 0 0 0-7.365-13.322Zm-45.032-43.861c5.044 5.465 10.096 11.566 15.065 18.186a322.04 322.04 0 0 0-30.257-.006c4.974-6.559 10.069-12.652 15.192-18.18ZM82.802 87.83a323.167 323.167 0 0 0-7.227 13.238c-3.184-7.553-5.909-14.98-8.134-22.152c7.304-1.634 15.093-2.97 23.209-3.984a321.524 321.524 0 0 0-7.848 12.897Zm8.081 65.352c-8.385-.936-16.291-2.203-23.593-3.793c2.26-7.3 5.045-14.885 8.298-22.6a321.187 321.187 0 0 0 7.257 13.246c2.594 4.48 5.28 8.868 8.038 13.147Zm37.542 31.03c-5.184-5.592-10.354-11.779-15.403-18.433c4.902.192 9.899.29 14.978.29c5.218 0 10.376-.117 15.453-.343c-4.985 6.774-10.018 12.97-15.028 18.486Zm52.198-57.817c3.422 7.8 6.306 15.345 8.596 22.52c-7.422 1.694-15.436 3.058-23.88 4.071a382.417 382.417 0 0 0 7.859-13.026a347.403 347.403 0 0 0 7.425-13.565Zm-16.898 8.101a358.557 358.557 0 0 1-12.281 19.815a329.4 329.4 0 0 1-23.444.823c-7.967 0-15.716-.248-23.178-.732a310.202 310.202 0 0 1-12.513-19.846h.001a307.41 307.41 0 0 1-10.923-20.627a310.278 310.278 0 0 1 10.89-20.637l-.001.001a307.318 307.318 0 0 1 12.413-19.761c7.613-.576 15.42-.876 23.31-.876H128c7.926 0 15.743.303 23.354.883a329.357 329.357 0 0 1 12.335 19.695a358.489 358.489 0 0 1 11.036 20.54a329.472 329.472 0 0 1-11 20.722Zm22.56-122.124c8.572 4.944 11.906 24.881 6.52 51.026c-.344 1.668-.73 3.367-1.15 5.09c-10.622-2.452-22.155-4.275-34.23-5.408c-7.034-10.017-14.323-19.124-21.64-27.008a160.789 160.789 0 0 1 5.888-5.4c18.9-16.447 36.564-22.941 44.612-18.3ZM128 90.808c12.625 0 22.86 10.235 22.86 22.86s-10.235 22.86-22.86 22.86s-22.86-10.235-22.86-22.86s10.235-22.86 22.86-22.86Z"></path></svg>```
+
+## ./src/components/AddHabitForm.jsx
+```javascript
+// Form component for adding new habits to the user's list
+import React, { useState } from "react";
+import { addHabit } from "../api";
+
+const AddHabitForm = ({ onAddHabit, userId }) => {
+  // State to hold the habit name input
+  const [name, setName] = useState("");
+
+  // Function to generate a week array with dates starting from today
+  const generateWeek = () => {
+    const week = [];
+    const today = new Date();
+    for (let i = 0; i < 7; i++) {
+      const date = new Date(today);
+      date.setDate(today.getDate() + i);
+      week.push({
+        date: date.toISOString().split("T")[0], // Format as YYYY-MM-DD
+        status: "notDone", // Default status for each day
+      });
+    }
+    return week;
+  };
+
+  // Handle form submission to add a new habit
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (name.trim()) {
+      // Create new habit data object
+      const newHabitData = {
+        id: Date.now().toString(), // Simple ID generation
+        name,
+        week: generateWeek(), // Generate the week data
+        userId, // Associate with the current user
+      };
+      // Send to API and update local state on success
+      addHabit(newHabitData)
+        .then((response) => {
+          onAddHabit(response.data);
+          setName(""); // Clear the input
+        })
+        .catch((error) => {
+          console.error("Error adding habit:", error);
+          alert("Failed to add habit.");
+        });
+    }
+  };
+
+  return (
+    <div className="addHabitContainer">
+      <h2>Add New Habit</h2>
+      <form onSubmit={handleSubmit}>
+        <div className="formGroup">
+          <label className="formLabel">Habit Name</label>
+          <input
+            type="text"
+            className="formInput"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+          />
+        </div>
+        <button type="submit" className="addBtn">
+          Add Habit
+        </button>
+      </form>
+    </div>
+  );
+};
+
+export default AddHabitForm;
+```
+
+## ./src/components/Chat.jsx
+```javascript
+// Real-time chat component for sharing progress, allowing users to send and delete messages
+import React, { useState, useEffect } from "react";
+import { useUser } from "@clerk/clerk-react";
+import { ref, onValue, push, remove } from "firebase/database";
+import { database } from "../firebase";
+
+const Chat = ({ shareId }) => {
+  // Get current user from Clerk
+  const { user } = useUser();
+  // State for storing chat messages
+  const [messages, setMessages] = useState([]);
+  // State for the new message input
+  const [newMessage, setNewMessage] = useState("");
+
+  // Listen for real-time updates to the chat for this share
+  useEffect(() => {
+    const chatRef = ref(database, `chats/${shareId}`);
+    onValue(chatRef, (snapshot) => {
+      const data = snapshot.val();
+      if (data) setMessages(data);
+      else setMessages({}); // No messages yet
+    });
+  }, [shareId]);
+
+  // Function to send a new message to Firebase
+  const sendMessage = () => {
+    if (!newMessage.trim()) return; // Don't send empty messages
+    const chatRef = ref(database, `chats/${shareId}`);
+    push(chatRef, {
+      userId: user.id,
+      userName: user.firstName,
+      message: newMessage,
+      timestamp: Date.now(),
+    });
+    setNewMessage(""); // Clear input after sending
+  };
+
+  // Function to delete a message (only by the sender)
+  const deleteMessage = (messageId) => {
+    if (window.confirm("Are you sure you want to delete this message?")) {
+      const messageRef = ref(database, `chats/${shareId}/${messageId}`);
+      remove(messageRef);
+    }
+  };
+
+  return (
+    <div className="chatContainer">
+      <h6>Chat</h6>
+      {/* Scrollable chat messages area */}
+      <div style={{ maxHeight: "200px", overflowY: "scroll" }}>
+        {Object.entries(messages).map(([key, msg]) => (
+          <p key={key}>
+            <strong>{msg.userName}:</strong> {msg.message}
+            {/* Show delete button only for own messages */}
+            {msg.userId === user?.id && (
+              <button
+                className="deleteMsgBtn"
+                onClick={() => deleteMessage(key)}
+              >
+                Delete
+              </button>
+            )}
+          </p>
+        ))}
+      </div>
+      {/* Input field for new message */}
+      <input
+        type="text"
+        className="messageInput"
+        placeholder="Type a message..."
+        value={newMessage}
+        onChange={(e) => setNewMessage(e.target.value)}
+      />
+      {/* Send button */}
+      <button className="sendBtn" onClick={sendMessage}>
+        Send
+      </button>
+    </div>
+  );
+};
+
+export default Chat;
+```
+
+## ./src/components/Clock.jsx
+```javascript
+// Simple clock component displaying the current time
+import React, { useState, useEffect } from "react";
+
+const Clock = () => {
+  // State to hold the current time, updated every second
+  const [time, setTime] = useState(new Date());
+
+  // Update the time every second
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTime(new Date());
+    }, 1000);
+    return () => clearInterval(interval); // Clean up on unmount
+  }, []);
+
+  // Format the time and date for display
+  const formattedTime = time.toLocaleTimeString();
+  const formattedDate = time.toLocaleDateString();
+
+  return (
+    <div className="clockContainer" style={{ fontSize: "14px", color: "#fff" }}>
+      <p>{formattedTime}</p>
+      <p>{formattedDate}</p>
+    </div>
+  );
+};
+
+export default Clock;
+```
+
+## ./src/components/DayContainer.jsx
+```javascript
+// Component for displaying and updating individual days in a habit's week view
+import React from "react";
+import { updateHabit } from "../api";
+
+const DayContainer = ({ habit, day, dayIndex, onUpdateHabit }) => {
+  // Get today's date in YYYY-MM-DD format
+  const today = new Date().toISOString().split("T")[0];
+  // Check if the day is in the future
+  const isFuture = day.date > today;
+
+  // Handle changing the status of a day (done/notDone)
+  const handleStatusChange = (status) => {
+    if (isFuture) {
+      alert("You cannot mark future days!");
+      return;
+    }
+    // Create a copy of the week and update the specific day's status
+    const updatedWeek = [...habit.week];
+    updatedWeek[dayIndex].status = status;
+    const updatedHabit = { ...habit, week: updatedWeek };
+    // Send update to API
+    updateHabit(habit.id, updatedHabit)
+      .then((response) => {
+        onUpdateHabit(response.data); // Update parent state
+      })
+      .catch((error) => {
+        console.error("Error updating habit:", error);
+        alert("Failed to update.");
+      });
+  };
+
+  return (
+    <div
+      className="dayContainer"
+      style={{
+        backgroundColor: "#1c1e29",
+        color: "#fff",
+        opacity: isFuture ? 0.5 : 1, // Dim future days
+      }}
+    >
+      {/* Display the day of the week */}
+      <h5>
+        {new Date(day.date).toLocaleDateString("en-US", { weekday: "long" })}
+      </h5>
+      {/* Display the date */}
+      <p>{day.date}</p>
+      {/* Buttons to mark as done or not done */}
+      <div className="dayButtons">
+        <button
+          className="markDoneBtn"
+          onClick={() => handleStatusChange("done")}
+          disabled={isFuture}
+        >
+          Mark Done
+        </button>
+        <button
+          className="markNotDoneBtn"
+          onClick={() => handleStatusChange("notDone")}
+          disabled={isFuture}
+        >
+          Mark Not Done
+        </button>
+      </div>
+      {/* Display current status */}
+      <p>Status: {day.status === "done" ? "Done" : "Not Done"}</p>
+    </div>
+  );
+};
+
+export default DayContainer;
+```
+
+## ./src/components/HabitItem.jsx
+```javascript
+// Component for displaying individual habits in the list with options to view week, share, or delete
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useUser } from "@clerk/clerk-react";
+import { deleteHabit as deleteHabitApi, addShare } from "../api";
+
+const HabitItem = ({ habit, onDelete }) => {
+  // Navigation hook for routing
+  const navigate = useNavigate();
+  // Get current user from Clerk
+  const { user } = useUser();
+  // State for controlling the share modal visibility
+  const [showShareModal, setShowShareModal] = useState(false);
+  // State for the share comment input
+  const [shareComment, setShareComment] = useState("");
+
+  // Calculate the number of completed days
+  const completedDays = habit.week.filter(
+    (day) => day.status === "done"
+  ).length;
+
+  // Handle deleting the habit
+  const handleDelete = () => {
+    if (window.confirm("Are you sure you want to delete this habit?")) {
+      deleteHabitApi(habit.id)
+        .then(() => {
+          onDelete(habit.id); // Update parent state
+        })
+        .catch((error) => {
+          console.error("Error deleting habit:", error);
+          alert("Failed to delete.");
+        });
+    }
+  };
+
+  // Navigate to the week view for this habit
+  const handleWeekView = () => {
+    navigate(`/week-view/${habit.id}`);
+  };
+
+  // Navigate to the shared progress view for this habit
+  const handleShareView = () => {
+    navigate(`/shared-progress/${habit.id}`);
+  };
+
+  // Handle sharing the habit progress publicly
+  const handleShare = () => {
+    if (!shareComment.trim()) return; // Don't share without a comment
+    const completion = Math.round((completedDays / habit.week.length) * 100);
+    const shareData = {
+      id: Date.now().toString(),
+      userId: user.id,
+      userName: user.firstName || "Anonymous",
+      habitId: habit.id,
+      habitName: habit.name,
+      completion,
+      comment: shareComment,
+      createdAt: new Date().toISOString(),
+    };
+    // Send share data to API
+    addShare(shareData)
+      .then(() => {
+        alert("Habit progress shared publicly!");
+        setShareComment(""); // Clear comment
+        setShowShareModal(false); // Close modal
+      })
+      .catch((error) => console.error("Error sharing:", error));
+  };
+
+  return (
+    <div className="habitItem">
+      {/* Display habit name and completion */}
+      <div>
+        {habit.name} - {completedDays}/{habit.week.length} days
+      </div>
+      {/* Action buttons */}
+      <div>
+        <button className="weekViewBtn" onClick={handleWeekView}>
+          Week View
+        </button>
+        <button className="viewSharesBtn" onClick={handleShareView}>
+          View Shares
+        </button>
+        <button className="shareBtn" onClick={() => setShowShareModal(true)}>
+          Share
+        </button>
+        <button className="deleteBtn" onClick={handleDelete}>
+          Delete
+        </button>
+      </div>
+      {/* Share modal */}
+      {showShareModal && (
+        <div className="shareModal">
+          <div className="modalDialog">
+            <div className="modalContent">
+              <div className="modalHeader">
+                <h5 className="modalTitle">Share Progress for {habit.name}</h5>
+                <button
+                  type="button"
+                  className="closeBtn"
+                  onClick={() => setShowShareModal(false)}
+                >
+                  ×
+                </button>
+              </div>
+              <div className="modalBody">
+                <p>
+                  Current completion:{" "}
+                  {Math.round((completedDays / habit.week.length) * 100)}%
+                </p>
+                <textarea
+                  className="commentInput"
+                  placeholder="Add a comment about your progress..."
+                  value={shareComment}
+                  onChange={(e) => setShareComment(e.target.value)}
+                />
+              </div>
+              <div className="modalFooter">
+                <button
+                  type="button"
+                  className="cancelBtn"
+                  onClick={() => setShowShareModal(false)}
+                >
+                  Cancel
+                </button>
+                <button
+                  type="button"
+                  className="submitBtn"
+                  onClick={handleShare}
+                >
+                  Share
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default HabitItem;
+```
+
+## ./src/components/HabitList.jsx
+```javascript
+// Component for displaying a list of user's habits
+import React from "react";
+import HabitItem from "./HabitItem";
+
+const HabitList = ({ habits, onDelete }) => {
+  return (
+    <div className="habitListContainer">
+      <h2>Your Habits</h2>
+      {/* Check if there are any habits */}
+      {habits.length === 0 ? (
+        <p>No habits yet. Add one!</p>
+      ) : (
+        // Render each habit using HabitItem component
+        habits.map((habit) => (
+          <HabitItem key={habit.id} habit={habit} onDelete={onDelete} />
+        ))
+      )}
+    </div>
+  );
+};
+
+export default HabitList;
+```
+
+## ./src/components/Navbar.jsx
+```javascript
+// Navigation bar component with links to different sections of the app
+import React from "react";
+import { Link } from "react-router-dom";
+import { useUser, UserButton } from "@clerk/clerk-react";
+import Clock from "./Clock";
+
+const Navbar = () => {
+  // Get current user from Clerk
+  const { user } = useUser();
+
+  // Function to get a time-based greeting
+  const getGreeting = () => {
+    const hour = new Date().getHours();
+    if (hour < 12) return "Morning";
+    if (hour < 17) return "Afternoon";
+    if (hour < 21) return "Evening";
+    return "Night";
+  };
+
+  return (
+    <nav className="navbar">
+      <div className="navbarContainer">
+        {/* Personalized greeting */}
+        <h1>
+          Good {getGreeting()}, {user?.firstName}!
+        </h1>
+        <div className="navbarRight">
+          <Clock />
+          <div className="navbarLinks">
+            {/* Navigation links */}
+            <Link className="navBtn" to="/home">
+              Home
+            </Link>
+            <Link className="navBtn" to="/habits">
+              Habits
+            </Link>
+            <Link className="navBtn" to="/add-habit">
+              Add Habit
+            </Link>
+            <Link className="navBtn" to="/report">
+              Report
+            </Link>
+            <Link className="navBtn" to="/shared-progress/all">
+              All Shared Progress
+            </Link>
+            {/* User account button */}
+            <UserButton />
+          </div>
+        </div>
+      </div>
+    </nav>
+  );
+};
+
+export default Navbar;
+```
+
+## ./src/components/Report.jsx
+```javascript
+// Component for displaying a report of user's habit completion statistics
+import React, { useState, useEffect } from "react";
+import { useUser } from "@clerk/clerk-react"; // For user ID
+import { fetchHabits } from "../api";
+
+const Report = () => {
+  // Get current user from Clerk
+  const { user } = useUser();
+  // State to store user's habits
+  const [habits, setHabits] = useState([]);
+
+  // Fetch habits when user is available
+  useEffect(() => {
+    if (user) {
+      fetchHabits()
+        .then((response) => {
+          // Filter to only show current user's habits
+          const userHabits = response.data.filter((h) => h.userId === user.id);
+          setHabits(userHabits);
+        })
+        .catch((error) =>
+          console.error("Error fetching habits for report:", error)
+        );
+    } else {
+      setHabits([]);
+    }
+  }, [user]);
+
+  // Calculate overall completion percentage across all habits
+  const getOverallStats = () => {
+    const totalCompleted = habits.reduce(
+      (sum, h) => sum + h.week.filter((d) => d.status === "done").length,
+      0
+    );
+    const totalDays = habits.reduce((sum, h) => sum + h.week.length, 0);
+    return totalDays > 0 ? Math.round((totalCompleted / totalDays) * 100) : 0;
+  };
+
+  return (
+    <div className="reportContainer">
+      <h2>This Week's Habit Report</h2>
+      {/* Display overall completion */}
+      <p>Overall Completion This Week: {getOverallStats()}%</p>
+      {/* Table showing detailed stats for each habit */}
+      <table className="reportTable">
+        <thead>
+          <tr>
+            <th>Habit Name</th>
+            <th>Completed / Total (This Week)</th>
+            <th>Completion %</th>
+          </tr>
+        </thead>
+        <tbody>
+          {habits.map((habit) => {
+            // Calculate stats for each habit
+            const completedDays = habit.week.filter(
+              (day) => day.status === "done"
+            ).length;
+            const totalDays = habit.week.length;
+            const completion =
+              totalDays > 0 ? Math.round((completedDays / totalDays) * 100) : 0;
+            return (
+              <tr key={habit.id}>
+                <td>{habit.name}</td>
+                <td>
+                  {completedDays} / {totalDays}
+                </td>
+                <td>{completion}%</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
+  );
+};
+
+export default Report;
+```
+
+## ./src/components/SharedProgress.jsx
+```javascript
+// Shows shared habit progress from other users, with chat and upvoting
+import React, { useState, useEffect } from "react";
+import { useUser } from "@clerk/clerk-react";
+import { useParams } from "react-router-dom";
+import { fetchShares, addUpvote, updateShare, deleteShare } from "../api";
+import Chat from "./Chat";
+
+const SharedProgress = () => {
+  // Grab current user
+  const { user } = useUser();
+  // Get habit ID from URL
+  const { id } = useParams();
+  // Holds the shared progress items
+  const [shares, setShares] = useState([]);
+
+  // Name of the habit being shown
+  const [habitName, setHabitName] = useState("");
+
+  // Load shares based on the ID - either all or for a specific habit
+  useEffect(() => {
+    fetchShares().then((response) => {
+      if (id === "all") {
+        setShares(response.data);
+        setHabitName("All Habits");
+      } else {
+        // Just grab shares for this habit
+        const filteredShares = response.data.filter(
+          (share) => share.habitId === id
+        );
+        setShares(filteredShares);
+        if (filteredShares.length > 0) {
+          setHabitName(filteredShares[0].habitName);
+        }
+      }
+    });
+  }, [id]);
+
+  // Upvotes are now part of the share object, no separate fetching needed
+
+  const handleUpvote = (shareId) => {
+    if (!user) return;
+    const upvoteData = { id: Date.now().toString(), shareId, userId: user.id };
+    addUpvote(upvoteData).then(() => {
+      // Bump up the upvotes in the database
+      const share = shares.find((s) => s.id === shareId);
+      if (share) {
+        const newUpvotes = (share.upvotes || 0) + 1;
+        updateShare(shareId, { ...share, upvotes: newUpvotes }).then(() => {
+          // Update our local list
+          setShares(
+            shares.map((s) =>
+              s.id === shareId ? { ...s, upvotes: newUpvotes } : s
+            )
+          );
+        });
+      }
+    });
+  };
+
+  const handleDeleteShare = (shareId) => {
+    if (window.confirm("Are you sure you want to delete this share?")) {
+      deleteShare(shareId).then(() => {
+        setShares(shares.filter((share) => share.id !== shareId));
+      });
+    }
+  };
+
+  return (
+    <div className="sharedProgressContainer">
+      <h2>Shared Progress for {habitName}</h2>
+      {shares.map((share) => (
+        <div key={share.id} className="shareItem">
+          <h5>
+            {share.userName}'s Progress on {share.habitName}
+          </h5>
+          <p>Completion: {share.completion}%</p>
+          <p>Comment: {share.comment}</p>
+          <p>
+            Upvotes: {share.upvotes || 0}{" "}
+            <button
+              className="upvoteBtn"
+              onClick={() => handleUpvote(share.id)}
+            >
+              👍
+            </button>
+            {share.userId === user?.id && (
+              <button
+                className="deleteShareBtn"
+                onClick={() => handleDeleteShare(share.id)}
+              >
+                Delete Share
+              </button>
+            )}
+          </p>
+          <Chat shareId={share.id} />
+        </div>
+      ))}
+    </div>
+  );
+};
+
+export default SharedProgress;
+```
+
+## ./src/components/WeekView.jsx
+```javascript
+// Component for displaying a detailed week view of a specific habit with day-by-day status
+import React from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import DayContainer from "./DayContainer";
+
+const WeekView = ({ habits, onUpdateHabit }) => {
+  // Get the habit ID from URL params
+  const { id } = useParams();
+  // Navigation hook for routing
+  const navigate = useNavigate();
+  // Find the specific habit by ID
+  const habit = habits.find((h) => h.id === id);
+
+  // If habit not found, show error message
+  if (!habit) {
+    return (
+      <div className="errorContainer">
+        <p>Habit not found. Go back to habits.</p>
+      </div>
+    );
+  }
+
+  // If no week data, show message
+  if (!habit.week || habit.week.length === 0) {
+    return (
+      <div className="noDataContainer">
+        <p>No week data available for this habit. Try refreshing.</p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="weekViewContainer">
+      {/* Back button to habits list */}
+      <button className="backButton" onClick={() => navigate("/habits")}>
+        Back to Habits
+      </button>
+      <h2>Week View: {habit.name}</h2>
+      <div className="weekGrid">
+        {/* Render each day in the week */}
+        {habit.week.map((day, index) => (
+          <div key={`${habit.id}-${index}`} className="weekColumn">
+            <DayContainer
+              habit={habit}
+              day={day}
+              dayIndex={index}
+              onUpdateHabit={onUpdateHabit}
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default WeekView;
+```
+
+## ./src/custom-styles.css
+```css
+/* Containers */
+.habitListContainer {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 15px;
+  margin-top: 1.5rem;
+}
+
+.clockContainer {
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+.weekViewContainer {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 15px;
+  margin-top: 1.5rem;
+}
+
+.errorContainer {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 15px;
+  margin-top: 1.5rem;
+}
+
+.noDataContainer {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 15px;
+  margin-top: 1.5rem;
+}
+
+.habitItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border: 1px solid #dee2e6;
+  border-radius: 0.25rem;
+  margin-bottom: 0.5rem;
+  background-color: #1c1e29;
+  color: #fff;
+}
+
+.weekViewBtn {
+  display: inline-block;
+  padding: 0.375rem 0.75rem;
+  margin-right: 0.5rem;
+  border: 1px solid #6c757d;
+  border-radius: 0.25rem;
+  color: #6c757d;
+  background-color: transparent;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.viewSharesBtn {
+  display: inline-block;
+  padding: 0.375rem 0.75rem;
+  margin-right: 0.5rem;
+  border: 1px solid #17a2b8;
+  border-radius: 0.25rem;
+  color: #17a2b8;
+  background-color: transparent;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.shareBtn {
+  display: inline-block;
+  padding: 0.375rem 0.75rem;
+  margin-right: 0.5rem;
+  border: 1px solid #007bff;
+  border-radius: 0.25rem;
+  color: #007bff;
+  background-color: transparent;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.deleteBtn {
+  display: inline-block;
+  padding: 0.375rem 0.75rem;
+  border: 1px solid #dc3545;
+  border-radius: 0.25rem;
+  color: #dc3545;
+  background-color: transparent;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.shareModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: block;
+}
+
+.modalDialog {
+  max-width: 500px;
+  margin: 1.75rem auto;
+}
+
+.modalContent {
+  background-color: #1c1e29;
+  color: #fff;
+  border-radius: 0.3rem;
+}
+
+.modalHeader {
+  padding: 1rem;
+  border-bottom: 1px solid #495057;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modalTitle {
+  margin: 0;
+}
+
+.closeBtn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #fff;
+  cursor: pointer;
+}
+
+.modalBody {
+  padding: 1rem;
+}
+
+.commentInput {
+  display: block;
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  border: 1px solid #495057;
+  border-radius: 0.25rem;
+  background-color: #343a40;
+  color: #fff;
+}
+
+.modalFooter {
+  padding: 1rem;
+  border-top: 1px solid #495057;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.cancelBtn {
+  display: inline-block;
+  padding: 0.375rem 0.75rem;
+  margin-right: 0.5rem;
+  border: 1px solid #6c757d;
+  border-radius: 0.25rem;
+  color: #6c757d;
+  background-color: transparent;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.submitBtn {
+  display: inline-block;
+  padding: 0.375rem 0.75rem;
+  border: 1px solid #007bff;
+  border-radius: 0.25rem;
+  color: #fff;
+  background-color: #007bff;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.dayContainer {
+  padding: 1rem;
+  border: 1px solid #dee2e6;
+  border-radius: 0.25rem;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  background-color: #1c1e29;
+  color: #fff;
+}
+
+.dayButtons {
+  display: flex;
+  justify-content: space-around;
+}
+
+.markDoneBtn {
+  display: inline-block;
+  padding: 0.375rem 0.75rem;
+  margin-right: 0.5rem;
+  border: 1px solid #28a745;
+  border-radius: 0.25rem;
+  color: #fff;
+  background-color: #28a745;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.markNotDoneBtn {
+  display: inline-block;
+  padding: 0.375rem 0.75rem;
+  border: 1px solid #dc3545;
+  border-radius: 0.25rem;
+  color: #fff;
+  background-color: #dc3545;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.navbar {
+  background-color: #343a40;
+  color: #fff;
+  padding: 1rem;
+  height: 100px;
+}
+
+.navbarContainer {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbarRight {
+  display: flex;
+  align-items: center;
+}
+
+.navbarLinks {
+  margin-left: 1rem;
+}
+
+.navBtn {
+  display: inline-block;
+  padding: 0.375rem 0.75rem;
+  margin-right: 0.5rem;
+  border: 1px solid #6c757d;
+  border-radius: 0.25rem;
+  color: #6c757d;
+  background-color: transparent;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.reportContainer {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 15px;
+  margin-top: 1.5rem;
+  background-color: #1c1e29;
+  color: #fff;
+}
+
+.reportTable {
+  width: 100%;
+  margin-bottom: 1rem;
+  color: #fff;
+  background-color: #1c1e29;
+  border-collapse: collapse;
+}
+
+.reportTable th,
+.reportTable td {
+  padding: 0.75rem;
+  vertical-align: top;
+  border-top: 1px solid #dee2e6;
+}
+
+.reportTable thead th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #dee2e6;
+}
+
+.reportTable tbody + tbody {
+  border-top: 2px solid #dee2e6;
+}
+
+.sharedProgressContainer {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 15px;
+  margin-top: 1.5rem;
+  background-color: #1c1e29;
+  color: #fff;
+}
+
+.shareItem {
+  border: 1px solid #495057;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  background-color: #2a2d3a;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease-in-out;
+}
+
+.shareItem:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+.shareItem h5 {
+  color: #17a2b8;
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.shareItem p {
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+}
+
+.shareItem .upvoteBtn {
+  background-color: #28a745;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  margin-left: 0.5rem;
+  transition: background-color 0.2s ease;
+}
+
+.shareItem .upvoteBtn:hover {
+  background-color: #218838;
+}
+
+.shareItem .deleteShareBtn {
+  background-color: #dc3545;
+  border: none;
+  border-radius: 0.25rem;
+  padding: 0.375rem 0.75rem;
+  color: #fff;
+  cursor: pointer;
+  margin-left: 0.5rem;
+  font-size: 0.875rem;
+  transition: background-color 0.2s ease;
+}
+
+.shareItem .deleteShareBtn:hover {
+  background-color: #c82333;
+}
+
+/* These styles are now handled within .shareItem for better specificity */
+
+.signinContainer {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 15px;
+  margin-top: 1.5rem;
+  text-align: center;
+  background-color: #1c1e29;
+  color: #fff;
+  min-height: 100vh;
+}
+
+.welcomeContainer {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 15px;
+  margin-top: 1.5rem;
+}
+
+.addHabitContainer {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 15px;
+  margin-top: 1.5rem;
+}
+
+.formGroup {
+  margin-bottom: 1rem;
+}
+
+.formLabel {
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.formInput {
+  display: block;
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  border: 1px solid #495057;
+  border-radius: 0.25rem;
+  background-color: #343a40;
+  color: #fff;
+}
+
+.addBtn {
+  display: inline-block;
+  padding: 0.375rem 0.75rem;
+  border: 1px solid #007bff;
+  border-radius: 0.25rem;
+  color: #fff;
+  background-color: #007bff;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.chatContainer {
+  margin-top: 1rem;
+}
+
+.deleteMsgBtn {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  margin-left: 0.5rem;
+  border: 1px solid #dc3545;
+  border-radius: 0.2rem;
+  color: #fff;
+  background-color: #dc3545;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 0.875rem;
+}
+
+.messageInput {
+  display: block;
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  border: 1px solid #495057;
+  border-radius: 0.25rem;
+  background-color: #343a40;
+  color: #fff;
+}
+
+.sendBtn {
+  display: inline-block;
+  padding: 0.375rem 0.75rem;
+  margin-top: 0.25rem;
+  border: 1px solid #007bff;
+  border-radius: 0.25rem;
+  color: #fff;
+  background-color: #007bff;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.backButton {
+  display: inline-block;
+  padding: 0.375rem 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid #6c757d;
+  border-radius: 0.25rem;
+  color: #6c757d;
+  background-color: transparent;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.weekGrid {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.weekColumn {
+  flex: 0 0 33.333333%;
+  max-width: 33.333333%;
+  padding: 0 15px;
+}
+```
+
+## ./src/firebase.jsx
+```javascript
+// Firebase configuration and initialization for real-time database
+import { initializeApp } from "firebase/app";
+import { getDatabase } from "firebase/database";
+
+// Firebase configuration object with environment variables
+const firebaseConfig = {
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  databaseURL: import.meta.env.VITE_FIREBASE_DATABASE_URL,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+};
+
+// Initialize Firebase app with the config
+const app = initializeApp(firebaseConfig);
+// Export the database instance for use in other parts of the app
+export const database = getDatabase(app);
+```
+
+## ./src/index.css
+```css
+body {
+  background-color: #1c1e29;
+  color: #fff;
+  font-family: Arial, sans-serif;
+}
+
+.habit-item,
+.day-container {
+  border-color: #323232 !important;
+}
+
+.habit-item:hover,
+.day-container:hover {
+  background-color: #2a2d3a !important;
+}
+```
+
+## ./src/main.jsx
+```javascript
 // Main entry point for the React application, setting up Clerk authentication and rendering the App component
 import React from "react";
 import ReactDOM from "react-dom/client";
@@ -170,6 +6982,7 @@ import { ClerkProvider } from "@clerk/clerk-react";
 import App from "./App";
 import "bootstrap/dist/css/bootstrap.min.css"; // Import Bootstrap CSS for styling
 import "font-awesome/css/font-awesome.min.css"; // Import Font Awesome icons
+import "./custom-styles.css"; // Import custom styles
 
 // Get the Clerk publishable key from environment variables
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
@@ -189,951 +7002,14 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 );
 ```
 
-**What it does:**
+## ./vite.config.js
+```javascript
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
 
-- Imports React and renders the app into the DOM element with id "root"
-- Wraps the app in `ClerkProvider` for authentication context
-- Loads global CSS (Bootstrap and Font Awesome)
-- Checks for required environment variables
-
-**Links to:** App.jsx (main component), index.html (provides the root div)
-
-### 2. Main App Component: src/App.jsx
-
-This component manages the overall application state, routing, and user authentication.
-
-```jsx
-// Main App component handling routing, authentication, and state management for the habit tracker
-import React, { useState, useEffect } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useUser, SignIn } from "@clerk/clerk-react";
-import Navbar from "./components/Navbar";
-import HabitList from "./components/HabitList";
-import WeekView from "./components/WeekView";
-import AddHabitForm from "./components/AddHabitForm";
-import Report from "./components/Report";
-import Clock from "./components/Clock";
-import { fetchHabits } from "./api";
-import SharedProgress from "./components/SharedProgress";
-
-function App() {
-  const { isSignedIn, user } = useUser();
-  const [habits, setHabits] = useState([]);
-  const [forceUpdate, setForceUpdate] = useState(0);
-
-  // Fetch habits when user signs in or when forceUpdate changes
-  useEffect(() => {
-    if (isSignedIn && user) {
-      fetchHabits()
-        .then((response) => {
-          const userHabits = response.data.filter(
-            (habit) => habit.userId === user.id
-          );
-          setHabits(userHabits);
-        })
-        .catch((error) => console.error("Error fetching habits:", error));
-    } else {
-      setHabits([]);
-    }
-  }, [isSignedIn, user, forceUpdate]);
-
-  // Auto-refresh habits every minute
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setForceUpdate((prev) => prev + 1);
-    }, 60000);
-    return () => clearInterval(interval);
-  }, []);
-
-  // Handler functions for habit management
-  const handleAddHabit = (newHabit) => {
-    setHabits([...habits, newHabit]);
-  };
-
-  const handleUpdateHabit = (updatedHabit) => {
-    setHabits(habits.map((h) => (h.id === updatedHabit.id ? updatedHabit : h)));
-  };
-
-  const handleDeleteHabit = (id) => {
-    setHabits(habits.filter((h) => h.id !== id));
-  };
-
-  // If user is not signed in, show the sign-in page
-  if (!isSignedIn) {
-    return (
-      <div
-        className="container mt-4 text-center"
-        style={{
-          backgroundColor: "#1c1e29",
-          color: "#fff",
-          minHeight: "100vh",
-        }}
-      >
-        <h1>Welcome to Habit Tracker</h1>
-        <p>Please sign in to access your dashboard.</p>
-        <SignIn />
-      </div>
-    );
-  }
-
-  // Main app layout with routing
-  return (
-    <BrowserRouter>
-      <Navbar />
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <div className="container mt-4">
-              <h2>Welcome, {user.firstName}!</h2>
-            </div>
-          }
-        />
-        <Route
-          path="/home"
-          element={
-            <div className="container mt-4">
-              <h2>Welcome, {user.firstName}!</h2>
-            </div>
-          }
-        />
-        <Route
-          path="/habits"
-          element={<HabitList habits={habits} onDelete={handleDeleteHabit} />}
-        />
-        <Route
-          path="/add-habit"
-          element={
-            <AddHabitForm onAddHabit={handleAddHabit} userId={user.id} />
-          }
-        />
-        <Route
-          path="/week-view/:id"
-          element={
-            <WeekView habits={habits} onUpdateHabit={handleUpdateHabit} />
-          }
-        />
-        <Route path="/report" element={<Report />} />
-        <Route path="/shared-progress/:id" element={<SharedProgress />} />
-      </Routes>
-      <Clock />
-    </BrowserRouter>
-  );
-}
-
-export default App;
+// https://vite.dev/config/
+export default defineConfig({
+  plugins: [react()],
+})
 ```
 
-**What it does:**
-
-- Manages global state for habits and user authentication
-- Handles routing with React Router
-- Fetches and filters user-specific habits from the API
-- Provides handler functions for CRUD operations on habits
-- Renders different components based on the current route
-
-**Links to:**
-
-- Clerk for authentication (useUser, SignIn)
-- API functions (fetchHabits)
-- All components (Navbar, HabitList, etc.)
-- Routes to different pages
-
-### 3. Navigation: src/components/Navbar.jsx
-
-Provides navigation links and displays user info.
-
-```jsx
-// Navigation bar component with links to different sections of the app
-import React from "react";
-import { Link } from "react-router-dom";
-import { useUser, UserButton } from "@clerk/clerk-react";
-import Clock from "./Clock";
-
-const Navbar = () => {
-  const { user } = useUser();
-
-  const getGreeting = () => {
-    const hour = new Date().getHours();
-    if (hour < 12) return "Morning";
-    if (hour < 17) return "Afternoon";
-    if (hour < 21) return "Evening";
-    return "Night";
-  };
-
-  return (
-    <nav className="navbar navbar-dark bg-dark p-3" style={{ height: "100px" }}>
-      <div className="container-fluid d-flex justify-content-between align-items-center">
-        <h1>
-          Good {getGreeting()}, {user?.firstName}!
-        </h1>
-        <div className="d-flex align-items-center">
-          <Clock />
-          <div className="ms-3">
-            <Link className="btn btn-outline-light me-2" to="/home">
-              Home
-            </Link>
-            <Link className="btn btn-outline-light me-2" to="/habits">
-              Habits
-            </Link>
-            <Link className="btn btn-outline-light me-2" to="/add-habit">
-              Add Habit
-            </Link>
-            <Link className="btn btn-outline-light me-2" to="/report">
-              Report
-            </Link>
-            <Link
-              className="btn btn-outline-light me-2"
-              to="/shared-progress/all"
-            >
-              All Shared Progress
-            </Link>
-            <UserButton />
-          </div>
-        </div>
-      </div>
-    </nav>
-  );
-};
-
-export default Navbar;
-```
-
-**What it does:**
-
-- Displays personalized greeting based on time of day
-- Provides navigation links to all main sections
-- Includes user account button for profile management
-- Embeds the Clock component
-
-**Links to:** React Router for navigation, Clerk for user data, Clock component
-
-### 4. Habit Management Components
-
-#### HabitList: src/components/HabitList.jsx
-
-Displays a list of user's habits.
-
-```jsx
-// Component for displaying a list of user's habits
-import React from "react";
-import HabitItem from "./HabitItem";
-
-const HabitList = ({ habits, onDelete }) => {
-  return (
-    <div className="container mt-4">
-      <h2>Your Habits</h2>
-      {habits.length === 0 ? (
-        <p>No habits yet. Add one!</p>
-      ) : (
-        habits.map((habit) => (
-          <HabitItem key={habit.id} habit={habit} onDelete={onDelete} />
-        ))
-      )}
-    </div>
-  );
-};
-
-export default HabitList;
-```
-
-**Links to:** HabitItem component, receives habits and onDelete from App.jsx
-
-#### HabitItem: src/components/HabitItem.jsx
-
-Individual habit display with actions.
-
-```jsx
-// Component for displaying individual habits in the list with options to view week, share, or delete
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useUser } from "@clerk/clerk-react";
-import { deleteHabit as deleteHabitApi, addShare } from "../api";
-
-const HabitItem = ({ habit, onDelete }) => {
-  const navigate = useNavigate();
-  const { user } = useUser();
-  const [showShareModal, setShowShareModal] = useState(false);
-  const [shareComment, setShareComment] = useState("");
-
-  const completedDays = habit.week.filter(
-    (day) => day.status === "done"
-  ).length;
-
-  const handleDelete = () => {
-    if (window.confirm("Are you sure you want to delete this habit?")) {
-      deleteHabitApi(habit.id)
-        .then(() => {
-          onDelete(habit.id);
-        })
-        .catch((error) => {
-          console.error("Error deleting habit:", error);
-          alert("Failed to delete.");
-        });
-    }
-  };
-
-  const handleWeekView = () => {
-    navigate(`/week-view/${habit.id}`);
-  };
-
-  const handleShareView = () => {
-    navigate(`/shared-progress/${habit.id}`);
-  };
-
-  const handleShare = () => {
-    if (!shareComment.trim()) return;
-    const completion = Math.round((completedDays / habit.week.length) * 100);
-    const shareData = {
-      id: Date.now().toString(),
-      userId: user.id,
-      userName: user.firstName || "Anonymous",
-      habitId: habit.id,
-      habitName: habit.name,
-      completion,
-      comment: shareComment,
-      createdAt: new Date().toISOString(),
-    };
-    addShare(shareData)
-      .then(() => {
-        alert("Habit progress shared publicly!");
-        setShareComment("");
-        setShowShareModal(false);
-      })
-      .catch((error) => console.error("Error sharing:", error));
-  };
-
-  return (
-    <div
-      className="habit-item d-flex justify-content-between align-items-center p-3 border rounded mb-2"
-      style={{ backgroundColor: "#1c1e29", color: "#fff" }}
-    >
-      <div>
-        {habit.name} - {completedDays}/{habit.week.length} days
-      </div>
-      <div>
-        <button className="btn btn-outline-light me-2" onClick={handleWeekView}>
-          Week View
-        </button>
-        <button className="btn btn-outline-info me-2" onClick={handleShareView}>
-          View Shares
-        </button>
-        <button
-          className="btn btn-outline-primary me-2"
-          onClick={() => setShowShareModal(true)}
-        >
-          Share
-        </button>
-        <button className="btn btn-outline-danger" onClick={handleDelete}>
-          Delete
-        </button>
-      </div>
-      {/* Share modal omitted for brevity */}
-    </div>
-  );
-};
-
-export default HabitItem;
-```
-
-**What it does:**
-
-- Shows habit name and completion stats
-- Provides buttons for week view, sharing, and deletion
-- Handles sharing logic with modal
-- Calculates completion percentage
-
-**Links to:** API functions, React Router for navigation, App.jsx handlers
-
-#### AddHabitForm: src/components/AddHabitForm.jsx
-
-Form for creating new habits.
-
-```jsx
-// Form component for adding new habits to the user's list
-import React, { useState } from "react";
-import { addHabit } from "../api";
-
-const AddHabitForm = ({ onAddHabit, userId }) => {
-  const [name, setName] = useState("");
-
-  const generateWeek = () => {
-    const week = [];
-    const today = new Date();
-    for (let i = 0; i < 7; i++) {
-      const date = new Date(today);
-      date.setDate(today.getDate() + i);
-      week.push({
-        date: date.toISOString().split("T")[0],
-        status: "notDone",
-      });
-    }
-    return week;
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (name.trim()) {
-      const newHabitData = {
-        id: Date.now().toString(),
-        name,
-        week: generateWeek(),
-        userId,
-      };
-      addHabit(newHabitData)
-        .then((response) => {
-          onAddHabit(response.data);
-          setName("");
-        })
-        .catch((error) => {
-          console.error("Error adding habit:", error);
-          alert("Failed to add habit.");
-        });
-    }
-  };
-
-  return (
-    <div className="container mt-4">
-      <h2>Add New Habit</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="mb-3">
-          <label className="form-label">Habit Name</label>
-          <input
-            type="text"
-            className="form-control"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-          />
-        </div>
-        <button type="submit" className="btn btn-primary">
-          Add Habit
-        </button>
-      </form>
-    </div>
-  );
-};
-
-export default AddHabitForm;
-```
-
-**Links to:** API addHabit, App.jsx handleAddHabit
-
-### 5. Week Tracking: src/components/WeekView.jsx and DayContainer.jsx
-
-#### WeekView: Displays the week grid for a habit.
-
-```jsx
-// Component for displaying a detailed week view of a specific habit with day-by-day status
-import React from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import DayContainer from "./DayContainer";
-
-const WeekView = ({ habits, onUpdateHabit }) => {
-  const { id } = useParams();
-  const navigate = useNavigate();
-  const habit = habits.find((h) => h.id === id);
-
-  if (!habit) {
-    return (
-      <div className="container mt-4">
-        <p>Habit not found.</p>
-      </div>
-    );
-  }
-
-  return (
-    <div className="container mt-4">
-      <button
-        className="btn btn-secondary mb-3"
-        onClick={() => navigate("/habits")}
-      >
-        Back to Habits
-      </button>
-      <h2>Week View: {habit.name}</h2>
-      <div className="row">
-        {habit.week.map((day, index) => (
-          <div key={`${habit.id}-${index}`} className="col-md-4">
-            <DayContainer
-              habit={habit}
-              day={day}
-              dayIndex={index}
-              onUpdateHabit={onUpdateHabit}
-            />
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-};
-
-export default WeekView;
-```
-
-**Links to:** DayContainer, App.jsx onUpdateHabit
-
-#### DayContainer: Individual day management.
-
-```jsx
-// Component for displaying and updating individual days in a habit's week view
-import React from "react";
-import { updateHabit } from "../api";
-
-const DayContainer = ({ habit, day, dayIndex, onUpdateHabit }) => {
-  const today = new Date().toISOString().split("T")[0];
-  const isFuture = day.date > today;
-
-  const handleStatusChange = (status) => {
-    if (isFuture) {
-      alert("You cannot mark future days!");
-      return;
-    }
-    const updatedWeek = [...habit.week];
-    updatedWeek[dayIndex].status = status;
-    const updatedHabit = { ...habit, week: updatedWeek };
-    updateHabit(habit.id, updatedHabit)
-      .then((response) => {
-        onUpdateHabit(response.data);
-      })
-      .catch((error) => {
-        console.error("Error updating habit:", error);
-        alert("Failed to update.");
-      });
-  };
-
-  return (
-    <div
-      className="day-container p-3 border rounded text-center mb-2"
-      style={{
-        backgroundColor: "#1c1e29",
-        color: "#fff",
-        opacity: isFuture ? 0.5 : 1,
-      }}
-    >
-      <h5>
-        {new Date(day.date).toLocaleDateString("en-US", { weekday: "long" })}
-      </h5>
-      <p>{day.date}</p>
-      <div className="d-flex justify-content-around">
-        <button
-          className="btn btn-success me-2"
-          onClick={() => handleStatusChange("done")}
-          disabled={isFuture}
-        >
-          Mark Done
-        </button>
-        <button
-          className="btn btn-danger"
-          onClick={() => handleStatusChange("notDone")}
-          disabled={isFuture}
-        >
-          Mark Not Done
-        </button>
-      </div>
-      <p>Status: {day.status === "done" ? "Done" : "Not Done"}</p>
-    </div>
-  );
-};
-
-export default DayContainer;
-```
-
-**Links to:** API updateHabit, WeekView
-
-### 6. Reporting: src/components/Report.jsx
-
-Displays habit statistics.
-
-```jsx
-// Component for displaying a report of user's habit completion statistics
-import React, { useState, useEffect } from "react";
-import { useUser } from "@clerk/clerk-react";
-import { fetchHabits } from "../api";
-
-const Report = () => {
-  const { user } = useUser();
-  const [habits, setHabits] = useState([]);
-
-  useEffect(() => {
-    if (user) {
-      fetchHabits()
-        .then((response) => {
-          const userHabits = response.data.filter((h) => h.userId === user.id);
-          setHabits(userHabits);
-        })
-        .catch((error) =>
-          console.error("Error fetching habits for report:", error)
-        );
-    }
-  }, [user]);
-
-  const getOverallStats = () => {
-    const totalCompleted = habits.reduce(
-      (sum, h) => sum + h.week.filter((d) => d.status === "done").length,
-      0
-    );
-    const totalDays = habits.reduce((sum, h) => sum + h.week.length, 0);
-    return totalDays > 0 ? Math.round((totalCompleted / totalDays) * 100) : 0;
-  };
-
-  return (
-    <div
-      className="container mt-4"
-      style={{ backgroundColor: "#1c1e29", color: "#fff" }}
-    >
-      <h2>Habit Report</h2>
-      <p>Overall Completion: {getOverallStats()}%</p>
-      <table className="table table-dark table-striped">
-        <thead>
-          <tr>
-            <th>Habit Name</th>
-            <th>Completed Days</th>
-            <th>Total Days</th>
-            <th>Completion %</th>
-          </tr>
-        </thead>
-        <tbody>
-          {habits.map((habit) => {
-            const completedDays = habit.week.filter(
-              (day) => day.status === "done"
-            ).length;
-            const totalDays = habit.week.length;
-            const completion =
-              totalDays > 0 ? Math.round((completedDays / totalDays) * 100) : 0;
-            return (
-              <tr key={habit.id}>
-                <td>{habit.name}</td>
-                <td>{completedDays}</td>
-                <td>{totalDays}</td>
-                <td>{completion}%</td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
-    </div>
-  );
-};
-
-export default Report;
-```
-
-**Links to:** API fetchHabits, Clerk user
-
-### 7. Social Features: SharedProgress and Chat
-
-#### SharedProgress: src/components/SharedProgress.jsx
-
-Displays shared habit progress with upvotes.
-
-```jsx
-// Component for viewing shared habit progress from users, with chat and upvoting features
-import React, { useState, useEffect } from "react";
-import { useUser } from "@clerk/clerk-react";
-import { useParams } from "react-router-dom";
-import {
-  fetchShares,
-  addUpvote,
-  getUpvotesForShare,
-  deleteShare,
-} from "../api";
-import Chat from "./Chat";
-
-const SharedProgress = () => {
-  const { user } = useUser();
-  const { id } = useParams();
-  const [shares, setShares] = useState([]);
-  const [upvotes, setUpvotes] = useState({});
-  const [habitName, setHabitName] = useState("");
-
-  useEffect(() => {
-    fetchShares().then((response) => {
-      if (id === "all") {
-        setShares(response.data);
-        setHabitName("All Habits");
-      } else {
-        const filteredShares = response.data.filter(
-          (share) => share.habitId === id
-        );
-        setShares(filteredShares);
-        if (filteredShares.length > 0) {
-          setHabitName(filteredShares[0].habitName);
-        }
-      }
-    });
-  }, [id]);
-
-  useEffect(() => {
-    shares.forEach((share) => {
-      getUpvotesForShare(share.id).then((response) => {
-        setUpvotes((prev) => ({ ...prev, [share.id]: response.data.length }));
-      });
-    });
-  }, [shares]);
-
-  const handleUpvote = (shareId) => {
-    if (!user) return;
-    const upvoteData = { id: Date.now().toString(), shareId, userId: user.id };
-    addUpvote(upvoteData).then(() => {
-      getUpvotesForShare(shareId).then((response) => {
-        setUpvotes((prev) => ({ ...prev, [shareId]: response.data.length }));
-      });
-    });
-  };
-
-  const handleDeleteShare = (shareId) => {
-    if (window.confirm("Are you sure you want to delete this share?")) {
-      deleteShare(shareId).then(() => {
-        setShares(shares.filter((share) => share.id !== shareId));
-      });
-    }
-  };
-
-  return (
-    <div
-      className="container mt-4"
-      style={{ backgroundColor: "#1c1e29", color: "#fff" }}
-    >
-      <h2>Shared Progress for {habitName}</h2>
-      {shares.map((share) => (
-        <div key={share.id} className="border rounded p-3 mb-3">
-          <h5>
-            {share.userName}'s Progress on {share.habitName}
-          </h5>
-          <p>Completion: {share.completion}%</p>
-          <p>Comment: {share.comment}</p>
-          <p>
-            Upvotes: {upvotes[share.id] || 0}{" "}
-            <button
-              className="btn btn-sm btn-light"
-              onClick={() => handleUpvote(share.id)}
-            >
-              👍
-            </button>
-            {share.userId === user?.id && (
-              <button
-                className="btn btn-sm btn-danger ms-2"
-                onClick={() => handleDeleteShare(share.id)}
-              >
-                Delete Share
-              </button>
-            )}
-          </p>
-          <Chat shareId={share.id} />
-        </div>
-      ))}
-    </div>
-  );
-};
-
-export default SharedProgress;
-```
-
-**Links to:** API functions for shares/upvotes, Chat component
-
-#### Chat: src/components/Chat.jsx
-
-Real-time chat using Firebase.
-
-```jsx
-// Real-time chat component for sharing progress, allowing users to send and delete messages
-import React, { useState, useEffect } from "react";
-import { useUser } from "@clerk/clerk-react";
-import { ref, onValue, push, remove } from "firebase/database";
-import { database } from "../firebase";
-
-const Chat = ({ shareId }) => {
-  const { user } = useUser();
-  const [messages, setMessages] = useState([]);
-  const [newMessage, setNewMessage] = useState("");
-
-  useEffect(() => {
-    const chatRef = ref(database, `chats/${shareId}`);
-    onValue(chatRef, (snapshot) => {
-      const data = snapshot.val();
-      if (data) setMessages(data);
-      else setMessages({});
-    });
-  }, [shareId]);
-
-  const sendMessage = () => {
-    if (!newMessage.trim()) return;
-    const chatRef = ref(database, `chats/${shareId}`);
-    push(chatRef, {
-      userId: user.id,
-      userName: user.firstName,
-      message: newMessage,
-      timestamp: Date.now(),
-    });
-    setNewMessage("");
-  };
-
-  const deleteMessage = (messageId) => {
-    if (window.confirm("Are you sure you want to delete this message?")) {
-      const messageRef = ref(database, `chats/${shareId}/${messageId}`);
-      remove(messageRef);
-    }
-  };
-
-  return (
-    <div className="mt-3">
-      <h6>Chat</h6>
-      <div style={{ maxHeight: "200px", overflowY: "scroll" }}>
-        {Object.entries(messages).map(([key, msg]) => (
-          <p key={key}>
-            <strong>{msg.userName}:</strong> {msg.message}
-            {msg.userId === user?.id && (
-              <button
-                className="btn btn-sm btn-danger ms-2"
-                onClick={() => deleteMessage(key)}
-              >
-                Delete
-              </button>
-            )}
-          </p>
-        ))}
-      </div>
-      <input
-        type="text"
-        className="form-control"
-        placeholder="Type a message..."
-        value={newMessage}
-        onChange={(e) => setNewMessage(e.target.value)}
-      />
-      <button className="btn btn-primary mt-1" onClick={sendMessage}>
-        Send
-      </button>
-    </div>
-  );
-};
-
-export default Chat;
-```
-
-**Links to:** Firebase database, Clerk user
-
-### 8. Utility Components
-
-#### Clock: src/components/Clock.jsx
-
-Displays current time and date.
-
-```jsx
-// Simple clock component displaying the current time
-import React, { useState, useEffect } from "react";
-
-const Clock = () => {
-  const [time, setTime] = useState(new Date());
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setTime(new Date());
-    }, 1000);
-    return () => clearInterval(interval);
-  }, []);
-
-  const formattedTime = time.toLocaleTimeString();
-  const formattedDate = time.toLocaleDateString();
-
-  return (
-    <div
-      className="text-center mt-4"
-      style={{ fontSize: "14px", color: "#fff" }}
-    >
-      <p>{formattedTime}</p>
-      <p>{formattedDate}</p>
-    </div>
-  );
-};
-
-export default Clock;
-```
-
-**Links to:** Navbar (embedded), updates every second
-
-### 9. API and Data Layer
-
-#### api.js: API functions
-
-```jsx
-// API functions for handling habit data, shares, and upvotes with the backend
-import axios from "axios";
-
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:4000";
-
-export const fetchHabits = () => axios.get(`${API_URL}/habits`);
-export const addHabit = (habitData) =>
-  axios.post(`${API_URL}/habits`, habitData);
-export const updateHabit = (id, updatedData) =>
-  axios.put(`${API_URL}/habits/${id}`, updatedData);
-export const deleteHabit = (id) => axios.delete(`${API_URL}/habits/${id}`);
-
-export const fetchShares = () => axios.get(`${API_URL}/shares`);
-export const addShare = (shareData) =>
-  axios.post(`${API_URL}/shares`, shareData);
-export const deleteShare = (id) => axios.delete(`${API_URL}/shares/${id}`);
-
-export const fetchUpvotes = () => axios.get(`${API_URL}/upvotes`);
-export const addUpvote = (upvoteData) =>
-  axios.post(`${API_URL}/upvotes`, upvoteData);
-export const getUpvotesForShare = (shareId) =>
-  axios.get(`${API_URL}/upvotes?shareId=${shareId}`);
-```
-
-**What it does:** Provides HTTP functions for all CRUD operations on habits, shares, and upvotes.
-
-**Links to:** JSON Server backend, all components that need data
-
-#### firebase.jsx: Firebase config
-
-```jsx
-// Firebase configuration and initialization for real-time database
-import { initializeApp } from "firebase/app";
-import { getDatabase } from "firebase/database";
-
-const firebaseConfig = {
-  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
-  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
-  databaseURL: import.meta.env.VITE_FIREBASE_DATABASE_URL,
-  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
-};
-
-const app = initializeApp(firebaseConfig);
-export const database = getDatabase(app);
-```
-
-**Links to:** Chat component for real-time messaging
-
-#### db.json: Mock database
-
-Contains sample data for habits, shares, and upvotes. Used by JSON Server.
-
-### 10. Configuration and Styling
-
-- **package.json**: Defines dependencies and scripts
-- **vite.config.js**: Vite build configuration
-- **eslint.config.js**: Linting rules
-- **src/index.css**: Global styles
-- **src/App.css**: App-specific styles
-- **index.html**: HTML template
-
-## Data Flow Summary
-
-1. **Authentication**: Clerk provides user context to App.jsx
-2. **Data Fetching**: App.jsx fetches habits via api.js from JSON Server
-3. **State Management**: Habits stored in App.jsx state, passed to components
-4. **User Actions**: Components call API functions and update App state
-5. **Real-time Features**: Chat uses Firebase for live messaging
-6. **Persistence**: All data stored in db.json via JSON Server
-
-## User Journey
-
-1. User signs in via Clerk
-2. Sees welcome page, navigates to habits
-3. Adds habits via AddHabitForm
-4. Tracks progress in WeekView using DayContainer
-5. Views reports in Report component
-6. Shares progress, which appears in SharedProgress with Chat
-7. Can upvote others' shares
-
-This comprehensive explanation covers the entire project flow, component interactions, and technical implementation details.
