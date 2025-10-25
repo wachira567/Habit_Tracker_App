@@ -1,0 +1,658 @@
+{
+  "habits": [
+    {
+      "id": "1760993334220",
+      "name": "ben",
+      "userId": "user_123",
+      "week": [
+        {
+          "date": "2025-10-20",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-21",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-22",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-23",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-24",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-25",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-26",
+          "status": "notDone"
+        }
+      ]
+    },
+    {
+      "id": "1760993433437",
+      "name": "nn",
+      "userId": "user_123",
+      "week": [
+        {
+          "date": "2025-10-20",
+          "status": "done"
+        },
+        {
+          "date": "2025-10-21",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-22",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-23",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-24",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-25",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-26",
+          "status": "notDone"
+        }
+      ]
+    },
+    {
+      "id": "1760993644594",
+      "name": "nn",
+      "userId": "user_456",
+      "week": [
+        {
+          "date": "2025-10-20",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-21",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-22",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-23",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-24",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-25",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-26",
+          "status": "notDone"
+        }
+      ]
+    },
+    {
+      "id": "1760994151271",
+      "name": "jh",
+      "userId": "user_456",
+      "week": [
+        {
+          "date": "2025-10-20",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-21",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-22",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-23",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-24",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-25",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-26",
+          "status": "notDone"
+        }
+      ]
+    },
+    {
+      "id": "1760994773049",
+      "name": "ww",
+      "userId": "user_789",
+      "week": [
+        {
+          "date": "2025-10-20",
+          "status": "done"
+        },
+        {
+          "date": "2025-10-21",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-22",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-23",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-24",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-25",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-26",
+          "status": "notDone"
+        }
+      ]
+    },
+    {
+      "id": "1761000499723",
+      "name": "Dancing",
+      "week": [
+        {
+          "date": "2025-10-20",
+          "status": "done"
+        },
+        {
+          "date": "2025-10-21",
+          "status": "done"
+        },
+        {
+          "date": "2025-10-22",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-23",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-24",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-25",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-26",
+          "status": "notDone"
+        }
+      ],
+      "userId": "user_34LkvJ0wM68lMWLTYqpsfOCL4yn"
+    },
+    {
+      "id": "1761297921164",
+      "name": "reading",
+      "week": [
+        {
+          "date": "2025-10-24",
+          "status": "done"
+        },
+        {
+          "date": "2025-10-25",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-26",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-27",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-28",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-29",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-30",
+          "status": "notDone"
+        }
+      ]
+    },
+    {
+      "id": "1761298322145",
+      "name": "aa",
+      "week": [
+        {
+          "date": "2025-10-24",
+          "status": "done"
+        },
+        {
+          "date": "2025-10-25",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-26",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-27",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-28",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-29",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-30",
+          "status": "notDone"
+        }
+      ]
+    },
+    {
+      "id": "1761298574491",
+      "name": "gg",
+      "week": [
+        {
+          "date": "2025-10-24",
+          "status": "done"
+        },
+        {
+          "date": "2025-10-25",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-26",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-27",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-28",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-29",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-30",
+          "status": "notDone"
+        }
+      ]
+    },
+    {
+      "id": "1761299204701",
+      "name": "bb",
+      "week": [
+        {
+          "date": "2025-10-24",
+          "status": "done"
+        },
+        {
+          "date": "2025-10-25",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-26",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-27",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-28",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-29",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-30",
+          "status": "notDone"
+        }
+      ]
+    },
+    {
+      "id": "1761299233035",
+      "name": "aa",
+      "week": [
+        {
+          "date": "2025-10-24",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-25",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-26",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-27",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-28",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-29",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-30",
+          "status": "notDone"
+        }
+      ]
+    },
+    {
+      "id": "1761299591289",
+      "name": "aa",
+      "week": [
+        {
+          "date": "2025-10-24",
+          "status": "done"
+        },
+        {
+          "date": "2025-10-25",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-26",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-27",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-28",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-29",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-30",
+          "status": "notDone"
+        }
+      ],
+      "userId": "user_34LkCItjljCnHNLDoE4lAdsQTFr"
+    },
+    {
+      "id": "1761301921799",
+      "name": "Singing",
+      "week": [
+        {
+          "date": "2025-10-24",
+          "status": "done"
+        },
+        {
+          "date": "2025-10-25",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-26",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-27",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-28",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-29",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-30",
+          "status": "notDone"
+        }
+      ],
+      "userId": "user_34LkvJ0wM68lMWLTYqpsfOCL4yn"
+    },
+    {
+      "id": "1761378122175",
+      "name": "bb",
+      "week": [
+        {
+          "date": "2025-10-25",
+          "status": "done"
+        },
+        {
+          "date": "2025-10-26",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-27",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-28",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-29",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-30",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-31",
+          "status": "notDone"
+        }
+      ],
+      "userId": "user_34LkCItjljCnHNLDoE4lAdsQTFr"
+    },
+    {
+      "id": "1761380850078",
+      "name": "Jogging",
+      "week": [
+        {
+          "date": "2025-10-25",
+          "status": "done"
+        },
+        {
+          "date": "2025-10-26",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-27",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-28",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-29",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-30",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-31",
+          "status": "notDone"
+        }
+      ],
+      "userId": "user_34LkCItjljCnHNLDoE4lAdsQTFr"
+    },
+    {
+      "id": "1761382623451",
+      "name": "Singing",
+      "week": [
+        {
+          "date": "2025-10-25",
+          "status": "done"
+        },
+        {
+          "date": "2025-10-26",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-27",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-28",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-29",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-30",
+          "status": "notDone"
+        },
+        {
+          "date": "2025-10-31",
+          "status": "notDone"
+        }
+      ],
+      "userId": "user_34LkCItjljCnHNLDoE4lAdsQTFr"
+    }
+  ],
+  "shares": [
+    {
+      "id": "1761302177885",
+      "userId": "user_34LkvJ0wM68lMWLTYqpsfOCL4yn",
+      "userName": "VICTOR",
+      "habitId": "1761301921799",
+      "habitName": "Singing",
+      "completion": 14,
+      "comment": "2 day streak",
+      "createdAt": "2025-10-24T10:36:17.885Z"
+    },
+    {
+      "id": "1761378193006",
+      "userId": "user_34LkCItjljCnHNLDoE4lAdsQTFr",
+      "userName": "Mark",
+      "habitId": "1761378122175",
+      "habitName": "bb",
+      "completion": 14,
+      "comment": "progress",
+      "createdAt": "2025-10-25T07:43:13.006Z"
+    },
+    {
+      "id": "1761380870525",
+      "userId": "user_34LkCItjljCnHNLDoE4lAdsQTFr",
+      "userName": "Mark",
+      "habitId": "1761380850078",
+      "habitName": "Jogging",
+      "completion": 14,
+      "comment": "Yaay",
+      "createdAt": "2025-10-25T08:27:50.525Z"
+    },
+    {
+      "id": "1761383029550",
+      "userId": "user_34LkCItjljCnHNLDoE4lAdsQTFr",
+      "userName": "Mark",
+      "habitId": "1761382623451",
+      "habitName": "Singing",
+      "completion": 14,
+      "comment": "aaa",
+      "createdAt": "2025-10-25T09:03:49.550Z"
+    }
+  ],
+  "upvotes": [
+    {
+      "id": "1761302333695",
+      "shareId": null,
+      "userId": "user_34LkvJ0wM68lMWLTYqpsfOCL4yn"
+    },
+    {
+      "id": "1761302335117",
+      "shareId": "1761302177885",
+      "userId": "user_34LkvJ0wM68lMWLTYqpsfOCL4yn"
+    },
+    {
+      "id": "1761302336685",
+      "shareId": null,
+      "userId": "user_34LkvJ0wM68lMWLTYqpsfOCL4yn"
+    },
+    {
+      "id": "1761302364929",
+      "shareId": null,
+      "userId": "user_34LkCItjljCnHNLDoE4lAdsQTFr"
+    },
+    {
+      "id": "1761303990536",
+      "shareId": "1761302177885",
+      "userId": "user_34LkCItjljCnHNLDoE4lAdsQTFr"
+    },
+    {
+      "id": "1761378258682",
+      "shareId": "1761378193006",
+      "userId": "user_34LkCItjljCnHNLDoE4lAdsQTFr"
+    },
+    {
+      "id": "1761383037517",
+      "shareId": "1761383029550",
+      "userId": "user_34LkCItjljCnHNLDoE4lAdsQTFr"
+    },
+    {
+      "id": "1761383038357",
+      "shareId": "1761383029550",
+      "userId": "user_34LkCItjljCnHNLDoE4lAdsQTFr"
+    },
+    {
+      "id": "1761383038644",
+      "shareId": "1761383029550",
+      "userId": "user_34LkCItjljCnHNLDoE4lAdsQTFr"
+    },
+    {
+      "id": "1761383038900",
+      "shareId": "1761383029550",
+      "userId": "user_34LkCItjljCnHNLDoE4lAdsQTFr"
+    },
+    {
+      "id": "1761383096447",
+      "shareId": "1761383029550",
+      "userId": "user_34LkCItjljCnHNLDoE4lAdsQTFr"
+    }
+  ]
+}
